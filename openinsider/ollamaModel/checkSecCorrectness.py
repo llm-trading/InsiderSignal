@@ -1,8 +1,12 @@
+'''
+This code takes the filtered json and checks for the footnote mentioned in filings with
+the P codes mentioned with the footnote. So as to analyze if its a NOISE or a SIGNAL.
+'''
+
 import ollama
 import json
 import sys
 from pathlib import Path
-
 
 def load_entries(file_path):
     p = Path(file_path)
@@ -67,5 +71,5 @@ if __name__ == '__main__':
     # ollama create sec-analyst -f SEC_Analyst.modelfile
     # Example usage: python checkSecCorrectness.py openinsider_data_2026-03-19_17-39-58Z.json
 
-    selected_file = sys.argv[1] if len(sys.argv) > 1 else 'openinsider_data_2026-03-19_17-39-58Z.json'
+    selected_file = sys.argv[1] if len(sys.argv) > 1 else 'openinsider_filtered.json'
     run_test(data_file=selected_file)

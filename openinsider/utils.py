@@ -88,7 +88,7 @@ def normalize_explanation_rows(explanation_rows):
             remarks_parts.append(text)
             continue
 
-        m = re.match(r'^(\d+)\s*[\.\)]\s*(.*)$', text)
+        m = re.match(r'^\s*[\[\(]?(\d+)[\]\.\)]\s*([\s\S]*)', text, re.DOTALL)
         if m:
             foot_note_id = m.group(1)
             foot_note_text = m.group(2).strip()
