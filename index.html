@@ -1,0 +1,2753 @@
+
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Insider Intelligence Terminal</title>
+        <script src="https://cdn.tailwindcss.com"></script>
+        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+        <style>
+            body { font-family: 'Inter', sans-serif; background-color: #0c0c0e; color: #d4d4d8; margin: 0; padding: 0; }
+            * { font-style: normal !important; }
+            
+            .glossy-btn {
+                background: linear-gradient(180deg, rgba(63, 63, 70, 0.4) 0%, rgba(30, 30, 35, 0.7) 100%);
+                border: 1px solid rgba(82, 82, 91, 0.4);
+                box-shadow: inset 0 1px 0 0 rgba(255, 255, 255, 0.03);
+                transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+            }
+            .glossy-btn:hover {
+                background: linear-gradient(180deg, rgba(82, 82, 91, 0.5) 0%, rgba(63, 63, 70, 0.8) 100%);
+                border-color: rgba(113, 113, 122, 0.5);
+                color: white;
+            }
+            .glossy-btn.active {
+                background: linear-gradient(180deg, #3b82f6 0%, #1d4ed8 100%);
+                border-color: #60a5fa;
+                color: white;
+                box-shadow: 0 0 12px rgba(59, 130, 246, 0.2), inset 0 1px 0 0 rgba(255, 255, 255, 0.2);
+            }
+
+            .legend-segment { height: 5px; border-radius: 1px; flex: 1; }
+            .sticky-thead th { position: sticky; top: 0; z-index: 10; background: #0c0c0e; }
+            ::-webkit-scrollbar { width: 5px; }
+            ::-webkit-scrollbar-track { background: #0c0c0e; }
+            ::-webkit-scrollbar-thumb { background: #27272a; border-radius: 10px; }
+        </style>
+    </head>
+    <body class="p-4 md:p-6">
+        <div class="max-w-6xl mx-auto">
+            <header class="mb-6 flex flex-col lg:flex-row justify-between items-start lg:items-end gap-6">
+                <div class="space-y-1.5">
+                    <h1 class="text-2xl font-black text-white tracking-tighter uppercase leading-none">Insider Signal Intelligence</h1>
+                    <div class="flex items-center gap-3">
+                        <div class="flex items-center gap-1.5 px-2 py-0.5 bg-emerald-500/10 border border-emerald-500/20 rounded text-[9px] font-black text-emerald-400 uppercase tracking-widest">
+                            <span class="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span> Live Dataset
+                        </div>
+                        <p class="text-zinc-600 text-[10px] font-bold uppercase tracking-[0.2em]">High-Density Terminal</p>
+                    </div>
+                </div>
+
+                <div class="w-full lg:w-80 space-y-2 p-3 bg-zinc-900/30 border border-zinc-800/50 rounded-lg shadow-inner">
+                    <div class="flex justify-between items-center text-[9px] font-black text-zinc-500 uppercase tracking-widest">
+                        <span>Conviction Score</span>
+                        <span>Confidence Index</span>
+                    </div>
+                    <div class="flex gap-1">
+                        <div class="legend-segment bg-rose-600"></div>
+                        <div class="legend-segment bg-zinc-700"></div>
+                        <div class="legend-segment bg-blue-600"></div>
+                        <div class="legend-segment bg-emerald-600"></div>
+                    </div>
+                    <div class="flex justify-between text-[8px] font-black text-zinc-600 uppercase tracking-tighter">
+                        <span>Noise: <1</span>
+                        <span>Neutral: >=1</span>
+                        <span>Signal: >=3</span>
+                        <span>Strong: >=5</span>
+                    </div>
+                </div>
+            </header>
+
+            <div class="flex flex-wrap gap-2 mb-6">
+                <button onclick="applyFilter('ALL')" class="filter-btn active glossy-btn px-4 py-1.5 rounded-md text-[10px] font-black text-zinc-400 uppercase tracking-widest">
+                    All (75)
+                </button>
+                <button onclick="applyFilter('STRONG_BUY_SIGNAL')" class="filter-btn glossy-btn px-4 py-1.5 rounded-md text-[10px] font-black text-zinc-400 uppercase tracking-widest">
+                    Strong (11)
+                </button>
+                <button onclick="applyFilter('BUY_SIGNAL')" class="filter-btn glossy-btn px-4 py-1.5 rounded-md text-[10px] font-black text-zinc-400 uppercase tracking-widest">
+                    Signal (19)
+                </button>
+                <button onclick="applyFilter('WEAK_SIGNAL')" class="filter-btn glossy-btn px-4 py-1.5 rounded-md text-[10px] font-black text-zinc-400 uppercase tracking-widest">
+                    Neutral (5)
+                </button>
+                <button onclick="applyFilter('NOISE')" class="filter-btn glossy-btn px-4 py-1.5 rounded-md text-[10px] font-black text-zinc-400 uppercase tracking-widest">
+                    Noise (40)
+                </button>
+            </div>
+
+            <div class="bg-zinc-900/10 border border-zinc-800 rounded-xl overflow-hidden shadow-2xl">
+                <div class="overflow-x-auto max-h-[70vh]">
+                    <table class="w-full text-left border-collapse" id="insider-table">
+                        <thead class="sticky-thead">
+                            <tr class="border-b border-zinc-800">
+                                <th class="py-2.5 px-4 text-[9px] font-black uppercase tracking-widest text-zinc-600">Entity</th>
+                                <th class="py-2.5 px-4 text-[9px] font-black uppercase tracking-widest text-zinc-600">Execution</th>
+                                <th class="py-2.5 px-4 text-[9px] font-black uppercase tracking-widest text-zinc-600">Delta</th>
+                                <th class="py-2.5 px-4 text-[9px] font-black uppercase tracking-widest text-zinc-600">Conviction Logic</th>
+                                <th class="py-2.5 px-4 text-[9px] font-black uppercase tracking-widest text-zinc-600 text-right">Filing</th>
+                            </tr>
+                        </thead>
+                        <tbody class="divide-y divide-zinc-800/40">
+        <tr class="table-row border-b border-zinc-800/60 hover:bg-zinc-800/40 transition-all duration-150" data-label="STRONG_BUY_SIGNAL">
+            <td class="py-2 px-4">
+                <div class="flex items-center gap-3">
+                    <div class="w-7 h-7 rounded bg-zinc-800 flex items-center justify-center font-black text-zinc-500 border border-zinc-700 text-[10px]">
+                        G
+                    </div>
+                    <div>
+                        <div class="font-black text-zinc-100 text-sm leading-none tracking-tighter">GO</div>
+                        <div class="text-[9px] text-blue-400 font-bold mt-0.5 uppercase tracking-wider">Potter Jason J. N.</div>
+                    </div>
+                </div>
+            </td>
+            <td class="py-2 px-4">
+                <div class="text-[11px] font-bold text-zinc-200">$5.90</div>
+                <div class="text-[9px] text-zinc-500 font-semibold uppercase tracking-tighter">+286,097 shares</div>
+            </td>
+            <td class="py-2 px-4">
+                <div class="text-xs font-black text-zinc-100 tracking-tight">+$1,687,972</div>
+                <div class="text-[9px] text-zinc-500 font-bold uppercase tracking-widest mt-0.5">+99% own</div>
+            </td>
+            <td class="py-2 px-4">
+                <div class="inline-flex items-center px-1.5 py-0.5 rounded text-[8px] font-black uppercase tracking-widest mb-1 bg-emerald-600 text-white shadow-[0_0_10px_rgba(16,185,129,0.2)]">
+                    STRONG_BUY_SIGNAL • 5
+                </div>
+                <ul class="text-[10px] text-zinc-400 leading-tight space-y-0.5 list-none">
+                    
+                </ul>
+            </td>
+            <td class="py-2 px-4 text-right">
+                <a href="http://www.sec.gov/Archives/edgar/data/1771515/000205588426000004/xslF345X03/wk-form4_1774044133.xml" target="_blank" class="text-zinc-600 hover:text-white transition-colors">
+                    <svg class="w-4 h-4 inline" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2.5"><path d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
+                </a>
+            </td>
+        </tr>
+        
+        <tr class="table-row border-b border-zinc-800/60 hover:bg-zinc-800/40 transition-all duration-150" data-label="STRONG_BUY_SIGNAL">
+            <td class="py-2 px-4">
+                <div class="flex items-center gap-3">
+                    <div class="w-7 h-7 rounded bg-zinc-800 flex items-center justify-center font-black text-zinc-500 border border-zinc-700 text-[10px]">
+                        N
+                    </div>
+                    <div>
+                        <div class="font-black text-zinc-100 text-sm leading-none tracking-tighter">NSP</div>
+                        <div class="text-[9px] text-blue-400 font-bold mt-0.5 uppercase tracking-wider">Sarvadi Paul J</div>
+                    </div>
+                </div>
+            </td>
+            <td class="py-2 px-4">
+                <div class="text-[11px] font-bold text-zinc-200">$23.21</div>
+                <div class="text-[9px] text-zinc-500 font-semibold uppercase tracking-tighter">+201,987 shares</div>
+            </td>
+            <td class="py-2 px-4">
+                <div class="text-xs font-black text-zinc-100 tracking-tight">+$4,688,790</div>
+                <div class="text-[9px] text-zinc-500 font-bold uppercase tracking-widest mt-0.5">+16% own</div>
+            </td>
+            <td class="py-2 px-4">
+                <div class="inline-flex items-center px-1.5 py-0.5 rounded text-[8px] font-black uppercase tracking-widest mb-1 bg-emerald-600 text-white shadow-[0_0_10px_rgba(16,185,129,0.2)]">
+                    STRONG_BUY_SIGNAL • 5
+                </div>
+                <ul class="text-[10px] text-zinc-400 leading-tight space-y-0.5 list-none">
+                    <li>Executed via multiple trades (less conviction signal)</li>
+                </ul>
+            </td>
+            <td class="py-2 px-4 text-right">
+                <a href="http://www.sec.gov/Archives/edgar/data/1000753/000100075326000037/xslF345X03/form4.xml" target="_blank" class="text-zinc-600 hover:text-white transition-colors">
+                    <svg class="w-4 h-4 inline" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2.5"><path d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
+                </a>
+            </td>
+        </tr>
+        
+        <tr class="table-row border-b border-zinc-800/60 hover:bg-zinc-800/40 transition-all duration-150" data-label="NOISE">
+            <td class="py-2 px-4">
+                <div class="flex items-center gap-3">
+                    <div class="w-7 h-7 rounded bg-zinc-800 flex items-center justify-center font-black text-zinc-500 border border-zinc-700 text-[10px]">
+                        R
+                    </div>
+                    <div>
+                        <div class="font-black text-zinc-100 text-sm leading-none tracking-tighter">RDDT</div>
+                        <div class="text-[9px] text-blue-400 font-bold mt-0.5 uppercase tracking-wider">Farrell Sarah E</div>
+                    </div>
+                </div>
+            </td>
+            <td class="py-2 px-4">
+                <div class="text-[11px] font-bold text-zinc-200">$132.26</div>
+                <div class="text-[9px] text-zinc-500 font-semibold uppercase tracking-tighter">+10,500 shares</div>
+            </td>
+            <td class="py-2 px-4">
+                <div class="text-xs font-black text-zinc-100 tracking-tight">+$1,388,730</div>
+                <div class="text-[9px] text-zinc-500 font-bold uppercase tracking-widest mt-0.5">+18% own</div>
+            </td>
+            <td class="py-2 px-4">
+                <div class="inline-flex items-center px-1.5 py-0.5 rounded text-[8px] font-black uppercase tracking-widest mb-1 bg-rose-600 text-white shadow-[0_0_10px_rgba(225,29,72,0.2)]">
+                    NOISE • 0.5
+                </div>
+                <ul class="text-[10px] text-zinc-400 leading-tight space-y-0.5 list-none">
+                    <li>Indirect ownership (reduced conviction)</li>
+                </ul>
+            </td>
+            <td class="py-2 px-4 text-right">
+                <a href="http://www.sec.gov/Archives/edgar/data/1713445/000171344526000032/xslF345X03/wk-form4_1773789652.xml" target="_blank" class="text-zinc-600 hover:text-white transition-colors">
+                    <svg class="w-4 h-4 inline" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2.5"><path d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
+                </a>
+            </td>
+        </tr>
+        
+        <tr class="table-row border-b border-zinc-800/60 hover:bg-zinc-800/40 transition-all duration-150" data-label="NOISE">
+            <td class="py-2 px-4">
+                <div class="flex items-center gap-3">
+                    <div class="w-7 h-7 rounded bg-zinc-800 flex items-center justify-center font-black text-zinc-500 border border-zinc-700 text-[10px]">
+                        S
+                    </div>
+                    <div>
+                        <div class="font-black text-zinc-100 text-sm leading-none tracking-tighter">SUMA</div>
+                        <div class="text-[9px] text-blue-400 font-bold mt-0.5 uppercase tracking-wider">Saloojee Naseem</div>
+                    </div>
+                </div>
+            </td>
+            <td class="py-2 px-4">
+                <div class="text-[11px] font-bold text-zinc-200">$10.00</div>
+                <div class="text-[9px] text-zinc-500 font-semibold uppercase tracking-tighter">+316,875 shares</div>
+            </td>
+            <td class="py-2 px-4">
+                <div class="text-xs font-black text-zinc-100 tracking-tight">+$3,168,750</div>
+                <div class="text-[9px] text-zinc-500 font-bold uppercase tracking-widest mt-0.5">New own</div>
+            </td>
+            <td class="py-2 px-4">
+                <div class="inline-flex items-center px-1.5 py-0.5 rounded text-[8px] font-black uppercase tracking-widest mb-1 bg-rose-600 text-white shadow-[0_0_10px_rgba(225,29,72,0.2)]">
+                    NOISE • -5
+                </div>
+                <ul class="text-[10px] text-zinc-400 leading-tight space-y-0.5 list-none">
+                    <li>Compensation-based transaction (RSU/vesting/grant)</li><li>Indirect ownership (reduced conviction)</li>
+                </ul>
+            </td>
+            <td class="py-2 px-4 text-right">
+                <a href="http://www.sec.gov/Archives/edgar/data/2105838/000121390026028587/xslF345X03/ownership.xml" target="_blank" class="text-zinc-600 hover:text-white transition-colors">
+                    <svg class="w-4 h-4 inline" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2.5"><path d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
+                </a>
+            </td>
+        </tr>
+        
+        <tr class="table-row border-b border-zinc-800/60 hover:bg-zinc-800/40 transition-all duration-150" data-label="STRONG_BUY_SIGNAL">
+            <td class="py-2 px-4">
+                <div class="flex items-center gap-3">
+                    <div class="w-7 h-7 rounded bg-zinc-800 flex items-center justify-center font-black text-zinc-500 border border-zinc-700 text-[10px]">
+                        M
+                    </div>
+                    <div>
+                        <div class="font-black text-zinc-100 text-sm leading-none tracking-tighter">MTN</div>
+                        <div class="text-[9px] text-blue-400 font-bold mt-0.5 uppercase tracking-wider">Katz Robert A</div>
+                    </div>
+                </div>
+            </td>
+            <td class="py-2 px-4">
+                <div class="text-[11px] font-bold text-zinc-200">$131.81</div>
+                <div class="text-[9px] text-zinc-500 font-semibold uppercase tracking-tighter">+37,500 shares</div>
+            </td>
+            <td class="py-2 px-4">
+                <div class="text-xs font-black text-zinc-100 tracking-tight">+$4,942,875</div>
+                <div class="text-[9px] text-zinc-500 font-bold uppercase tracking-widest mt-0.5">+15% own</div>
+            </td>
+            <td class="py-2 px-4">
+                <div class="inline-flex items-center px-1.5 py-0.5 rounded text-[8px] font-black uppercase tracking-widest mb-1 bg-emerald-600 text-white shadow-[0_0_10px_rgba(16,185,129,0.2)]">
+                    STRONG_BUY_SIGNAL • 5
+                </div>
+                <ul class="text-[10px] text-zinc-400 leading-tight space-y-0.5 list-none">
+                    <li>Executed via multiple trades (less conviction signal)</li>
+                </ul>
+            </td>
+            <td class="py-2 px-4 text-right">
+                <a href="http://www.sec.gov/Archives/edgar/data/812011/000081201126000017/xslF345X03/wk-form4_1773697795.xml" target="_blank" class="text-zinc-600 hover:text-white transition-colors">
+                    <svg class="w-4 h-4 inline" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2.5"><path d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
+                </a>
+            </td>
+        </tr>
+        
+        <tr class="table-row border-b border-zinc-800/60 hover:bg-zinc-800/40 transition-all duration-150" data-label="NOISE">
+            <td class="py-2 px-4">
+                <div class="flex items-center gap-3">
+                    <div class="w-7 h-7 rounded bg-zinc-800 flex items-center justify-center font-black text-zinc-500 border border-zinc-700 text-[10px]">
+                        C
+                    </div>
+                    <div>
+                        <div class="font-black text-zinc-100 text-sm leading-none tracking-tighter">CPNG</div>
+                        <div class="text-[9px] text-blue-400 font-bold mt-0.5 uppercase tracking-wider">Mehta Neil</div>
+                    </div>
+                </div>
+            </td>
+            <td class="py-2 px-4">
+                <div class="text-[11px] font-bold text-zinc-200">$18.58</div>
+                <div class="text-[9px] text-zinc-500 font-semibold uppercase tracking-tighter">+7,350,104 shares</div>
+            </td>
+            <td class="py-2 px-4">
+                <div class="text-xs font-black text-zinc-100 tracking-tight">+$136,562,971</div>
+                <div class="text-[9px] text-zinc-500 font-bold uppercase tracking-widest mt-0.5">+15% own</div>
+            </td>
+            <td class="py-2 px-4">
+                <div class="inline-flex items-center px-1.5 py-0.5 rounded text-[8px] font-black uppercase tracking-widest mb-1 bg-rose-600 text-white shadow-[0_0_10px_rgba(225,29,72,0.2)]">
+                    NOISE • -5
+                </div>
+                <ul class="text-[10px] text-zinc-400 leading-tight space-y-0.5 list-none">
+                    <li>Compensation-based transaction (RSU/vesting/grant)</li><li>Indirect ownership (reduced conviction)</li><li>Executed via multiple trades (less conviction signal)</li>
+                </ul>
+            </td>
+            <td class="py-2 px-4 text-right">
+                <a href="http://www.sec.gov/Archives/edgar/data/1834584/000184089026000001/xslF345X03/primary_doc.xml" target="_blank" class="text-zinc-600 hover:text-white transition-colors">
+                    <svg class="w-4 h-4 inline" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2.5"><path d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
+                </a>
+            </td>
+        </tr>
+        
+        <tr class="table-row border-b border-zinc-800/60 hover:bg-zinc-800/40 transition-all duration-150" data-label="NOISE">
+            <td class="py-2 px-4">
+                <div class="flex items-center gap-3">
+                    <div class="w-7 h-7 rounded bg-zinc-800 flex items-center justify-center font-black text-zinc-500 border border-zinc-700 text-[10px]">
+                        F
+                    </div>
+                    <div>
+                        <div class="font-black text-zinc-100 text-sm leading-none tracking-tighter">FOX</div>
+                        <div class="text-[9px] text-blue-400 font-bold mt-0.5 uppercase tracking-wider">Murdoch Lachlan K</div>
+                    </div>
+                </div>
+            </td>
+            <td class="py-2 px-4">
+                <div class="text-[11px] font-bold text-zinc-200">$60.63</div>
+                <div class="text-[9px] text-zinc-500 font-semibold uppercase tracking-tighter">+175,372 shares</div>
+            </td>
+            <td class="py-2 px-4">
+                <div class="text-xs font-black text-zinc-100 tracking-tight">+$10,632,804</div>
+                <div class="text-[9px] text-zinc-500 font-bold uppercase tracking-widest mt-0.5">+10% own</div>
+            </td>
+            <td class="py-2 px-4">
+                <div class="inline-flex items-center px-1.5 py-0.5 rounded text-[8px] font-black uppercase tracking-widest mb-1 bg-rose-600 text-white shadow-[0_0_10px_rgba(225,29,72,0.2)]">
+                    NOISE • -5
+                </div>
+                <ul class="text-[10px] text-zinc-400 leading-tight space-y-0.5 list-none">
+                    <li>10b5-1 plan (pre-scheduled, non-discretionary)</li><li>Compensation-based transaction (RSU/vesting/grant)</li><li>Indirect ownership (reduced conviction)</li><li>Executed via multiple trades (less conviction signal)</li>
+                </ul>
+            </td>
+            <td class="py-2 px-4 text-right">
+                <a href="http://www.sec.gov/Archives/edgar/data/1754301/000162828026017855/xslF345X03/wk-form4_1773446491.xml" target="_blank" class="text-zinc-600 hover:text-white transition-colors">
+                    <svg class="w-4 h-4 inline" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2.5"><path d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
+                </a>
+            </td>
+        </tr>
+        
+        <tr class="table-row border-b border-zinc-800/60 hover:bg-zinc-800/40 transition-all duration-150" data-label="NOISE">
+            <td class="py-2 px-4">
+                <div class="flex items-center gap-3">
+                    <div class="w-7 h-7 rounded bg-zinc-800 flex items-center justify-center font-black text-zinc-500 border border-zinc-700 text-[10px]">
+                        P
+                    </div>
+                    <div>
+                        <div class="font-black text-zinc-100 text-sm leading-none tracking-tighter">PTLO</div>
+                        <div class="text-[9px] text-blue-400 font-bold mt-0.5 uppercase tracking-wider">Lee Eugene I Jr</div>
+                    </div>
+                </div>
+            </td>
+            <td class="py-2 px-4">
+                <div class="text-[11px] font-bold text-zinc-200">$5.18</div>
+                <div class="text-[9px] text-zinc-500 font-semibold uppercase tracking-tighter">+286,000 shares</div>
+            </td>
+            <td class="py-2 px-4">
+                <div class="text-xs font-black text-zinc-100 tracking-tight">+$1,481,480</div>
+                <div class="text-[9px] text-zinc-500 font-bold uppercase tracking-widest mt-0.5">+150% own</div>
+            </td>
+            <td class="py-2 px-4">
+                <div class="inline-flex items-center px-1.5 py-0.5 rounded text-[8px] font-black uppercase tracking-widest mb-1 bg-rose-600 text-white shadow-[0_0_10px_rgba(225,29,72,0.2)]">
+                    NOISE • 0
+                </div>
+                <ul class="text-[10px] text-zinc-400 leading-tight space-y-0.5 list-none">
+                    <li>Executed via multiple trades (less conviction signal)</li>
+                </ul>
+            </td>
+            <td class="py-2 px-4 text-right">
+                <a href="http://www.sec.gov/Archives/edgar/data/1871509/000124284326000004/xslF345X03/wk-form4_1773440101.xml" target="_blank" class="text-zinc-600 hover:text-white transition-colors">
+                    <svg class="w-4 h-4 inline" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2.5"><path d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
+                </a>
+            </td>
+        </tr>
+        
+        <tr class="table-row border-b border-zinc-800/60 hover:bg-zinc-800/40 transition-all duration-150" data-label="NOISE">
+            <td class="py-2 px-4">
+                <div class="flex items-center gap-3">
+                    <div class="w-7 h-7 rounded bg-zinc-800 flex items-center justify-center font-black text-zinc-500 border border-zinc-700 text-[10px]">
+                        I
+                    </div>
+                    <div>
+                        <div class="font-black text-zinc-100 text-sm leading-none tracking-tighter">IP</div>
+                        <div class="text-[9px] text-blue-400 font-bold mt-0.5 uppercase tracking-wider">Gustafsson Anders</div>
+                    </div>
+                </div>
+            </td>
+            <td class="py-2 px-4">
+                <div class="text-[11px] font-bold text-zinc-200">$38.33</div>
+                <div class="text-[9px] text-zinc-500 font-semibold uppercase tracking-tighter">+26,092 shares</div>
+            </td>
+            <td class="py-2 px-4">
+                <div class="text-xs font-black text-zinc-100 tracking-tight">+$1,000,036</div>
+                <div class="text-[9px] text-zinc-500 font-bold uppercase tracking-widest mt-0.5">+47% own</div>
+            </td>
+            <td class="py-2 px-4">
+                <div class="inline-flex items-center px-1.5 py-0.5 rounded text-[8px] font-black uppercase tracking-widest mb-1 bg-rose-600 text-white shadow-[0_0_10px_rgba(225,29,72,0.2)]">
+                    NOISE • -5
+                </div>
+                <ul class="text-[10px] text-zinc-400 leading-tight space-y-0.5 list-none">
+                    <li>Compensation-based transaction (RSU/vesting/grant)</li><li>Executed via multiple trades (less conviction signal)</li>
+                </ul>
+            </td>
+            <td class="py-2 px-4 text-right">
+                <a href="http://www.sec.gov/Archives/edgar/data/51434/000005143426000058/xslF345X03/form4.xml" target="_blank" class="text-zinc-600 hover:text-white transition-colors">
+                    <svg class="w-4 h-4 inline" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2.5"><path d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
+                </a>
+            </td>
+        </tr>
+        
+        <tr class="table-row border-b border-zinc-800/60 hover:bg-zinc-800/40 transition-all duration-150" data-label="BUY_SIGNAL">
+            <td class="py-2 px-4">
+                <div class="flex items-center gap-3">
+                    <div class="w-7 h-7 rounded bg-zinc-800 flex items-center justify-center font-black text-zinc-500 border border-zinc-700 text-[10px]">
+                        K
+                    </div>
+                    <div>
+                        <div class="font-black text-zinc-100 text-sm leading-none tracking-tighter">KOS</div>
+                        <div class="text-[9px] text-blue-400 font-bold mt-0.5 uppercase tracking-wider">Ogunlesi Adebayo O.</div>
+                    </div>
+                </div>
+            </td>
+            <td class="py-2 px-4">
+                <div class="text-[11px] font-bold text-zinc-200">$1.90</div>
+                <div class="text-[9px] text-zinc-500 font-semibold uppercase tracking-tighter">+3,157,895 shares</div>
+            </td>
+            <td class="py-2 px-4">
+                <div class="text-xs font-black text-zinc-100 tracking-tight">+$6,000,001</div>
+                <div class="text-[9px] text-zinc-500 font-bold uppercase tracking-widest mt-0.5">+174% own</div>
+            </td>
+            <td class="py-2 px-4">
+                <div class="inline-flex items-center px-1.5 py-0.5 rounded text-[8px] font-black uppercase tracking-widest mb-1 bg-blue-600 text-white shadow-[0_0_10px_rgba(37,99,235,0.2)]">
+                    BUY_SIGNAL • 3
+                </div>
+                <ul class="text-[10px] text-zinc-400 leading-tight space-y-0.5 list-none">
+                    
+                </ul>
+            </td>
+            <td class="py-2 px-4 text-right">
+                <a href="http://www.sec.gov/Archives/edgar/data/1509991/000150999126000021/xslF345X03/wk-form4_1773348313.xml" target="_blank" class="text-zinc-600 hover:text-white transition-colors">
+                    <svg class="w-4 h-4 inline" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2.5"><path d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
+                </a>
+            </td>
+        </tr>
+        
+        <tr class="table-row border-b border-zinc-800/60 hover:bg-zinc-800/40 transition-all duration-150" data-label="WEAK_SIGNAL">
+            <td class="py-2 px-4">
+                <div class="flex items-center gap-3">
+                    <div class="w-7 h-7 rounded bg-zinc-800 flex items-center justify-center font-black text-zinc-500 border border-zinc-700 text-[10px]">
+                        C
+                    </div>
+                    <div>
+                        <div class="font-black text-zinc-100 text-sm leading-none tracking-tighter">CVSA</div>
+                        <div class="text-[9px] text-blue-400 font-bold mt-0.5 uppercase tracking-wider">Malafronte Michael W</div>
+                    </div>
+                </div>
+            </td>
+            <td class="py-2 px-4">
+                <div class="text-[11px] font-bold text-zinc-200">$100.88</div>
+                <div class="text-[9px] text-zinc-500 font-semibold uppercase tracking-tighter">+36,036 shares</div>
+            </td>
+            <td class="py-2 px-4">
+                <div class="text-xs font-black text-zinc-100 tracking-tight">+$3,635,414</div>
+                <div class="text-[9px] text-zinc-500 font-bold uppercase tracking-widest mt-0.5">+35% own</div>
+            </td>
+            <td class="py-2 px-4">
+                <div class="inline-flex items-center px-1.5 py-0.5 rounded text-[8px] font-black uppercase tracking-widest mb-1 bg-zinc-700 text-zinc-300">
+                    WEAK_SIGNAL • 2.5
+                </div>
+                <ul class="text-[10px] text-zinc-400 leading-tight space-y-0.5 list-none">
+                    <li>Indirect ownership (reduced conviction)</li>
+                </ul>
+            </td>
+            <td class="py-2 px-4 text-right">
+                <a href="http://www.sec.gov/Archives/edgar/data/730464/000073046426000012/xslF345X03/form4.xml" target="_blank" class="text-zinc-600 hover:text-white transition-colors">
+                    <svg class="w-4 h-4 inline" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2.5"><path d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
+                </a>
+            </td>
+        </tr>
+        
+        <tr class="table-row border-b border-zinc-800/60 hover:bg-zinc-800/40 transition-all duration-150" data-label="NOISE">
+            <td class="py-2 px-4">
+                <div class="flex items-center gap-3">
+                    <div class="w-7 h-7 rounded bg-zinc-800 flex items-center justify-center font-black text-zinc-500 border border-zinc-700 text-[10px]">
+                        A
+                    </div>
+                    <div>
+                        <div class="font-black text-zinc-100 text-sm leading-none tracking-tighter">ALKT</div>
+                        <div class="text-[9px] text-blue-400 font-bold mt-0.5 uppercase tracking-wider">General Atlantic Genpar (Bermuda), L.P.</div>
+                    </div>
+                </div>
+            </td>
+            <td class="py-2 px-4">
+                <div class="text-[11px] font-bold text-zinc-200">$17.77</div>
+                <div class="text-[9px] text-zinc-500 font-semibold uppercase tracking-tighter">+2,846,015 shares</div>
+            </td>
+            <td class="py-2 px-4">
+                <div class="text-xs font-black text-zinc-100 tracking-tight">+$50,564,148</div>
+                <div class="text-[9px] text-zinc-500 font-bold uppercase tracking-widest mt-0.5">+11% own</div>
+            </td>
+            <td class="py-2 px-4">
+                <div class="inline-flex items-center px-1.5 py-0.5 rounded text-[8px] font-black uppercase tracking-widest mb-1 bg-rose-600 text-white shadow-[0_0_10px_rgba(225,29,72,0.2)]">
+                    NOISE • -5
+                </div>
+                <ul class="text-[10px] text-zinc-400 leading-tight space-y-0.5 list-none">
+                    <li>Compensation-based transaction (RSU/vesting/grant)</li><li>Indirect ownership (reduced conviction)</li><li>Executed via multiple trades (less conviction signal)</li>
+                </ul>
+            </td>
+            <td class="py-2 px-4 text-right">
+                <a href="http://www.sec.gov/Archives/edgar/data/1529274/000095014226000688/xslF345X03/es260750594_4-alkt2.xml" target="_blank" class="text-zinc-600 hover:text-white transition-colors">
+                    <svg class="w-4 h-4 inline" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2.5"><path d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
+                </a>
+            </td>
+        </tr>
+        
+        <tr class="table-row border-b border-zinc-800/60 hover:bg-zinc-800/40 transition-all duration-150" data-label="NOISE">
+            <td class="py-2 px-4">
+                <div class="flex items-center gap-3">
+                    <div class="w-7 h-7 rounded bg-zinc-800 flex items-center justify-center font-black text-zinc-500 border border-zinc-700 text-[10px]">
+                        A
+                    </div>
+                    <div>
+                        <div class="font-black text-zinc-100 text-sm leading-none tracking-tighter">ALKT</div>
+                        <div class="text-[9px] text-blue-400 font-bold mt-0.5 uppercase tracking-wider">General Atlantic, L.P.</div>
+                    </div>
+                </div>
+            </td>
+            <td class="py-2 px-4">
+                <div class="text-[11px] font-bold text-zinc-200">$17.77</div>
+                <div class="text-[9px] text-zinc-500 font-semibold uppercase tracking-tighter">+2,846,015 shares</div>
+            </td>
+            <td class="py-2 px-4">
+                <div class="text-xs font-black text-zinc-100 tracking-tight">+$50,564,148</div>
+                <div class="text-[9px] text-zinc-500 font-bold uppercase tracking-widest mt-0.5">+11% own</div>
+            </td>
+            <td class="py-2 px-4">
+                <div class="inline-flex items-center px-1.5 py-0.5 rounded text-[8px] font-black uppercase tracking-widest mb-1 bg-rose-600 text-white shadow-[0_0_10px_rgba(225,29,72,0.2)]">
+                    NOISE • -5
+                </div>
+                <ul class="text-[10px] text-zinc-400 leading-tight space-y-0.5 list-none">
+                    <li>Compensation-based transaction (RSU/vesting/grant)</li><li>Indirect ownership (reduced conviction)</li><li>Executed via multiple trades (less conviction signal)</li>
+                </ul>
+            </td>
+            <td class="py-2 px-4 text-right">
+                <a href="http://www.sec.gov/Archives/edgar/data/1529274/000095014226000687/xslF345X03/es260750587_4-alkt1.xml" target="_blank" class="text-zinc-600 hover:text-white transition-colors">
+                    <svg class="w-4 h-4 inline" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2.5"><path d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
+                </a>
+            </td>
+        </tr>
+        
+        <tr class="table-row border-b border-zinc-800/60 hover:bg-zinc-800/40 transition-all duration-150" data-label="WEAK_SIGNAL">
+            <td class="py-2 px-4">
+                <div class="flex items-center gap-3">
+                    <div class="w-7 h-7 rounded bg-zinc-800 flex items-center justify-center font-black text-zinc-500 border border-zinc-700 text-[10px]">
+                        G
+                    </div>
+                    <div>
+                        <div class="font-black text-zinc-100 text-sm leading-none tracking-tighter">GO</div>
+                        <div class="text-[9px] text-blue-400 font-bold mt-0.5 uppercase tracking-wider">Lindberg Eric J. Jr.</div>
+                    </div>
+                </div>
+            </td>
+            <td class="py-2 px-4">
+                <div class="text-[11px] font-bold text-zinc-200">$5.98</div>
+                <div class="text-[9px] text-zinc-500 font-semibold uppercase tracking-tighter">+275,000 shares</div>
+            </td>
+            <td class="py-2 px-4">
+                <div class="text-xs font-black text-zinc-100 tracking-tight">+$1,644,500</div>
+                <div class="text-[9px] text-zinc-500 font-bold uppercase tracking-widest mt-0.5">+11% own</div>
+            </td>
+            <td class="py-2 px-4">
+                <div class="inline-flex items-center px-1.5 py-0.5 rounded text-[8px] font-black uppercase tracking-widest mb-1 bg-zinc-700 text-zinc-300">
+                    WEAK_SIGNAL • 2.5
+                </div>
+                <ul class="text-[10px] text-zinc-400 leading-tight space-y-0.5 list-none">
+                    <li>Indirect ownership (reduced conviction)</li><li>Executed via multiple trades (less conviction signal)</li>
+                </ul>
+            </td>
+            <td class="py-2 px-4 text-right">
+                <a href="http://www.sec.gov/Archives/edgar/data/1771515/000177974026000002/xslF345X03/wk-form4_1773268824.xml" target="_blank" class="text-zinc-600 hover:text-white transition-colors">
+                    <svg class="w-4 h-4 inline" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2.5"><path d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
+                </a>
+            </td>
+        </tr>
+        
+        <tr class="table-row border-b border-zinc-800/60 hover:bg-zinc-800/40 transition-all duration-150" data-label="NOISE">
+            <td class="py-2 px-4">
+                <div class="flex items-center gap-3">
+                    <div class="w-7 h-7 rounded bg-zinc-800 flex items-center justify-center font-black text-zinc-500 border border-zinc-700 text-[10px]">
+                        A
+                    </div>
+                    <div>
+                        <div class="font-black text-zinc-100 text-sm leading-none tracking-tighter">AVTR</div>
+                        <div class="text-[9px] text-blue-400 font-bold mt-0.5 uppercase tracking-wider">Mehra Sanjeev K</div>
+                    </div>
+                </div>
+            </td>
+            <td class="py-2 px-4">
+                <div class="text-[11px] font-bold text-zinc-200">$8.01</div>
+                <div class="text-[9px] text-zinc-500 font-semibold uppercase tracking-tighter">+125,000 shares</div>
+            </td>
+            <td class="py-2 px-4">
+                <div class="text-xs font-black text-zinc-100 tracking-tight">+$1,001,250</div>
+                <div class="text-[9px] text-zinc-500 font-bold uppercase tracking-widest mt-0.5">+35% own</div>
+            </td>
+            <td class="py-2 px-4">
+                <div class="inline-flex items-center px-1.5 py-0.5 rounded text-[8px] font-black uppercase tracking-widest mb-1 bg-rose-600 text-white shadow-[0_0_10px_rgba(225,29,72,0.2)]">
+                    NOISE • -0.5
+                </div>
+                <ul class="text-[10px] text-zinc-400 leading-tight space-y-0.5 list-none">
+                    <li>Indirect ownership (reduced conviction)</li><li>Executed via multiple trades (less conviction signal)</li>
+                </ul>
+            </td>
+            <td class="py-2 px-4 text-right">
+                <a href="http://www.sec.gov/Archives/edgar/data/1722482/000162828026016904/xslF345X03/wk-form4_1773263425.xml" target="_blank" class="text-zinc-600 hover:text-white transition-colors">
+                    <svg class="w-4 h-4 inline" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2.5"><path d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
+                </a>
+            </td>
+        </tr>
+        
+        <tr class="table-row border-b border-zinc-800/60 hover:bg-zinc-800/40 transition-all duration-150" data-label="NOISE">
+            <td class="py-2 px-4">
+                <div class="flex items-center gap-3">
+                    <div class="w-7 h-7 rounded bg-zinc-800 flex items-center justify-center font-black text-zinc-500 border border-zinc-700 text-[10px]">
+                        P
+                    </div>
+                    <div>
+                        <div class="font-black text-zinc-100 text-sm leading-none tracking-tighter">PRCT</div>
+                        <div class="text-[9px] text-blue-400 font-bold mt-0.5 uppercase tracking-wider">Desai Antal Rohit</div>
+                    </div>
+                </div>
+            </td>
+            <td class="py-2 px-4">
+                <div class="text-[11px] font-bold text-zinc-200">$24.59</div>
+                <div class="text-[9px] text-zinc-500 font-semibold uppercase tracking-tighter">+426,262 shares</div>
+            </td>
+            <td class="py-2 px-4">
+                <div class="text-xs font-black text-zinc-100 tracking-tight">+$10,482,943</div>
+                <div class="text-[9px] text-zinc-500 font-bold uppercase tracking-widest mt-0.5">+861% own</div>
+            </td>
+            <td class="py-2 px-4">
+                <div class="inline-flex items-center px-1.5 py-0.5 rounded text-[8px] font-black uppercase tracking-widest mb-1 bg-rose-600 text-white shadow-[0_0_10px_rgba(225,29,72,0.2)]">
+                    NOISE • 0
+                </div>
+                <ul class="text-[10px] text-zinc-400 leading-tight space-y-0.5 list-none">
+                    <li>Executed via multiple trades (less conviction signal)</li>
+                </ul>
+            </td>
+            <td class="py-2 px-4 text-right">
+                <a href="http://www.sec.gov/Archives/edgar/data/1588978/000090514826001209/xslF345X03/form4.xml" target="_blank" class="text-zinc-600 hover:text-white transition-colors">
+                    <svg class="w-4 h-4 inline" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2.5"><path d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
+                </a>
+            </td>
+        </tr>
+        
+        <tr class="table-row border-b border-zinc-800/60 hover:bg-zinc-800/40 transition-all duration-150" data-label="BUY_SIGNAL">
+            <td class="py-2 px-4">
+                <div class="flex items-center gap-3">
+                    <div class="w-7 h-7 rounded bg-zinc-800 flex items-center justify-center font-black text-zinc-500 border border-zinc-700 text-[10px]">
+                        V
+                    </div>
+                    <div>
+                        <div class="font-black text-zinc-100 text-sm leading-none tracking-tighter">VSNT</div>
+                        <div class="text-[9px] text-blue-400 font-bold mt-0.5 uppercase tracking-wider">Novak David C</div>
+                    </div>
+                </div>
+            </td>
+            <td class="py-2 px-4">
+                <div class="text-[11px] font-bold text-zinc-200">$36.85</div>
+                <div class="text-[9px] text-zinc-500 font-semibold uppercase tracking-tighter">+143,000 shares</div>
+            </td>
+            <td class="py-2 px-4">
+                <div class="text-xs font-black text-zinc-100 tracking-tight">+$5,269,550</div>
+                <div class="text-[9px] text-zinc-500 font-bold uppercase tracking-widest mt-0.5">+919% own</div>
+            </td>
+            <td class="py-2 px-4">
+                <div class="inline-flex items-center px-1.5 py-0.5 rounded text-[8px] font-black uppercase tracking-widest mb-1 bg-blue-600 text-white shadow-[0_0_10px_rgba(37,99,235,0.2)]">
+                    BUY_SIGNAL • 3
+                </div>
+                <ul class="text-[10px] text-zinc-400 leading-tight space-y-0.5 list-none">
+                    
+                </ul>
+            </td>
+            <td class="py-2 px-4 text-right">
+                <a href="http://www.sec.gov/Archives/edgar/data/2067876/000162828026016141/xslF345X03/wk-form4_1773091956.xml" target="_blank" class="text-zinc-600 hover:text-white transition-colors">
+                    <svg class="w-4 h-4 inline" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2.5"><path d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
+                </a>
+            </td>
+        </tr>
+        
+        <tr class="table-row border-b border-zinc-800/60 hover:bg-zinc-800/40 transition-all duration-150" data-label="BUY_SIGNAL">
+            <td class="py-2 px-4">
+                <div class="flex items-center gap-3">
+                    <div class="w-7 h-7 rounded bg-zinc-800 flex items-center justify-center font-black text-zinc-500 border border-zinc-700 text-[10px]">
+                        T
+                    </div>
+                    <div>
+                        <div class="font-black text-zinc-100 text-sm leading-none tracking-tighter">TPC</div>
+                        <div class="text-[9px] text-blue-400 font-bold mt-0.5 uppercase tracking-wider">Arkley Peter</div>
+                    </div>
+                </div>
+            </td>
+            <td class="py-2 px-4">
+                <div class="text-[11px] font-bold text-zinc-200">$72.96</div>
+                <div class="text-[9px] text-zinc-500 font-semibold uppercase tracking-tighter">+25,000 shares</div>
+            </td>
+            <td class="py-2 px-4">
+                <div class="text-xs font-black text-zinc-100 tracking-tight">+$1,824,002</div>
+                <div class="text-[9px] text-zinc-500 font-bold uppercase tracking-widest mt-0.5">+13% own</div>
+            </td>
+            <td class="py-2 px-4">
+                <div class="inline-flex items-center px-1.5 py-0.5 rounded text-[8px] font-black uppercase tracking-widest mb-1 bg-blue-600 text-white shadow-[0_0_10px_rgba(37,99,235,0.2)]">
+                    BUY_SIGNAL • 3
+                </div>
+                <ul class="text-[10px] text-zinc-400 leading-tight space-y-0.5 list-none">
+                    <li>Executed via multiple trades (less conviction signal)</li>
+                </ul>
+            </td>
+            <td class="py-2 px-4 text-right">
+                <a href="http://www.sec.gov/Archives/edgar/data/77543/000007754326000039/xslF345X03/wk-form4_1772834742.xml" target="_blank" class="text-zinc-600 hover:text-white transition-colors">
+                    <svg class="w-4 h-4 inline" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2.5"><path d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
+                </a>
+            </td>
+        </tr>
+        
+        <tr class="table-row border-b border-zinc-800/60 hover:bg-zinc-800/40 transition-all duration-150" data-label="BUY_SIGNAL">
+            <td class="py-2 px-4">
+                <div class="flex items-center gap-3">
+                    <div class="w-7 h-7 rounded bg-zinc-800 flex items-center justify-center font-black text-zinc-500 border border-zinc-700 text-[10px]">
+                        C
+                    </div>
+                    <div>
+                        <div class="font-black text-zinc-100 text-sm leading-none tracking-tighter">CSX</div>
+                        <div class="text-[9px] text-blue-400 font-bold mt-0.5 uppercase tracking-wider">Angel Stephen F</div>
+                    </div>
+                </div>
+            </td>
+            <td class="py-2 px-4">
+                <div class="text-[11px] font-bold text-zinc-200">$40.27</div>
+                <div class="text-[9px] text-zinc-500 font-semibold uppercase tracking-tighter">+25,000 shares</div>
+            </td>
+            <td class="py-2 px-4">
+                <div class="text-xs font-black text-zinc-100 tracking-tight">+$1,006,750</div>
+                <div class="text-[9px] text-zinc-500 font-bold uppercase tracking-widest mt-0.5">+20% own</div>
+            </td>
+            <td class="py-2 px-4">
+                <div class="inline-flex items-center px-1.5 py-0.5 rounded text-[8px] font-black uppercase tracking-widest mb-1 bg-blue-600 text-white shadow-[0_0_10px_rgba(37,99,235,0.2)]">
+                    BUY_SIGNAL • 4.5
+                </div>
+                <ul class="text-[10px] text-zinc-400 leading-tight space-y-0.5 list-none">
+                    <li>Indirect ownership (reduced conviction)</li><li>Executed via multiple trades (less conviction signal)</li>
+                </ul>
+            </td>
+            <td class="py-2 px-4 text-right">
+                <a href="http://www.sec.gov/Archives/edgar/data/277948/000119312526096732/xslF345X03/ownership.xml" target="_blank" class="text-zinc-600 hover:text-white transition-colors">
+                    <svg class="w-4 h-4 inline" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2.5"><path d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
+                </a>
+            </td>
+        </tr>
+        
+        <tr class="table-row border-b border-zinc-800/60 hover:bg-zinc-800/40 transition-all duration-150" data-label="NOISE">
+            <td class="py-2 px-4">
+                <div class="flex items-center gap-3">
+                    <div class="w-7 h-7 rounded bg-zinc-800 flex items-center justify-center font-black text-zinc-500 border border-zinc-700 text-[10px]">
+                        K
+                    </div>
+                    <div>
+                        <div class="font-black text-zinc-100 text-sm leading-none tracking-tighter">KKR</div>
+                        <div class="text-[9px] text-blue-400 font-bold mt-0.5 uppercase tracking-wider">Barakett Timothy R</div>
+                    </div>
+                </div>
+            </td>
+            <td class="py-2 px-4">
+                <div class="text-[11px] font-bold text-zinc-200">$94.47</div>
+                <div class="text-[9px] text-zinc-500 font-semibold uppercase tracking-tighter">+50,000 shares</div>
+            </td>
+            <td class="py-2 px-4">
+                <div class="text-xs font-black text-zinc-100 tracking-tight">+$4,723,500</div>
+                <div class="text-[9px] text-zinc-500 font-bold uppercase tracking-widest mt-0.5">+21% own</div>
+            </td>
+            <td class="py-2 px-4">
+                <div class="inline-flex items-center px-1.5 py-0.5 rounded text-[8px] font-black uppercase tracking-widest mb-1 bg-rose-600 text-white shadow-[0_0_10px_rgba(225,29,72,0.2)]">
+                    NOISE • 0
+                </div>
+                <ul class="text-[10px] text-zinc-400 leading-tight space-y-0.5 list-none">
+                    
+                </ul>
+            </td>
+            <td class="py-2 px-4 text-right">
+                <a href="http://www.sec.gov/Archives/edgar/data/1404912/000114036126008123/xslF345X03/form4.xml" target="_blank" class="text-zinc-600 hover:text-white transition-colors">
+                    <svg class="w-4 h-4 inline" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2.5"><path d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
+                </a>
+            </td>
+        </tr>
+        
+        <tr class="table-row border-b border-zinc-800/60 hover:bg-zinc-800/40 transition-all duration-150" data-label="NOISE">
+            <td class="py-2 px-4">
+                <div class="flex items-center gap-3">
+                    <div class="w-7 h-7 rounded bg-zinc-800 flex items-center justify-center font-black text-zinc-500 border border-zinc-700 text-[10px]">
+                        C
+                    </div>
+                    <div>
+                        <div class="font-black text-zinc-100 text-sm leading-none tracking-tighter">CAQ</div>
+                        <div class="text-[9px] text-blue-400 font-bold mt-0.5 uppercase tracking-wider">Cam-Phung Michael Tam</div>
+                    </div>
+                </div>
+            </td>
+            <td class="py-2 px-4">
+                <div class="text-[11px] font-bold text-zinc-200">$10.00</div>
+                <div class="text-[9px] text-zinc-500 font-semibold uppercase tracking-tighter">+495,500 shares</div>
+            </td>
+            <td class="py-2 px-4">
+                <div class="text-xs font-black text-zinc-100 tracking-tight">+$4,955,000</div>
+                <div class="text-[9px] text-zinc-500 font-bold uppercase tracking-widest mt-0.5">New own</div>
+            </td>
+            <td class="py-2 px-4">
+                <div class="inline-flex items-center px-1.5 py-0.5 rounded text-[8px] font-black uppercase tracking-widest mb-1 bg-rose-600 text-white shadow-[0_0_10px_rgba(225,29,72,0.2)]">
+                    NOISE • -5
+                </div>
+                <ul class="text-[10px] text-zinc-400 leading-tight space-y-0.5 list-none">
+                    <li>Compensation-based transaction (RSU/vesting/grant)</li><li>Indirect ownership (reduced conviction)</li>
+                </ul>
+            </td>
+            <td class="py-2 px-4 text-right">
+                <a href="http://www.sec.gov/Archives/edgar/data/2100125/000110465926024126/xslF345X03/tm268050-2_4aseq1.xml" target="_blank" class="text-zinc-600 hover:text-white transition-colors">
+                    <svg class="w-4 h-4 inline" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2.5"><path d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
+                </a>
+            </td>
+        </tr>
+        
+        <tr class="table-row border-b border-zinc-800/60 hover:bg-zinc-800/40 transition-all duration-150" data-label="BUY_SIGNAL">
+            <td class="py-2 px-4">
+                <div class="flex items-center gap-3">
+                    <div class="w-7 h-7 rounded bg-zinc-800 flex items-center justify-center font-black text-zinc-500 border border-zinc-700 text-[10px]">
+                        A
+                    </div>
+                    <div>
+                        <div class="font-black text-zinc-100 text-sm leading-none tracking-tighter">ABTC</div>
+                        <div class="text-[9px] text-blue-400 font-bold mt-0.5 uppercase tracking-wider">Mateen Justin</div>
+                    </div>
+                </div>
+            </td>
+            <td class="py-2 px-4">
+                <div class="text-[11px] font-bold text-zinc-200">$1.03</div>
+                <div class="text-[9px] text-zinc-500 font-semibold uppercase tracking-tighter">+1,800,000 shares</div>
+            </td>
+            <td class="py-2 px-4">
+                <div class="text-xs font-black text-zinc-100 tracking-tight">+$1,854,000</div>
+                <div class="text-[9px] text-zinc-500 font-bold uppercase tracking-widest mt-0.5">+248% own</div>
+            </td>
+            <td class="py-2 px-4">
+                <div class="inline-flex items-center px-1.5 py-0.5 rounded text-[8px] font-black uppercase tracking-widest mb-1 bg-blue-600 text-white shadow-[0_0_10px_rgba(37,99,235,0.2)]">
+                    BUY_SIGNAL • 3
+                </div>
+                <ul class="text-[10px] text-zinc-400 leading-tight space-y-0.5 list-none">
+                    <li>Executed via multiple trades (less conviction signal)</li>
+                </ul>
+            </td>
+            <td class="py-2 px-4 text-right">
+                <a href="http://www.sec.gov/Archives/edgar/data/1755953/000119312526092459/xslF345X03/ownership.xml" target="_blank" class="text-zinc-600 hover:text-white transition-colors">
+                    <svg class="w-4 h-4 inline" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2.5"><path d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
+                </a>
+            </td>
+        </tr>
+        
+        <tr class="table-row border-b border-zinc-800/60 hover:bg-zinc-800/40 transition-all duration-150" data-label="NOISE">
+            <td class="py-2 px-4">
+                <div class="flex items-center gap-3">
+                    <div class="w-7 h-7 rounded bg-zinc-800 flex items-center justify-center font-black text-zinc-500 border border-zinc-700 text-[10px]">
+                        T
+                    </div>
+                    <div>
+                        <div class="font-black text-zinc-100 text-sm leading-none tracking-tighter">TTD</div>
+                        <div class="text-[9px] text-blue-400 font-bold mt-0.5 uppercase tracking-wider">Green Jeffrey Terry</div>
+                    </div>
+                </div>
+            </td>
+            <td class="py-2 px-4">
+                <div class="text-[11px] font-bold text-zinc-200">$24.68</div>
+                <div class="text-[9px] text-zinc-500 font-semibold uppercase tracking-tighter">+6,000,000 shares</div>
+            </td>
+            <td class="py-2 px-4">
+                <div class="text-xs font-black text-zinc-100 tracking-tight">+$148,101,266</div>
+                <div class="text-[9px] text-zinc-500 font-bold uppercase tracking-widest mt-0.5">+373% own</div>
+            </td>
+            <td class="py-2 px-4">
+                <div class="inline-flex items-center px-1.5 py-0.5 rounded text-[8px] font-black uppercase tracking-widest mb-1 bg-rose-600 text-white shadow-[0_0_10px_rgba(225,29,72,0.2)]">
+                    NOISE • -5
+                </div>
+                <ul class="text-[10px] text-zinc-400 leading-tight space-y-0.5 list-none">
+                    <li>Compensation-based transaction (RSU/vesting/grant)</li><li>Indirect ownership (reduced conviction)</li><li>Executed via multiple trades (less conviction signal)</li>
+                </ul>
+            </td>
+            <td class="py-2 px-4 text-right">
+                <a href="http://www.sec.gov/Archives/edgar/data/1671933/000167144526000004/xslF345X03/wk-form4_1772674051.xml" target="_blank" class="text-zinc-600 hover:text-white transition-colors">
+                    <svg class="w-4 h-4 inline" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2.5"><path d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
+                </a>
+            </td>
+        </tr>
+        
+        <tr class="table-row border-b border-zinc-800/60 hover:bg-zinc-800/40 transition-all duration-150" data-label="BUY_SIGNAL">
+            <td class="py-2 px-4">
+                <div class="flex items-center gap-3">
+                    <div class="w-7 h-7 rounded bg-zinc-800 flex items-center justify-center font-black text-zinc-500 border border-zinc-700 text-[10px]">
+                        C
+                    </div>
+                    <div>
+                        <div class="font-black text-zinc-100 text-sm leading-none tracking-tighter">CARG</div>
+                        <div class="text-[9px] text-blue-400 font-bold mt-0.5 uppercase tracking-wider">Kaufer Stephen</div>
+                    </div>
+                </div>
+            </td>
+            <td class="py-2 px-4">
+                <div class="text-[11px] font-bold text-zinc-200">$32.50</div>
+                <div class="text-[9px] text-zinc-500 font-semibold uppercase tracking-tighter">+30,766 shares</div>
+            </td>
+            <td class="py-2 px-4">
+                <div class="text-xs font-black text-zinc-100 tracking-tight">+$1,000,034</div>
+                <div class="text-[9px] text-zinc-500 font-bold uppercase tracking-widest mt-0.5">+10% own</div>
+            </td>
+            <td class="py-2 px-4">
+                <div class="inline-flex items-center px-1.5 py-0.5 rounded text-[8px] font-black uppercase tracking-widest mb-1 bg-blue-600 text-white shadow-[0_0_10px_rgba(37,99,235,0.2)]">
+                    BUY_SIGNAL • 3
+                </div>
+                <ul class="text-[10px] text-zinc-400 leading-tight space-y-0.5 list-none">
+                    <li>Executed via multiple trades (less conviction signal)</li>
+                </ul>
+            </td>
+            <td class="py-2 px-4 text-right">
+                <a href="http://www.sec.gov/Archives/edgar/data/1494259/000149425926000021/xslF345X03/form4.xml" target="_blank" class="text-zinc-600 hover:text-white transition-colors">
+                    <svg class="w-4 h-4 inline" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2.5"><path d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
+                </a>
+            </td>
+        </tr>
+        
+        <tr class="table-row border-b border-zinc-800/60 hover:bg-zinc-800/40 transition-all duration-150" data-label="NOISE">
+            <td class="py-2 px-4">
+                <div class="flex items-center gap-3">
+                    <div class="w-7 h-7 rounded bg-zinc-800 flex items-center justify-center font-black text-zinc-500 border border-zinc-700 text-[10px]">
+                        L
+                    </div>
+                    <div>
+                        <div class="font-black text-zinc-100 text-sm leading-none tracking-tighter">LAW</div>
+                        <div class="text-[9px] text-blue-400 font-bold mt-0.5 uppercase tracking-wider">Goodman Robert P</div>
+                    </div>
+                </div>
+            </td>
+            <td class="py-2 px-4">
+                <div class="text-[11px] font-bold text-zinc-200">$3.19</div>
+                <div class="text-[9px] text-zinc-500 font-semibold uppercase tracking-tighter">+1,026,700 shares</div>
+            </td>
+            <td class="py-2 px-4">
+                <div class="text-xs font-black text-zinc-100 tracking-tight">+$3,275,173</div>
+                <div class="text-[9px] text-zinc-500 font-bold uppercase tracking-widest mt-0.5">>999% own</div>
+            </td>
+            <td class="py-2 px-4">
+                <div class="inline-flex items-center px-1.5 py-0.5 rounded text-[8px] font-black uppercase tracking-widest mb-1 bg-rose-600 text-white shadow-[0_0_10px_rgba(225,29,72,0.2)]">
+                    NOISE • 0
+                </div>
+                <ul class="text-[10px] text-zinc-400 leading-tight space-y-0.5 list-none">
+                    <li>Executed via multiple trades (less conviction signal)</li>
+                </ul>
+            </td>
+            <td class="py-2 px-4 text-right">
+                <a href="http://www.sec.gov/Archives/edgar/data/1625641/000119312526089363/xslF345X03/ownership.xml" target="_blank" class="text-zinc-600 hover:text-white transition-colors">
+                    <svg class="w-4 h-4 inline" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2.5"><path d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
+                </a>
+            </td>
+        </tr>
+        
+        <tr class="table-row border-b border-zinc-800/60 hover:bg-zinc-800/40 transition-all duration-150" data-label="NOISE">
+            <td class="py-2 px-4">
+                <div class="flex items-center gap-3">
+                    <div class="w-7 h-7 rounded bg-zinc-800 flex items-center justify-center font-black text-zinc-500 border border-zinc-700 text-[10px]">
+                        K
+                    </div>
+                    <div>
+                        <div class="font-black text-zinc-100 text-sm leading-none tracking-tighter">KKR</div>
+                        <div class="text-[9px] text-blue-400 font-bold mt-0.5 uppercase tracking-wider">Dillon Mary N</div>
+                    </div>
+                </div>
+            </td>
+            <td class="py-2 px-4">
+                <div class="text-[11px] font-bold text-zinc-200">$90.96</div>
+                <div class="text-[9px] text-zinc-500 font-semibold uppercase tracking-tighter">+22,225 shares</div>
+            </td>
+            <td class="py-2 px-4">
+                <div class="text-xs font-black text-zinc-100 tracking-tight">+$2,021,586</div>
+                <div class="text-[9px] text-zinc-500 font-bold uppercase tracking-widest mt-0.5">+77% own</div>
+            </td>
+            <td class="py-2 px-4">
+                <div class="inline-flex items-center px-1.5 py-0.5 rounded text-[8px] font-black uppercase tracking-widest mb-1 bg-rose-600 text-white shadow-[0_0_10px_rgba(225,29,72,0.2)]">
+                    NOISE • 0
+                </div>
+                <ul class="text-[10px] text-zinc-400 leading-tight space-y-0.5 list-none">
+                    
+                </ul>
+            </td>
+            <td class="py-2 px-4 text-right">
+                <a href="http://www.sec.gov/Archives/edgar/data/1404912/000114036126007577/xslF345X03/form4.xml" target="_blank" class="text-zinc-600 hover:text-white transition-colors">
+                    <svg class="w-4 h-4 inline" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2.5"><path d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
+                </a>
+            </td>
+        </tr>
+        
+        <tr class="table-row border-b border-zinc-800/60 hover:bg-zinc-800/40 transition-all duration-150" data-label="WEAK_SIGNAL">
+            <td class="py-2 px-4">
+                <div class="flex items-center gap-3">
+                    <div class="w-7 h-7 rounded bg-zinc-800 flex items-center justify-center font-black text-zinc-500 border border-zinc-700 text-[10px]">
+                        V
+                    </div>
+                    <div>
+                        <div class="font-black text-zinc-100 text-sm leading-none tracking-tighter">VNO</div>
+                        <div class="text-[9px] text-blue-400 font-bold mt-0.5 uppercase tracking-wider">Tisch Daniel R</div>
+                    </div>
+                </div>
+            </td>
+            <td class="py-2 px-4">
+                <div class="text-[11px] font-bold text-zinc-200">$26.91</div>
+                <div class="text-[9px] text-zinc-500 font-semibold uppercase tracking-tighter">+155,000 shares</div>
+            </td>
+            <td class="py-2 px-4">
+                <div class="text-xs font-black text-zinc-100 tracking-tight">+$4,171,000</div>
+                <div class="text-[9px] text-zinc-500 font-bold uppercase tracking-widest mt-0.5">+517% own</div>
+            </td>
+            <td class="py-2 px-4">
+                <div class="inline-flex items-center px-1.5 py-0.5 rounded text-[8px] font-black uppercase tracking-widest mb-1 bg-zinc-700 text-zinc-300">
+                    WEAK_SIGNAL • 2.5
+                </div>
+                <ul class="text-[10px] text-zinc-400 leading-tight space-y-0.5 list-none">
+                    <li>Indirect ownership (reduced conviction)</li>
+                </ul>
+            </td>
+            <td class="py-2 px-4 text-right">
+                <a href="http://www.sec.gov/Archives/edgar/data/899689/000111179426000008/xslF345X03/form4-03032026_090331.xml" target="_blank" class="text-zinc-600 hover:text-white transition-colors">
+                    <svg class="w-4 h-4 inline" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2.5"><path d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
+                </a>
+            </td>
+        </tr>
+        
+        <tr class="table-row border-b border-zinc-800/60 hover:bg-zinc-800/40 transition-all duration-150" data-label="NOISE">
+            <td class="py-2 px-4">
+                <div class="flex items-center gap-3">
+                    <div class="w-7 h-7 rounded bg-zinc-800 flex items-center justify-center font-black text-zinc-500 border border-zinc-700 text-[10px]">
+                        L
+                    </div>
+                    <div>
+                        <div class="font-black text-zinc-100 text-sm leading-none tracking-tighter">LRMR</div>
+                        <div class="text-[9px] text-blue-400 font-bold mt-0.5 uppercase tracking-wider">Flynn James E</div>
+                    </div>
+                </div>
+            </td>
+            <td class="py-2 px-4">
+                <div class="text-[11px] font-bold text-zinc-200">$5.00</div>
+                <div class="text-[9px] text-zinc-500 font-semibold uppercase tracking-tighter">+5,000,000 shares</div>
+            </td>
+            <td class="py-2 px-4">
+                <div class="text-xs font-black text-zinc-100 tracking-tight">+$25,000,000</div>
+                <div class="text-[9px] text-zinc-500 font-bold uppercase tracking-widest mt-0.5">+16% own</div>
+            </td>
+            <td class="py-2 px-4">
+                <div class="inline-flex items-center px-1.5 py-0.5 rounded text-[8px] font-black uppercase tracking-widest mb-1 bg-rose-600 text-white shadow-[0_0_10px_rgba(225,29,72,0.2)]">
+                    NOISE • -0.5
+                </div>
+                <ul class="text-[10px] text-zinc-400 leading-tight space-y-0.5 list-none">
+                    <li>Indirect ownership (reduced conviction)</li>
+                </ul>
+            </td>
+            <td class="py-2 px-4 text-right">
+                <a href="http://www.sec.gov/Archives/edgar/data/1374690/000119380526000205/xslF345X03/e665206_4-larimar.xml" target="_blank" class="text-zinc-600 hover:text-white transition-colors">
+                    <svg class="w-4 h-4 inline" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2.5"><path d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
+                </a>
+            </td>
+        </tr>
+        
+        <tr class="table-row border-b border-zinc-800/60 hover:bg-zinc-800/40 transition-all duration-150" data-label="BUY_SIGNAL">
+            <td class="py-2 px-4">
+                <div class="flex items-center gap-3">
+                    <div class="w-7 h-7 rounded bg-zinc-800 flex items-center justify-center font-black text-zinc-500 border border-zinc-700 text-[10px]">
+                        I
+                    </div>
+                    <div>
+                        <div class="font-black text-zinc-100 text-sm leading-none tracking-tighter">IDYA</div>
+                        <div class="text-[9px] text-blue-400 font-bold mt-0.5 uppercase tracking-wider">Stein Jeffrey</div>
+                    </div>
+                </div>
+            </td>
+            <td class="py-2 px-4">
+                <div class="text-[11px] font-bold text-zinc-200">$32.96</div>
+                <div class="text-[9px] text-zinc-500 font-semibold uppercase tracking-tighter">+50,000 shares</div>
+            </td>
+            <td class="py-2 px-4">
+                <div class="text-xs font-black text-zinc-100 tracking-tight">+$1,647,890</div>
+                <div class="text-[9px] text-zinc-500 font-bold uppercase tracking-widest mt-0.5">+454% own</div>
+            </td>
+            <td class="py-2 px-4">
+                <div class="inline-flex items-center px-1.5 py-0.5 rounded text-[8px] font-black uppercase tracking-widest mb-1 bg-blue-600 text-white shadow-[0_0_10px_rgba(37,99,235,0.2)]">
+                    BUY_SIGNAL • 3
+                </div>
+                <ul class="text-[10px] text-zinc-400 leading-tight space-y-0.5 list-none">
+                    
+                </ul>
+            </td>
+            <td class="py-2 px-4 text-right">
+                <a href="http://www.sec.gov/Archives/edgar/data/1676725/000161071726000078/xslF345X03/form4.xml" target="_blank" class="text-zinc-600 hover:text-white transition-colors">
+                    <svg class="w-4 h-4 inline" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2.5"><path d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
+                </a>
+            </td>
+        </tr>
+        
+        <tr class="table-row border-b border-zinc-800/60 hover:bg-zinc-800/40 transition-all duration-150" data-label="NOISE">
+            <td class="py-2 px-4">
+                <div class="flex items-center gap-3">
+                    <div class="w-7 h-7 rounded bg-zinc-800 flex items-center justify-center font-black text-zinc-500 border border-zinc-700 text-[10px]">
+                        N
+                    </div>
+                    <div>
+                        <div class="font-black text-zinc-100 text-sm leading-none tracking-tighter">NOW</div>
+                        <div class="text-[9px] text-blue-400 font-bold mt-0.5 uppercase tracking-wider">McDermott William R</div>
+                    </div>
+                </div>
+            </td>
+            <td class="py-2 px-4">
+                <div class="text-[11px] font-bold text-zinc-200">$104.60</div>
+                <div class="text-[9px] text-zinc-500 font-semibold uppercase tracking-tighter">+28,682 shares</div>
+            </td>
+            <td class="py-2 px-4">
+                <div class="text-xs font-black text-zinc-100 tracking-tight">+$3,000,058</div>
+                <div class="text-[9px] text-zinc-500 font-bold uppercase tracking-widest mt-0.5">+19% own</div>
+            </td>
+            <td class="py-2 px-4">
+                <div class="inline-flex items-center px-1.5 py-0.5 rounded text-[8px] font-black uppercase tracking-widest mb-1 bg-rose-600 text-white shadow-[0_0_10px_rgba(225,29,72,0.2)]">
+                    NOISE • -5
+                </div>
+                <ul class="text-[10px] text-zinc-400 leading-tight space-y-0.5 list-none">
+                    <li>10b5-1 plan (pre-scheduled, non-discretionary)</li><li>Compensation-based transaction (RSU/vesting/grant)</li>
+                </ul>
+            </td>
+            <td class="py-2 px-4 text-right">
+                <a href="http://www.sec.gov/Archives/edgar/data/1373715/000133494426000020/xslF345X03/wk-form4_1772485860.xml" target="_blank" class="text-zinc-600 hover:text-white transition-colors">
+                    <svg class="w-4 h-4 inline" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2.5"><path d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
+                </a>
+            </td>
+        </tr>
+        
+        <tr class="table-row border-b border-zinc-800/60 hover:bg-zinc-800/40 transition-all duration-150" data-label="STRONG_BUY_SIGNAL">
+            <td class="py-2 px-4">
+                <div class="flex items-center gap-3">
+                    <div class="w-7 h-7 rounded bg-zinc-800 flex items-center justify-center font-black text-zinc-500 border border-zinc-700 text-[10px]">
+                        S
+                    </div>
+                    <div>
+                        <div class="font-black text-zinc-100 text-sm leading-none tracking-tighter">SKWD</div>
+                        <div class="text-[9px] text-blue-400 font-bold mt-0.5 uppercase tracking-wider">Robinson Andrew S</div>
+                    </div>
+                </div>
+            </td>
+            <td class="py-2 px-4">
+                <div class="text-[11px] font-bold text-zinc-200">$46.76</div>
+                <div class="text-[9px] text-zinc-500 font-semibold uppercase tracking-tighter">+22,100 shares</div>
+            </td>
+            <td class="py-2 px-4">
+                <div class="text-xs font-black text-zinc-100 tracking-tight">+$1,033,370</div>
+                <div class="text-[9px] text-zinc-500 font-bold uppercase tracking-widest mt-0.5">+15% own</div>
+            </td>
+            <td class="py-2 px-4">
+                <div class="inline-flex items-center px-1.5 py-0.5 rounded text-[8px] font-black uppercase tracking-widest mb-1 bg-emerald-600 text-white shadow-[0_0_10px_rgba(16,185,129,0.2)]">
+                    STRONG_BUY_SIGNAL • 5
+                </div>
+                <ul class="text-[10px] text-zinc-400 leading-tight space-y-0.5 list-none">
+                    <li>Executed via multiple trades (less conviction signal)</li>
+                </ul>
+            </td>
+            <td class="py-2 px-4 text-right">
+                <a href="http://www.sec.gov/Archives/edgar/data/1519449/000141583326000010/xslF345X03/form4-02272026_090236.xml" target="_blank" class="text-zinc-600 hover:text-white transition-colors">
+                    <svg class="w-4 h-4 inline" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2.5"><path d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
+                </a>
+            </td>
+        </tr>
+        
+        <tr class="table-row border-b border-zinc-800/60 hover:bg-zinc-800/40 transition-all duration-150" data-label="BUY_SIGNAL">
+            <td class="py-2 px-4">
+                <div class="flex items-center gap-3">
+                    <div class="w-7 h-7 rounded bg-zinc-800 flex items-center justify-center font-black text-zinc-500 border border-zinc-700 text-[10px]">
+                        M
+                    </div>
+                    <div>
+                        <div class="font-black text-zinc-100 text-sm leading-none tracking-tighter">MANE</div>
+                        <div class="text-[9px] text-blue-400 font-bold mt-0.5 uppercase tracking-wider">Childs John W</div>
+                    </div>
+                </div>
+            </td>
+            <td class="py-2 px-4">
+                <div class="text-[11px] font-bold text-zinc-200">$17.00</div>
+                <div class="text-[9px] text-zinc-500 font-semibold uppercase tracking-tighter">+294,117 shares</div>
+            </td>
+            <td class="py-2 px-4">
+                <div class="text-xs font-black text-zinc-100 tracking-tight">+$4,999,989</div>
+                <div class="text-[9px] text-zinc-500 font-bold uppercase tracking-widest mt-0.5">New own</div>
+            </td>
+            <td class="py-2 px-4">
+                <div class="inline-flex items-center px-1.5 py-0.5 rounded text-[8px] font-black uppercase tracking-widest mb-1 bg-blue-600 text-white shadow-[0_0_10px_rgba(37,99,235,0.2)]">
+                    BUY_SIGNAL • 3.5
+                </div>
+                <ul class="text-[10px] text-zinc-400 leading-tight space-y-0.5 list-none">
+                    <li>Indirect ownership (reduced conviction)</li>
+                </ul>
+            </td>
+            <td class="py-2 px-4 text-right">
+                <a href="http://www.sec.gov/Archives/edgar/data/1827635/000102703526000004/xslF345X03/wk-form4a_1772228643.xml" target="_blank" class="text-zinc-600 hover:text-white transition-colors">
+                    <svg class="w-4 h-4 inline" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2.5"><path d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
+                </a>
+            </td>
+        </tr>
+        
+        <tr class="table-row border-b border-zinc-800/60 hover:bg-zinc-800/40 transition-all duration-150" data-label="NOISE">
+            <td class="py-2 px-4">
+                <div class="flex items-center gap-3">
+                    <div class="w-7 h-7 rounded bg-zinc-800 flex items-center justify-center font-black text-zinc-500 border border-zinc-700 text-[10px]">
+                        L
+                    </div>
+                    <div>
+                        <div class="font-black text-zinc-100 text-sm leading-none tracking-tighter">LOGC</div>
+                        <div class="text-[9px] text-blue-400 font-bold mt-0.5 uppercase tracking-wider">Bobbili Raja</div>
+                    </div>
+                </div>
+            </td>
+            <td class="py-2 px-4">
+                <div class="text-[11px] font-bold text-zinc-200">$7.00</div>
+                <div class="text-[9px] text-zinc-500 font-semibold uppercase tracking-tighter">+1,758,794 shares</div>
+            </td>
+            <td class="py-2 px-4">
+                <div class="text-xs font-black text-zinc-100 tracking-tight">+$12,311,558</div>
+                <div class="text-[9px] text-zinc-500 font-bold uppercase tracking-widest mt-0.5">+11% own</div>
+            </td>
+            <td class="py-2 px-4">
+                <div class="inline-flex items-center px-1.5 py-0.5 rounded text-[8px] font-black uppercase tracking-widest mb-1 bg-rose-600 text-white shadow-[0_0_10px_rgba(225,29,72,0.2)]">
+                    NOISE • 0
+                </div>
+                <ul class="text-[10px] text-zinc-400 leading-tight space-y-0.5 list-none">
+                    
+                </ul>
+            </td>
+            <td class="py-2 px-4 text-right">
+                <a href="http://www.sec.gov/Archives/edgar/data/2064307/000119312526078396/xslF345X03/ownership.xml" target="_blank" class="text-zinc-600 hover:text-white transition-colors">
+                    <svg class="w-4 h-4 inline" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2.5"><path d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
+                </a>
+            </td>
+        </tr>
+        
+        <tr class="table-row border-b border-zinc-800/60 hover:bg-zinc-800/40 transition-all duration-150" data-label="NOISE">
+            <td class="py-2 px-4">
+                <div class="flex items-center gap-3">
+                    <div class="w-7 h-7 rounded bg-zinc-800 flex items-center justify-center font-black text-zinc-500 border border-zinc-700 text-[10px]">
+                        L
+                    </div>
+                    <div>
+                        <div class="font-black text-zinc-100 text-sm leading-none tracking-tighter">LOGC</div>
+                        <div class="text-[9px] text-blue-400 font-bold mt-0.5 uppercase tracking-wider">Abrams David C</div>
+                    </div>
+                </div>
+            </td>
+            <td class="py-2 px-4">
+                <div class="text-[11px] font-bold text-zinc-200">$7.00</div>
+                <div class="text-[9px] text-zinc-500 font-semibold uppercase tracking-tighter">+1,758,794 shares</div>
+            </td>
+            <td class="py-2 px-4">
+                <div class="text-xs font-black text-zinc-100 tracking-tight">+$12,311,558</div>
+                <div class="text-[9px] text-zinc-500 font-bold uppercase tracking-widest mt-0.5">+11% own</div>
+            </td>
+            <td class="py-2 px-4">
+                <div class="inline-flex items-center px-1.5 py-0.5 rounded text-[8px] font-black uppercase tracking-widest mb-1 bg-rose-600 text-white shadow-[0_0_10px_rgba(225,29,72,0.2)]">
+                    NOISE • 0
+                </div>
+                <ul class="text-[10px] text-zinc-400 leading-tight space-y-0.5 list-none">
+                    
+                </ul>
+            </td>
+            <td class="py-2 px-4 text-right">
+                <a href="http://www.sec.gov/Archives/edgar/data/2064307/000119312526078378/xslF345X03/ownership.xml" target="_blank" class="text-zinc-600 hover:text-white transition-colors">
+                    <svg class="w-4 h-4 inline" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2.5"><path d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
+                </a>
+            </td>
+        </tr>
+        
+        <tr class="table-row border-b border-zinc-800/60 hover:bg-zinc-800/40 transition-all duration-150" data-label="NOISE">
+            <td class="py-2 px-4">
+                <div class="flex items-center gap-3">
+                    <div class="w-7 h-7 rounded bg-zinc-800 flex items-center justify-center font-black text-zinc-500 border border-zinc-700 text-[10px]">
+                        C
+                    </div>
+                    <div>
+                        <div class="font-black text-zinc-100 text-sm leading-none tracking-tighter">CADL</div>
+                        <div class="text-[9px] text-blue-400 font-bold mt-0.5 uppercase tracking-wider">Manning Paul B</div>
+                    </div>
+                </div>
+            </td>
+            <td class="py-2 px-4">
+                <div class="text-[11px] font-bold text-zinc-200">$5.45</div>
+                <div class="text-[9px] text-zinc-500 font-semibold uppercase tracking-tighter">+550,458 shares</div>
+            </td>
+            <td class="py-2 px-4">
+                <div class="text-xs font-black text-zinc-100 tracking-tight">+$2,999,996</div>
+                <div class="text-[9px] text-zinc-500 font-bold uppercase tracking-widest mt-0.5">+11% own</div>
+            </td>
+            <td class="py-2 px-4">
+                <div class="inline-flex items-center px-1.5 py-0.5 rounded text-[8px] font-black uppercase tracking-widest mb-1 bg-rose-600 text-white shadow-[0_0_10px_rgba(225,29,72,0.2)]">
+                    NOISE • -0.5
+                </div>
+                <ul class="text-[10px] text-zinc-400 leading-tight space-y-0.5 list-none">
+                    <li>Indirect ownership (reduced conviction)</li>
+                </ul>
+            </td>
+            <td class="py-2 px-4 text-right">
+                <a href="http://www.sec.gov/Archives/edgar/data/1841387/000119312526078246/xslF345X03/ownership.xml" target="_blank" class="text-zinc-600 hover:text-white transition-colors">
+                    <svg class="w-4 h-4 inline" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2.5"><path d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
+                </a>
+            </td>
+        </tr>
+        
+        <tr class="table-row border-b border-zinc-800/60 hover:bg-zinc-800/40 transition-all duration-150" data-label="NOISE">
+            <td class="py-2 px-4">
+                <div class="flex items-center gap-3">
+                    <div class="w-7 h-7 rounded bg-zinc-800 flex items-center justify-center font-black text-zinc-500 border border-zinc-700 text-[10px]">
+                        I
+                    </div>
+                    <div>
+                        <div class="font-black text-zinc-100 text-sm leading-none tracking-tighter">IBATF</div>
+                        <div class="text-[9px] text-blue-400 font-bold mt-0.5 uppercase tracking-wider">Warnock Jacob Aaron</div>
+                    </div>
+                </div>
+            </td>
+            <td class="py-2 px-4">
+                <div class="text-[11px] font-bold text-zinc-200">$0.08</div>
+                <div class="text-[9px] text-zinc-500 font-semibold uppercase tracking-tighter">+26,427,053 shares</div>
+            </td>
+            <td class="py-2 px-4">
+                <div class="text-xs font-black text-zinc-100 tracking-tight">+$2,114,164</div>
+                <div class="text-[9px] text-zinc-500 font-bold uppercase tracking-widest mt-0.5">+32% own</div>
+            </td>
+            <td class="py-2 px-4">
+                <div class="inline-flex items-center px-1.5 py-0.5 rounded text-[8px] font-black uppercase tracking-widest mb-1 bg-rose-600 text-white shadow-[0_0_10px_rgba(225,29,72,0.2)]">
+                    NOISE • -4
+                </div>
+                <ul class="text-[10px] text-zinc-400 leading-tight space-y-0.5 list-none">
+                    <li>Structural conversion (IPO/preferred conversion)</li><li>Indirect ownership (reduced conviction)</li>
+                </ul>
+            </td>
+            <td class="py-2 px-4 text-right">
+                <a href="http://www.sec.gov/Archives/edgar/data/1786318/000119312526072388/xslF345X03/ownership.xml" target="_blank" class="text-zinc-600 hover:text-white transition-colors">
+                    <svg class="w-4 h-4 inline" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2.5"><path d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
+                </a>
+            </td>
+        </tr>
+        
+        <tr class="table-row border-b border-zinc-800/60 hover:bg-zinc-800/40 transition-all duration-150" data-label="NOISE">
+            <td class="py-2 px-4">
+                <div class="flex items-center gap-3">
+                    <div class="w-7 h-7 rounded bg-zinc-800 flex items-center justify-center font-black text-zinc-500 border border-zinc-700 text-[10px]">
+                        H
+                    </div>
+                    <div>
+                        <div class="font-black text-zinc-100 text-sm leading-none tracking-tighter">HLNE</div>
+                        <div class="text-[9px] text-blue-400 font-bold mt-0.5 uppercase tracking-wider">Berkman David J</div>
+                    </div>
+                </div>
+            </td>
+            <td class="py-2 px-4">
+                <div class="text-[11px] font-bold text-zinc-200">$101.00</div>
+                <div class="text-[9px] text-zinc-500 font-semibold uppercase tracking-tighter">+10,000 shares</div>
+            </td>
+            <td class="py-2 px-4">
+                <div class="text-xs font-black text-zinc-100 tracking-tight">+$1,010,000</div>
+                <div class="text-[9px] text-zinc-500 font-bold uppercase tracking-widest mt-0.5">+40% own</div>
+            </td>
+            <td class="py-2 px-4">
+                <div class="inline-flex items-center px-1.5 py-0.5 rounded text-[8px] font-black uppercase tracking-widest mb-1 bg-rose-600 text-white shadow-[0_0_10px_rgba(225,29,72,0.2)]">
+                    NOISE • 0
+                </div>
+                <ul class="text-[10px] text-zinc-400 leading-tight space-y-0.5 list-none">
+                    
+                </ul>
+            </td>
+            <td class="py-2 px-4 text-right">
+                <a href="http://www.sec.gov/Archives/edgar/data/1433642/000143364226000010/xslF345X03/wk-form4_1772053614.xml" target="_blank" class="text-zinc-600 hover:text-white transition-colors">
+                    <svg class="w-4 h-4 inline" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2.5"><path d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
+                </a>
+            </td>
+        </tr>
+        
+        <tr class="table-row border-b border-zinc-800/60 hover:bg-zinc-800/40 transition-all duration-150" data-label="BUY_SIGNAL">
+            <td class="py-2 px-4">
+                <div class="flex items-center gap-3">
+                    <div class="w-7 h-7 rounded bg-zinc-800 flex items-center justify-center font-black text-zinc-500 border border-zinc-700 text-[10px]">
+                        U
+                    </div>
+                    <div>
+                        <div class="font-black text-zinc-100 text-sm leading-none tracking-tighter">UBER</div>
+                        <div class="text-[9px] text-blue-400 font-bold mt-0.5 uppercase tracking-wider">Krishnamurthy Balaji (A)</div>
+                    </div>
+                </div>
+            </td>
+            <td class="py-2 px-4">
+                <div class="text-[11px] font-bold text-zinc-200">$71.25</div>
+                <div class="text-[9px] text-zinc-500 font-semibold uppercase tracking-tighter">+22,453 shares</div>
+            </td>
+            <td class="py-2 px-4">
+                <div class="text-xs font-black text-zinc-100 tracking-tight">+$1,599,780</div>
+                <div class="text-[9px] text-zinc-500 font-bold uppercase tracking-widest mt-0.5">+357% own</div>
+            </td>
+            <td class="py-2 px-4">
+                <div class="inline-flex items-center px-1.5 py-0.5 rounded text-[8px] font-black uppercase tracking-widest mb-1 bg-blue-600 text-white shadow-[0_0_10px_rgba(37,99,235,0.2)]">
+                    BUY_SIGNAL • 4
+                </div>
+                <ul class="text-[10px] text-zinc-400 leading-tight space-y-0.5 list-none">
+                    
+                </ul>
+            </td>
+            <td class="py-2 px-4 text-right">
+                <a href="http://www.sec.gov/Archives/edgar/data/1543151/000211186726000005/xslF345X03/primarydocument.xml" target="_blank" class="text-zinc-600 hover:text-white transition-colors">
+                    <svg class="w-4 h-4 inline" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2.5"><path d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
+                </a>
+            </td>
+        </tr>
+        
+        <tr class="table-row border-b border-zinc-800/60 hover:bg-zinc-800/40 transition-all duration-150" data-label="STRONG_BUY_SIGNAL">
+            <td class="py-2 px-4">
+                <div class="flex items-center gap-3">
+                    <div class="w-7 h-7 rounded bg-zinc-800 flex items-center justify-center font-black text-zinc-500 border border-zinc-700 text-[10px]">
+                        T
+                    </div>
+                    <div>
+                        <div class="font-black text-zinc-100 text-sm leading-none tracking-tighter">TZOO</div>
+                        <div class="text-[9px] text-blue-400 font-bold mt-0.5 uppercase tracking-wider">Bartel Holger</div>
+                    </div>
+                </div>
+            </td>
+            <td class="py-2 px-4">
+                <div class="text-[11px] font-bold text-zinc-200">$5.39</div>
+                <div class="text-[9px] text-zinc-500 font-semibold uppercase tracking-tighter">+200,000 shares</div>
+            </td>
+            <td class="py-2 px-4">
+                <div class="text-xs font-black text-zinc-100 tracking-tight">+$1,077,000</div>
+                <div class="text-[9px] text-zinc-500 font-bold uppercase tracking-widest mt-0.5">New own</div>
+            </td>
+            <td class="py-2 px-4">
+                <div class="inline-flex items-center px-1.5 py-0.5 rounded text-[8px] font-black uppercase tracking-widest mb-1 bg-emerald-600 text-white shadow-[0_0_10px_rgba(16,185,129,0.2)]">
+                    STRONG_BUY_SIGNAL • 9
+                </div>
+                <ul class="text-[10px] text-zinc-400 leading-tight space-y-0.5 list-none">
+                    
+                </ul>
+            </td>
+            <td class="py-2 px-4 text-right">
+                <a href="http://www.sec.gov/Archives/edgar/data/1133311/000162828026011158/xslF345X03/wk-form4_1771969491.xml" target="_blank" class="text-zinc-600 hover:text-white transition-colors">
+                    <svg class="w-4 h-4 inline" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2.5"><path d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
+                </a>
+            </td>
+        </tr>
+        
+        <tr class="table-row border-b border-zinc-800/60 hover:bg-zinc-800/40 transition-all duration-150" data-label="BUY_SIGNAL">
+            <td class="py-2 px-4">
+                <div class="flex items-center gap-3">
+                    <div class="w-7 h-7 rounded bg-zinc-800 flex items-center justify-center font-black text-zinc-500 border border-zinc-700 text-[10px]">
+                        A
+                    </div>
+                    <div>
+                        <div class="font-black text-zinc-100 text-sm leading-none tracking-tighter">ARDX</div>
+                        <div class="text-[9px] text-blue-400 font-bold mt-0.5 uppercase tracking-wider">Mott David M</div>
+                    </div>
+                </div>
+            </td>
+            <td class="py-2 px-4">
+                <div class="text-[11px] font-bold text-zinc-200">$5.84</div>
+                <div class="text-[9px] text-zinc-500 font-semibold uppercase tracking-tighter">+333,333 shares</div>
+            </td>
+            <td class="py-2 px-4">
+                <div class="text-xs font-black text-zinc-100 tracking-tight">+$1,946,331</div>
+                <div class="text-[9px] text-zinc-500 font-bold uppercase tracking-widest mt-0.5">+11% own</div>
+            </td>
+            <td class="py-2 px-4">
+                <div class="inline-flex items-center px-1.5 py-0.5 rounded text-[8px] font-black uppercase tracking-widest mb-1 bg-blue-600 text-white shadow-[0_0_10px_rgba(37,99,235,0.2)]">
+                    BUY_SIGNAL • 3
+                </div>
+                <ul class="text-[10px] text-zinc-400 leading-tight space-y-0.5 list-none">
+                    <li>Executed via multiple trades (less conviction signal)</li>
+                </ul>
+            </td>
+            <td class="py-2 px-4 text-right">
+                <a href="http://www.sec.gov/Archives/edgar/data/1437402/000161071726000066/xslF345X03/form4.xml" target="_blank" class="text-zinc-600 hover:text-white transition-colors">
+                    <svg class="w-4 h-4 inline" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2.5"><path d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
+                </a>
+            </td>
+        </tr>
+        
+        <tr class="table-row border-b border-zinc-800/60 hover:bg-zinc-800/40 transition-all duration-150" data-label="NOISE">
+            <td class="py-2 px-4">
+                <div class="flex items-center gap-3">
+                    <div class="w-7 h-7 rounded bg-zinc-800 flex items-center justify-center font-black text-zinc-500 border border-zinc-700 text-[10px]">
+                        L
+                    </div>
+                    <div>
+                        <div class="font-black text-zinc-100 text-sm leading-none tracking-tighter">LPX</div>
+                        <div class="text-[9px] text-blue-400 font-bold mt-0.5 uppercase tracking-wider">Grasberger F Nicholas  III</div>
+                    </div>
+                </div>
+            </td>
+            <td class="py-2 px-4">
+                <div class="text-[11px] font-bold text-zinc-200">$85.49</div>
+                <div class="text-[9px] text-zinc-500 font-semibold uppercase tracking-tighter">+20,000 shares</div>
+            </td>
+            <td class="py-2 px-4">
+                <div class="text-xs font-black text-zinc-100 tracking-tight">+$1,709,800</div>
+                <div class="text-[9px] text-zinc-500 font-bold uppercase tracking-widest mt-0.5">+106% own</div>
+            </td>
+            <td class="py-2 px-4">
+                <div class="inline-flex items-center px-1.5 py-0.5 rounded text-[8px] font-black uppercase tracking-widest mb-1 bg-rose-600 text-white shadow-[0_0_10px_rgba(225,29,72,0.2)]">
+                    NOISE • -5
+                </div>
+                <ul class="text-[10px] text-zinc-400 leading-tight space-y-0.5 list-none">
+                    <li>Compensation-based transaction (RSU/vesting/grant)</li><li>Executed via multiple trades (less conviction signal)</li>
+                </ul>
+            </td>
+            <td class="py-2 px-4 text-right">
+                <a href="http://www.sec.gov/Archives/edgar/data/60519/000119312526064500/xslF345X03/ownership.xml" target="_blank" class="text-zinc-600 hover:text-white transition-colors">
+                    <svg class="w-4 h-4 inline" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2.5"><path d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
+                </a>
+            </td>
+        </tr>
+        
+        <tr class="table-row border-b border-zinc-800/60 hover:bg-zinc-800/40 transition-all duration-150" data-label="BUY_SIGNAL">
+            <td class="py-2 px-4">
+                <div class="flex items-center gap-3">
+                    <div class="w-7 h-7 rounded bg-zinc-800 flex items-center justify-center font-black text-zinc-500 border border-zinc-700 text-[10px]">
+                        T
+                    </div>
+                    <div>
+                        <div class="font-black text-zinc-100 text-sm leading-none tracking-tighter">TLSI</div>
+                        <div class="text-[9px] text-blue-400 font-bold mt-0.5 uppercase tracking-wider">Stansky Michael P</div>
+                    </div>
+                </div>
+            </td>
+            <td class="py-2 px-4">
+                <div class="text-[11px] font-bold text-zinc-200">$4.10</div>
+                <div class="text-[9px] text-zinc-500 font-semibold uppercase tracking-tighter">+361,098 shares</div>
+            </td>
+            <td class="py-2 px-4">
+                <div class="text-xs font-black text-zinc-100 tracking-tight">+$1,480,502</div>
+                <div class="text-[9px] text-zinc-500 font-bold uppercase tracking-widest mt-0.5">+58% own</div>
+            </td>
+            <td class="py-2 px-4">
+                <div class="inline-flex items-center px-1.5 py-0.5 rounded text-[8px] font-black uppercase tracking-widest mb-1 bg-blue-600 text-white shadow-[0_0_10px_rgba(37,99,235,0.2)]">
+                    BUY_SIGNAL • 3
+                </div>
+                <ul class="text-[10px] text-zinc-400 leading-tight space-y-0.5 list-none">
+                    
+                </ul>
+            </td>
+            <td class="py-2 px-4 text-right">
+                <a href="http://www.sec.gov/Archives/edgar/data/1826667/000162828026010602/xslF345X03/wk-form4_1771880877.xml" target="_blank" class="text-zinc-600 hover:text-white transition-colors">
+                    <svg class="w-4 h-4 inline" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2.5"><path d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
+                </a>
+            </td>
+        </tr>
+        
+        <tr class="table-row border-b border-zinc-800/60 hover:bg-zinc-800/40 transition-all duration-150" data-label="STRONG_BUY_SIGNAL">
+            <td class="py-2 px-4">
+                <div class="flex items-center gap-3">
+                    <div class="w-7 h-7 rounded bg-zinc-800 flex items-center justify-center font-black text-zinc-500 border border-zinc-700 text-[10px]">
+                        P
+                    </div>
+                    <div>
+                        <div class="font-black text-zinc-100 text-sm leading-none tracking-tighter">PODD</div>
+                        <div class="text-[9px] text-blue-400 font-bold mt-0.5 uppercase tracking-wider">McEvoy Ashley</div>
+                    </div>
+                </div>
+            </td>
+            <td class="py-2 px-4">
+                <div class="text-[11px] font-bold text-zinc-200">$239.35</div>
+                <div class="text-[9px] text-zinc-500 font-semibold uppercase tracking-tighter">+4,300 shares</div>
+            </td>
+            <td class="py-2 px-4">
+                <div class="text-xs font-black text-zinc-100 tracking-tight">+$1,029,205</div>
+                <div class="text-[9px] text-zinc-500 font-bold uppercase tracking-widest mt-0.5">+45% own</div>
+            </td>
+            <td class="py-2 px-4">
+                <div class="inline-flex items-center px-1.5 py-0.5 rounded text-[8px] font-black uppercase tracking-widest mb-1 bg-emerald-600 text-white shadow-[0_0_10px_rgba(16,185,129,0.2)]">
+                    STRONG_BUY_SIGNAL • 5
+                </div>
+                <ul class="text-[10px] text-zinc-400 leading-tight space-y-0.5 list-none">
+                    
+                </ul>
+            </td>
+            <td class="py-2 px-4 text-right">
+                <a href="http://www.sec.gov/Archives/edgar/data/1145197/000114519726000031/xslF345X03/form4.xml" target="_blank" class="text-zinc-600 hover:text-white transition-colors">
+                    <svg class="w-4 h-4 inline" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2.5"><path d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
+                </a>
+            </td>
+        </tr>
+        
+        <tr class="table-row border-b border-zinc-800/60 hover:bg-zinc-800/40 transition-all duration-150" data-label="NOISE">
+            <td class="py-2 px-4">
+                <div class="flex items-center gap-3">
+                    <div class="w-7 h-7 rounded bg-zinc-800 flex items-center justify-center font-black text-zinc-500 border border-zinc-700 text-[10px]">
+                        M
+                    </div>
+                    <div>
+                        <div class="font-black text-zinc-100 text-sm leading-none tracking-tighter">MSCI</div>
+                        <div class="text-[9px] text-blue-400 font-bold mt-0.5 uppercase tracking-wider">Ashe Robert G.</div>
+                    </div>
+                </div>
+            </td>
+            <td class="py-2 px-4">
+                <div class="text-[11px] font-bold text-zinc-200">$543.21</div>
+                <div class="text-[9px] text-zinc-500 font-semibold uppercase tracking-tighter">+3,681 shares</div>
+            </td>
+            <td class="py-2 px-4">
+                <div class="text-xs font-black text-zinc-100 tracking-tight">+$1,999,556</div>
+                <div class="text-[9px] text-zinc-500 font-bold uppercase tracking-widest mt-0.5">+19% own</div>
+            </td>
+            <td class="py-2 px-4">
+                <div class="inline-flex items-center px-1.5 py-0.5 rounded text-[8px] font-black uppercase tracking-widest mb-1 bg-rose-600 text-white shadow-[0_0_10px_rgba(225,29,72,0.2)]">
+                    NOISE • -0.5
+                </div>
+                <ul class="text-[10px] text-zinc-400 leading-tight space-y-0.5 list-none">
+                    <li>Indirect ownership (reduced conviction)</li>
+                </ul>
+            </td>
+            <td class="py-2 px-4 text-right">
+                <a href="http://www.sec.gov/Archives/edgar/data/1408198/000141431026000002/xslF345X03/wk-form4_1771621443.xml" target="_blank" class="text-zinc-600 hover:text-white transition-colors">
+                    <svg class="w-4 h-4 inline" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2.5"><path d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
+                </a>
+            </td>
+        </tr>
+        
+        <tr class="table-row border-b border-zinc-800/60 hover:bg-zinc-800/40 transition-all duration-150" data-label="BUY_SIGNAL">
+            <td class="py-2 px-4">
+                <div class="flex items-center gap-3">
+                    <div class="w-7 h-7 rounded bg-zinc-800 flex items-center justify-center font-black text-zinc-500 border border-zinc-700 text-[10px]">
+                        K
+                    </div>
+                    <div>
+                        <div class="font-black text-zinc-100 text-sm leading-none tracking-tighter">KKR</div>
+                        <div class="text-[9px] text-blue-400 font-bold mt-0.5 uppercase tracking-wider">Cohler Matt</div>
+                    </div>
+                </div>
+            </td>
+            <td class="py-2 px-4">
+                <div class="text-[11px] font-bold text-zinc-200">$102.90</div>
+                <div class="text-[9px] text-zinc-500 font-semibold uppercase tracking-tighter">+43,872 shares</div>
+            </td>
+            <td class="py-2 px-4">
+                <div class="text-xs font-black text-zinc-100 tracking-tight">+$4,514,429</div>
+                <div class="text-[9px] text-zinc-500 font-bold uppercase tracking-widest mt-0.5">+44% own</div>
+            </td>
+            <td class="py-2 px-4">
+                <div class="inline-flex items-center px-1.5 py-0.5 rounded text-[8px] font-black uppercase tracking-widest mb-1 bg-blue-600 text-white shadow-[0_0_10px_rgba(37,99,235,0.2)]">
+                    BUY_SIGNAL • 3
+                </div>
+                <ul class="text-[10px] text-zinc-400 leading-tight space-y-0.5 list-none">
+                    
+                </ul>
+            </td>
+            <td class="py-2 px-4 text-right">
+                <a href="http://www.sec.gov/Archives/edgar/data/1404912/000114036126006058/xslF345X03/form4.xml" target="_blank" class="text-zinc-600 hover:text-white transition-colors">
+                    <svg class="w-4 h-4 inline" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2.5"><path d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
+                </a>
+            </td>
+        </tr>
+        
+        <tr class="table-row border-b border-zinc-800/60 hover:bg-zinc-800/40 transition-all duration-150" data-label="BUY_SIGNAL">
+            <td class="py-2 px-4">
+                <div class="flex items-center gap-3">
+                    <div class="w-7 h-7 rounded bg-zinc-800 flex items-center justify-center font-black text-zinc-500 border border-zinc-700 text-[10px]">
+                        D
+                    </div>
+                    <div>
+                        <div class="font-black text-zinc-100 text-sm leading-none tracking-tighter">DKNG</div>
+                        <div class="text-[9px] text-blue-400 font-bold mt-0.5 uppercase tracking-wider">Sloan Harry</div>
+                    </div>
+                </div>
+            </td>
+            <td class="py-2 px-4">
+                <div class="text-[11px] font-bold text-zinc-200">$21.85</div>
+                <div class="text-[9px] text-zinc-500 font-semibold uppercase tracking-tighter">+100,000 shares</div>
+            </td>
+            <td class="py-2 px-4">
+                <div class="text-xs font-black text-zinc-100 tracking-tight">+$2,185,000</div>
+                <div class="text-[9px] text-zinc-500 font-bold uppercase tracking-widest mt-0.5">+40% own</div>
+            </td>
+            <td class="py-2 px-4">
+                <div class="inline-flex items-center px-1.5 py-0.5 rounded text-[8px] font-black uppercase tracking-widest mb-1 bg-blue-600 text-white shadow-[0_0_10px_rgba(37,99,235,0.2)]">
+                    BUY_SIGNAL • 3
+                </div>
+                <ul class="text-[10px] text-zinc-400 leading-tight space-y-0.5 list-none">
+                    <li>Executed via multiple trades (less conviction signal)</li>
+                </ul>
+            </td>
+            <td class="py-2 px-4 text-right">
+                <a href="http://www.sec.gov/Archives/edgar/data/1883685/000125824826000008/xslF345X03/wk-form4_1771424162.xml" target="_blank" class="text-zinc-600 hover:text-white transition-colors">
+                    <svg class="w-4 h-4 inline" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2.5"><path d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
+                </a>
+            </td>
+        </tr>
+        
+        <tr class="table-row border-b border-zinc-800/60 hover:bg-zinc-800/40 transition-all duration-150" data-label="NOISE">
+            <td class="py-2 px-4">
+                <div class="flex items-center gap-3">
+                    <div class="w-7 h-7 rounded bg-zinc-800 flex items-center justify-center font-black text-zinc-500 border border-zinc-700 text-[10px]">
+                        R
+                    </div>
+                    <div>
+                        <div class="font-black text-zinc-100 text-sm leading-none tracking-tighter">RDDT</div>
+                        <div class="text-[9px] text-blue-400 font-bold mt-0.5 uppercase tracking-wider">Farrell Sarah E</div>
+                    </div>
+                </div>
+            </td>
+            <td class="py-2 px-4">
+                <div class="text-[11px] font-bold text-zinc-200">$148.16</div>
+                <div class="text-[9px] text-zinc-500 font-semibold uppercase tracking-tighter">+50,500 shares</div>
+            </td>
+            <td class="py-2 px-4">
+                <div class="text-xs font-black text-zinc-100 tracking-tight">+$7,482,139</div>
+                <div class="text-[9px] text-zinc-500 font-bold uppercase tracking-widest mt-0.5">+639% own</div>
+            </td>
+            <td class="py-2 px-4">
+                <div class="inline-flex items-center px-1.5 py-0.5 rounded text-[8px] font-black uppercase tracking-widest mb-1 bg-rose-600 text-white shadow-[0_0_10px_rgba(225,29,72,0.2)]">
+                    NOISE • 0.5
+                </div>
+                <ul class="text-[10px] text-zinc-400 leading-tight space-y-0.5 list-none">
+                    <li>Indirect ownership (reduced conviction)</li>
+                </ul>
+            </td>
+            <td class="py-2 px-4 text-right">
+                <a href="http://www.sec.gov/Archives/edgar/data/1713445/000171344526000026/xslF345X03/wk-form4_1770943939.xml" target="_blank" class="text-zinc-600 hover:text-white transition-colors">
+                    <svg class="w-4 h-4 inline" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2.5"><path d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
+                </a>
+            </td>
+        </tr>
+        
+        <tr class="table-row border-b border-zinc-800/60 hover:bg-zinc-800/40 transition-all duration-150" data-label="NOISE">
+            <td class="py-2 px-4">
+                <div class="flex items-center gap-3">
+                    <div class="w-7 h-7 rounded bg-zinc-800 flex items-center justify-center font-black text-zinc-500 border border-zinc-700 text-[10px]">
+                        K
+                    </div>
+                    <div>
+                        <div class="font-black text-zinc-100 text-sm leading-none tracking-tighter">KKR</div>
+                        <div class="text-[9px] text-blue-400 font-bold mt-0.5 uppercase tracking-wider">Barakett Timothy R</div>
+                    </div>
+                </div>
+            </td>
+            <td class="py-2 px-4">
+                <div class="text-[11px] font-bold text-zinc-200">$104.93</div>
+                <div class="text-[9px] text-zinc-500 font-semibold uppercase tracking-tighter">+50,000 shares</div>
+            </td>
+            <td class="py-2 px-4">
+                <div class="text-xs font-black text-zinc-100 tracking-tight">+$5,246,500</div>
+                <div class="text-[9px] text-zinc-500 font-bold uppercase tracking-widest mt-0.5">+27% own</div>
+            </td>
+            <td class="py-2 px-4">
+                <div class="inline-flex items-center px-1.5 py-0.5 rounded text-[8px] font-black uppercase tracking-widest mb-1 bg-rose-600 text-white shadow-[0_0_10px_rgba(225,29,72,0.2)]">
+                    NOISE • 0
+                </div>
+                <ul class="text-[10px] text-zinc-400 leading-tight space-y-0.5 list-none">
+                    
+                </ul>
+            </td>
+            <td class="py-2 px-4 text-right">
+                <a href="http://www.sec.gov/Archives/edgar/data/1404912/000114036126004845/xslF345X03/form4.xml" target="_blank" class="text-zinc-600 hover:text-white transition-colors">
+                    <svg class="w-4 h-4 inline" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2.5"><path d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
+                </a>
+            </td>
+        </tr>
+        
+        <tr class="table-row border-b border-zinc-800/60 hover:bg-zinc-800/40 transition-all duration-150" data-label="NOISE">
+            <td class="py-2 px-4">
+                <div class="flex items-center gap-3">
+                    <div class="w-7 h-7 rounded bg-zinc-800 flex items-center justify-center font-black text-zinc-500 border border-zinc-700 text-[10px]">
+                        S
+                    </div>
+                    <div>
+                        <div class="font-black text-zinc-100 text-sm leading-none tracking-tighter">SGP</div>
+                        <div class="text-[9px] text-blue-400 font-bold mt-0.5 uppercase tracking-wider">Behbahani Ali</div>
+                    </div>
+                </div>
+            </td>
+            <td class="py-2 px-4">
+                <div class="text-[11px] font-bold text-zinc-200">$16.00</div>
+                <div class="text-[9px] text-zinc-500 font-semibold uppercase tracking-tighter">+937,500 shares</div>
+            </td>
+            <td class="py-2 px-4">
+                <div class="text-xs font-black text-zinc-100 tracking-tight">+$15,000,000</div>
+                <div class="text-[9px] text-zinc-500 font-bold uppercase tracking-widest mt-0.5">+15% own</div>
+            </td>
+            <td class="py-2 px-4">
+                <div class="inline-flex items-center px-1.5 py-0.5 rounded text-[8px] font-black uppercase tracking-widest mb-1 bg-rose-600 text-white shadow-[0_0_10px_rgba(225,29,72,0.2)]">
+                    NOISE • -4
+                </div>
+                <ul class="text-[10px] text-zinc-400 leading-tight space-y-0.5 list-none">
+                    <li>Structural conversion (IPO/preferred conversion)</li>
+                </ul>
+            </td>
+            <td class="py-2 px-4 text-right">
+                <a href="http://www.sec.gov/Archives/edgar/data/1778922/000119312526046676/xslF345X03/ownership.xml" target="_blank" class="text-zinc-600 hover:text-white transition-colors">
+                    <svg class="w-4 h-4 inline" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2.5"><path d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
+                </a>
+            </td>
+        </tr>
+        
+        <tr class="table-row border-b border-zinc-800/60 hover:bg-zinc-800/40 transition-all duration-150" data-label="NOISE">
+            <td class="py-2 px-4">
+                <div class="flex items-center gap-3">
+                    <div class="w-7 h-7 rounded bg-zinc-800 flex items-center justify-center font-black text-zinc-500 border border-zinc-700 text-[10px]">
+                        S
+                    </div>
+                    <div>
+                        <div class="font-black text-zinc-100 text-sm leading-none tracking-tighter">SGP</div>
+                        <div class="text-[9px] text-blue-400 font-bold mt-0.5 uppercase tracking-wider">Pardo Geoffrey B</div>
+                    </div>
+                </div>
+            </td>
+            <td class="py-2 px-4">
+                <div class="text-[11px] font-bold text-zinc-200">$16.00</div>
+                <div class="text-[9px] text-zinc-500 font-semibold uppercase tracking-tighter">+312,500 shares</div>
+            </td>
+            <td class="py-2 px-4">
+                <div class="text-xs font-black text-zinc-100 tracking-tight">+$5,000,000</div>
+                <div class="text-[9px] text-zinc-500 font-bold uppercase tracking-widest mt-0.5">+17% own</div>
+            </td>
+            <td class="py-2 px-4">
+                <div class="inline-flex items-center px-1.5 py-0.5 rounded text-[8px] font-black uppercase tracking-widest mb-1 bg-rose-600 text-white shadow-[0_0_10px_rgba(225,29,72,0.2)]">
+                    NOISE • -4
+                </div>
+                <ul class="text-[10px] text-zinc-400 leading-tight space-y-0.5 list-none">
+                    <li>Structural conversion (IPO/preferred conversion)</li>
+                </ul>
+            </td>
+            <td class="py-2 px-4 text-right">
+                <a href="http://www.sec.gov/Archives/edgar/data/1778922/000175314326000006/xslF345X03/form4-02112026_090232.xml" target="_blank" class="text-zinc-600 hover:text-white transition-colors">
+                    <svg class="w-4 h-4 inline" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2.5"><path d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
+                </a>
+            </td>
+        </tr>
+        
+        <tr class="table-row border-b border-zinc-800/60 hover:bg-zinc-800/40 transition-all duration-150" data-label="BUY_SIGNAL">
+            <td class="py-2 px-4">
+                <div class="flex items-center gap-3">
+                    <div class="w-7 h-7 rounded bg-zinc-800 flex items-center justify-center font-black text-zinc-500 border border-zinc-700 text-[10px]">
+                        S
+                    </div>
+                    <div>
+                        <div class="font-black text-zinc-100 text-sm leading-none tracking-tighter">SGP</div>
+                        <div class="text-[9px] text-blue-400 font-bold mt-0.5 uppercase tracking-wider">Khan Bilal Arshad</div>
+                    </div>
+                </div>
+            </td>
+            <td class="py-2 px-4">
+                <div class="text-[11px] font-bold text-zinc-200">$16.00</div>
+                <div class="text-[9px] text-zinc-500 font-semibold uppercase tracking-tighter">+135,000 shares</div>
+            </td>
+            <td class="py-2 px-4">
+                <div class="text-xs font-black text-zinc-100 tracking-tight">+$2,160,000</div>
+                <div class="text-[9px] text-zinc-500 font-bold uppercase tracking-widest mt-0.5">+95% own</div>
+            </td>
+            <td class="py-2 px-4">
+                <div class="inline-flex items-center px-1.5 py-0.5 rounded text-[8px] font-black uppercase tracking-widest mb-1 bg-blue-600 text-white shadow-[0_0_10px_rgba(37,99,235,0.2)]">
+                    BUY_SIGNAL • 3
+                </div>
+                <ul class="text-[10px] text-zinc-400 leading-tight space-y-0.5 list-none">
+                    
+                </ul>
+            </td>
+            <td class="py-2 px-4 text-right">
+                <a href="http://www.sec.gov/Archives/edgar/data/1778922/000210804426000006/xslF345X03/form4-02112026_090215.xml" target="_blank" class="text-zinc-600 hover:text-white transition-colors">
+                    <svg class="w-4 h-4 inline" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2.5"><path d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
+                </a>
+            </td>
+        </tr>
+        
+        <tr class="table-row border-b border-zinc-800/60 hover:bg-zinc-800/40 transition-all duration-150" data-label="NOISE">
+            <td class="py-2 px-4">
+                <div class="flex items-center gap-3">
+                    <div class="w-7 h-7 rounded bg-zinc-800 flex items-center justify-center font-black text-zinc-500 border border-zinc-700 text-[10px]">
+                        C
+                    </div>
+                    <div>
+                        <div class="font-black text-zinc-100 text-sm leading-none tracking-tighter">CAQ</div>
+                        <div class="text-[9px] text-blue-400 font-bold mt-0.5 uppercase tracking-wider">Cam-Phung Michael Tam</div>
+                    </div>
+                </div>
+            </td>
+            <td class="py-2 px-4">
+                <div class="text-[11px] font-bold text-zinc-200">$10.00</div>
+                <div class="text-[9px] text-zinc-500 font-semibold uppercase tracking-tighter">+495,500 shares</div>
+            </td>
+            <td class="py-2 px-4">
+                <div class="text-xs font-black text-zinc-100 tracking-tight">+$4,955,000</div>
+                <div class="text-[9px] text-zinc-500 font-bold uppercase tracking-widest mt-0.5">New own</div>
+            </td>
+            <td class="py-2 px-4">
+                <div class="inline-flex items-center px-1.5 py-0.5 rounded text-[8px] font-black uppercase tracking-widest mb-1 bg-rose-600 text-white shadow-[0_0_10px_rgba(225,29,72,0.2)]">
+                    NOISE • -5
+                </div>
+                <ul class="text-[10px] text-zinc-400 leading-tight space-y-0.5 list-none">
+                    <li>Compensation-based transaction (RSU/vesting/grant)</li><li>Indirect ownership (reduced conviction)</li>
+                </ul>
+            </td>
+            <td class="py-2 px-4 text-right">
+                <a href="http://www.sec.gov/Archives/edgar/data/2100125/000110465926012767/xslF345X03/tm265862-1_4seq1.xml" target="_blank" class="text-zinc-600 hover:text-white transition-colors">
+                    <svg class="w-4 h-4 inline" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2.5"><path d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
+                </a>
+            </td>
+        </tr>
+        
+        <tr class="table-row border-b border-zinc-800/60 hover:bg-zinc-800/40 transition-all duration-150" data-label="NOISE">
+            <td class="py-2 px-4">
+                <div class="flex items-center gap-3">
+                    <div class="w-7 h-7 rounded bg-zinc-800 flex items-center justify-center font-black text-zinc-500 border border-zinc-700 text-[10px]">
+                        A
+                    </div>
+                    <div>
+                        <div class="font-black text-zinc-100 text-sm leading-none tracking-tighter">ARES</div>
+                        <div class="text-[9px] text-blue-400 font-bold mt-0.5 uppercase tracking-wider">Bhutani Ashish</div>
+                    </div>
+                </div>
+            </td>
+            <td class="py-2 px-4">
+                <div class="text-[11px] font-bold text-zinc-200">$126.61</div>
+                <div class="text-[9px] text-zinc-500 font-semibold uppercase tracking-tighter">+10,000 shares</div>
+            </td>
+            <td class="py-2 px-4">
+                <div class="text-xs font-black text-zinc-100 tracking-tight">+$1,266,100</div>
+                <div class="text-[9px] text-zinc-500 font-bold uppercase tracking-widest mt-0.5">+42% own</div>
+            </td>
+            <td class="py-2 px-4">
+                <div class="inline-flex items-center px-1.5 py-0.5 rounded text-[8px] font-black uppercase tracking-widest mb-1 bg-rose-600 text-white shadow-[0_0_10px_rgba(225,29,72,0.2)]">
+                    NOISE • -5
+                </div>
+                <ul class="text-[10px] text-zinc-400 leading-tight space-y-0.5 list-none">
+                    <li>Compensation-based transaction (RSU/vesting/grant)</li><li>Executed via multiple trades (less conviction signal)</li>
+                </ul>
+            </td>
+            <td class="py-2 px-4 text-right">
+                <a href="http://www.sec.gov/Archives/edgar/data/1176948/000128772726000002/xslF345X03/wk-form4_1770761345.xml" target="_blank" class="text-zinc-600 hover:text-white transition-colors">
+                    <svg class="w-4 h-4 inline" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2.5"><path d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
+                </a>
+            </td>
+        </tr>
+        
+        <tr class="table-row border-b border-zinc-800/60 hover:bg-zinc-800/40 transition-all duration-150" data-label="WEAK_SIGNAL">
+            <td class="py-2 px-4">
+                <div class="flex items-center gap-3">
+                    <div class="w-7 h-7 rounded bg-zinc-800 flex items-center justify-center font-black text-zinc-500 border border-zinc-700 text-[10px]">
+                        M
+                    </div>
+                    <div>
+                        <div class="font-black text-zinc-100 text-sm leading-none tracking-tighter">MANE</div>
+                        <div class="text-[9px] text-blue-400 font-bold mt-0.5 uppercase tracking-wider">Suvretta Capital Management, LLC</div>
+                    </div>
+                </div>
+            </td>
+            <td class="py-2 px-4">
+                <div class="text-[11px] font-bold text-zinc-200">$37.30</div>
+                <div class="text-[9px] text-zinc-500 font-semibold uppercase tracking-tighter">+282,674 shares</div>
+            </td>
+            <td class="py-2 px-4">
+                <div class="text-xs font-black text-zinc-100 tracking-tight">+$10,542,478</div>
+                <div class="text-[9px] text-zinc-500 font-bold uppercase tracking-widest mt-0.5">+119% own</div>
+            </td>
+            <td class="py-2 px-4">
+                <div class="inline-flex items-center px-1.5 py-0.5 rounded text-[8px] font-black uppercase tracking-widest mb-1 bg-zinc-700 text-zinc-300">
+                    WEAK_SIGNAL • 1
+                </div>
+                <ul class="text-[10px] text-zinc-400 leading-tight space-y-0.5 list-none">
+                    
+                </ul>
+            </td>
+            <td class="py-2 px-4 text-right">
+                <a href="http://www.sec.gov/Archives/edgar/data/1827635/000089914026000140/xslF345X03/form4.xml" target="_blank" class="text-zinc-600 hover:text-white transition-colors">
+                    <svg class="w-4 h-4 inline" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2.5"><path d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
+                </a>
+            </td>
+        </tr>
+        
+        <tr class="table-row border-b border-zinc-800/60 hover:bg-zinc-800/40 transition-all duration-150" data-label="BUY_SIGNAL">
+            <td class="py-2 px-4">
+                <div class="flex items-center gap-3">
+                    <div class="w-7 h-7 rounded bg-zinc-800 flex items-center justify-center font-black text-zinc-500 border border-zinc-700 text-[10px]">
+                        H
+                    </div>
+                    <div>
+                        <div class="font-black text-zinc-100 text-sm leading-none tracking-tighter">HCIC</div>
+                        <div class="text-[9px] text-blue-400 font-bold mt-0.5 uppercase tracking-wider">Hennessy Thomas D</div>
+                    </div>
+                </div>
+            </td>
+            <td class="py-2 px-4">
+                <div class="text-[11px] font-bold text-zinc-200">$10.00</div>
+                <div class="text-[9px] text-zinc-500 font-semibold uppercase tracking-tighter">+671,000 shares</div>
+            </td>
+            <td class="py-2 px-4">
+                <div class="text-xs font-black text-zinc-100 tracking-tight">+$6,710,000</div>
+                <div class="text-[9px] text-zinc-500 font-bold uppercase tracking-widest mt-0.5">New own</div>
+            </td>
+            <td class="py-2 px-4">
+                <div class="inline-flex items-center px-1.5 py-0.5 rounded text-[8px] font-black uppercase tracking-widest mb-1 bg-blue-600 text-white shadow-[0_0_10px_rgba(37,99,235,0.2)]">
+                    BUY_SIGNAL • 3
+                </div>
+                <ul class="text-[10px] text-zinc-400 leading-tight space-y-0.5 list-none">
+                    
+                </ul>
+            </td>
+            <td class="py-2 px-4 text-right">
+                <a href="http://www.sec.gov/Archives/edgar/data/2099093/000149315226005800/xslF345X03/ownership.xml" target="_blank" class="text-zinc-600 hover:text-white transition-colors">
+                    <svg class="w-4 h-4 inline" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2.5"><path d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
+                </a>
+            </td>
+        </tr>
+        
+        <tr class="table-row border-b border-zinc-800/60 hover:bg-zinc-800/40 transition-all duration-150" data-label="STRONG_BUY_SIGNAL">
+            <td class="py-2 px-4">
+                <div class="flex items-center gap-3">
+                    <div class="w-7 h-7 rounded bg-zinc-800 flex items-center justify-center font-black text-zinc-500 border border-zinc-700 text-[10px]">
+                        H
+                    </div>
+                    <div>
+                        <div class="font-black text-zinc-100 text-sm leading-none tracking-tighter">HCIC</div>
+                        <div class="text-[9px] text-blue-400 font-bold mt-0.5 uppercase tracking-wider">Hennessy Daniel J</div>
+                    </div>
+                </div>
+            </td>
+            <td class="py-2 px-4">
+                <div class="text-[11px] font-bold text-zinc-200">$10.00</div>
+                <div class="text-[9px] text-zinc-500 font-semibold uppercase tracking-tighter">+671,000 shares</div>
+            </td>
+            <td class="py-2 px-4">
+                <div class="text-xs font-black text-zinc-100 tracking-tight">+$6,710,000</div>
+                <div class="text-[9px] text-zinc-500 font-bold uppercase tracking-widest mt-0.5">New own</div>
+            </td>
+            <td class="py-2 px-4">
+                <div class="inline-flex items-center px-1.5 py-0.5 rounded text-[8px] font-black uppercase tracking-widest mb-1 bg-emerald-600 text-white shadow-[0_0_10px_rgba(16,185,129,0.2)]">
+                    STRONG_BUY_SIGNAL • 6
+                </div>
+                <ul class="text-[10px] text-zinc-400 leading-tight space-y-0.5 list-none">
+                    
+                </ul>
+            </td>
+            <td class="py-2 px-4 text-right">
+                <a href="http://www.sec.gov/Archives/edgar/data/2099093/000149315226005795/xslF345X03/ownership.xml" target="_blank" class="text-zinc-600 hover:text-white transition-colors">
+                    <svg class="w-4 h-4 inline" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2.5"><path d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
+                </a>
+            </td>
+        </tr>
+        
+        <tr class="table-row border-b border-zinc-800/60 hover:bg-zinc-800/40 transition-all duration-150" data-label="BUY_SIGNAL">
+            <td class="py-2 px-4">
+                <div class="flex items-center gap-3">
+                    <div class="w-7 h-7 rounded bg-zinc-800 flex items-center justify-center font-black text-zinc-500 border border-zinc-700 text-[10px]">
+                        T
+                    </div>
+                    <div>
+                        <div class="font-black text-zinc-100 text-sm leading-none tracking-tighter">TDG</div>
+                        <div class="text-[9px] text-blue-400 font-bold mt-0.5 uppercase tracking-wider">Lisman Michael</div>
+                    </div>
+                </div>
+            </td>
+            <td class="py-2 px-4">
+                <div class="text-[11px] font-bold text-zinc-200">$1,284.26</div>
+                <div class="text-[9px] text-zinc-500 font-semibold uppercase tracking-tighter">+950 shares</div>
+            </td>
+            <td class="py-2 px-4">
+                <div class="text-xs font-black text-zinc-100 tracking-tight">+$1,220,048</div>
+                <div class="text-[9px] text-zinc-500 font-bold uppercase tracking-widest mt-0.5">+22% own</div>
+            </td>
+            <td class="py-2 px-4">
+                <div class="inline-flex items-center px-1.5 py-0.5 rounded text-[8px] font-black uppercase tracking-widest mb-1 bg-blue-600 text-white shadow-[0_0_10px_rgba(37,99,235,0.2)]">
+                    BUY_SIGNAL • 4.5
+                </div>
+                <ul class="text-[10px] text-zinc-400 leading-tight space-y-0.5 list-none">
+                    <li>Indirect ownership (reduced conviction)</li>
+                </ul>
+            </td>
+            <td class="py-2 px-4 text-right">
+                <a href="http://www.sec.gov/Archives/edgar/data/1260221/000119312526042891/xslF345X03/ownership.xml" target="_blank" class="text-zinc-600 hover:text-white transition-colors">
+                    <svg class="w-4 h-4 inline" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2.5"><path d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
+                </a>
+            </td>
+        </tr>
+        
+        <tr class="table-row border-b border-zinc-800/60 hover:bg-zinc-800/40 transition-all duration-150" data-label="NOISE">
+            <td class="py-2 px-4">
+                <div class="flex items-center gap-3">
+                    <div class="w-7 h-7 rounded bg-zinc-800 flex items-center justify-center font-black text-zinc-500 border border-zinc-700 text-[10px]">
+                        K
+                    </div>
+                    <div>
+                        <div class="font-black text-zinc-100 text-sm leading-none tracking-tighter">KMB</div>
+                        <div class="text-[9px] text-blue-400 font-bold mt-0.5 uppercase tracking-wider">Maclin Todd</div>
+                    </div>
+                </div>
+            </td>
+            <td class="py-2 px-4">
+                <div class="text-[11px] font-bold text-zinc-200">$104.15</div>
+                <div class="text-[9px] text-zinc-500 font-semibold uppercase tracking-tighter">+10,000 shares</div>
+            </td>
+            <td class="py-2 px-4">
+                <div class="text-xs font-black text-zinc-100 tracking-tight">+$1,041,467</div>
+                <div class="text-[9px] text-zinc-500 font-bold uppercase tracking-widest mt-0.5">+417% own</div>
+            </td>
+            <td class="py-2 px-4">
+                <div class="inline-flex items-center px-1.5 py-0.5 rounded text-[8px] font-black uppercase tracking-widest mb-1 bg-rose-600 text-white shadow-[0_0_10px_rgba(225,29,72,0.2)]">
+                    NOISE • 0
+                </div>
+                <ul class="text-[10px] text-zinc-400 leading-tight space-y-0.5 list-none">
+                    
+                </ul>
+            </td>
+            <td class="py-2 px-4 text-right">
+                <a href="http://www.sec.gov/Archives/edgar/data/55785/000122520826001525/xslF345X03/doc4.xml" target="_blank" class="text-zinc-600 hover:text-white transition-colors">
+                    <svg class="w-4 h-4 inline" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2.5"><path d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
+                </a>
+            </td>
+        </tr>
+        
+        <tr class="table-row border-b border-zinc-800/60 hover:bg-zinc-800/40 transition-all duration-150" data-label="BUY_SIGNAL">
+            <td class="py-2 px-4">
+                <div class="flex items-center gap-3">
+                    <div class="w-7 h-7 rounded bg-zinc-800 flex items-center justify-center font-black text-zinc-500 border border-zinc-700 text-[10px]">
+                        T
+                    </div>
+                    <div>
+                        <div class="font-black text-zinc-100 text-sm leading-none tracking-tighter">TVA</div>
+                        <div class="text-[9px] text-blue-400 font-bold mt-0.5 uppercase tracking-wider">Angelo Mark</div>
+                    </div>
+                </div>
+            </td>
+            <td class="py-2 px-4">
+                <div class="text-[11px] font-bold text-zinc-200">$10.77</div>
+                <div class="text-[9px] text-zinc-500 font-semibold uppercase tracking-tighter">+925,000 shares</div>
+            </td>
+            <td class="py-2 px-4">
+                <div class="text-xs font-black text-zinc-100 tracking-tight">+$9,958,578</div>
+                <div class="text-[9px] text-zinc-500 font-bold uppercase tracking-widest mt-0.5">New own</div>
+            </td>
+            <td class="py-2 px-4">
+                <div class="inline-flex items-center px-1.5 py-0.5 rounded text-[8px] font-black uppercase tracking-widest mb-1 bg-blue-600 text-white shadow-[0_0_10px_rgba(37,99,235,0.2)]">
+                    BUY_SIGNAL • 4
+                </div>
+                <ul class="text-[10px] text-zinc-400 leading-tight space-y-0.5 list-none">
+                    
+                </ul>
+            </td>
+            <td class="py-2 px-4 text-right">
+                <a href="http://www.sec.gov/Archives/edgar/data/2033991/000110465926011669/xslF345X03/tm265573-1_4seq1.xml" target="_blank" class="text-zinc-600 hover:text-white transition-colors">
+                    <svg class="w-4 h-4 inline" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2.5"><path d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
+                </a>
+            </td>
+        </tr>
+        
+        <tr class="table-row border-b border-zinc-800/60 hover:bg-zinc-800/40 transition-all duration-150" data-label="STRONG_BUY_SIGNAL">
+            <td class="py-2 px-4">
+                <div class="flex items-center gap-3">
+                    <div class="w-7 h-7 rounded bg-zinc-800 flex items-center justify-center font-black text-zinc-500 border border-zinc-700 text-[10px]">
+                        E
+                    </div>
+                    <div>
+                        <div class="font-black text-zinc-100 text-sm leading-none tracking-tighter">EIKN</div>
+                        <div class="text-[9px] text-blue-400 font-bold mt-0.5 uppercase tracking-wider">Frazier Kenneth C</div>
+                    </div>
+                </div>
+            </td>
+            <td class="py-2 px-4">
+                <div class="text-[11px] font-bold text-zinc-200">$18.00</div>
+                <div class="text-[9px] text-zinc-500 font-semibold uppercase tracking-tighter">+111,111 shares</div>
+            </td>
+            <td class="py-2 px-4">
+                <div class="text-xs font-black text-zinc-100 tracking-tight">+$1,999,998</div>
+                <div class="text-[9px] text-zinc-500 font-bold uppercase tracking-widest mt-0.5">New own</div>
+            </td>
+            <td class="py-2 px-4">
+                <div class="inline-flex items-center px-1.5 py-0.5 rounded text-[8px] font-black uppercase tracking-widest mb-1 bg-emerald-600 text-white shadow-[0_0_10px_rgba(16,185,129,0.2)]">
+                    STRONG_BUY_SIGNAL • 7
+                </div>
+                <ul class="text-[10px] text-zinc-400 leading-tight space-y-0.5 list-none">
+                    
+                </ul>
+            </td>
+            <td class="py-2 px-4 text-right">
+                <a href="http://www.sec.gov/Archives/edgar/data/1861123/000119312526041555/xslF345X03/ownership.xml" target="_blank" class="text-zinc-600 hover:text-white transition-colors">
+                    <svg class="w-4 h-4 inline" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2.5"><path d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
+                </a>
+            </td>
+        </tr>
+        
+        <tr class="table-row border-b border-zinc-800/60 hover:bg-zinc-800/40 transition-all duration-150" data-label="NOISE">
+            <td class="py-2 px-4">
+                <div class="flex items-center gap-3">
+                    <div class="w-7 h-7 rounded bg-zinc-800 flex items-center justify-center font-black text-zinc-500 border border-zinc-700 text-[10px]">
+                        E
+                    </div>
+                    <div>
+                        <div class="font-black text-zinc-100 text-sm leading-none tracking-tighter">EIKN</div>
+                        <div class="text-[9px] text-blue-400 font-bold mt-0.5 uppercase tracking-wider">Wolfe Josh</div>
+                    </div>
+                </div>
+            </td>
+            <td class="py-2 px-4">
+                <div class="text-[11px] font-bold text-zinc-200">$18.00</div>
+                <div class="text-[9px] text-zinc-500 font-semibold uppercase tracking-tighter">+277,776 shares</div>
+            </td>
+            <td class="py-2 px-4">
+                <div class="text-xs font-black text-zinc-100 tracking-tight">+$4,999,968</div>
+                <div class="text-[9px] text-zinc-500 font-bold uppercase tracking-widest mt-0.5">+14% own</div>
+            </td>
+            <td class="py-2 px-4">
+                <div class="inline-flex items-center px-1.5 py-0.5 rounded text-[8px] font-black uppercase tracking-widest mb-1 bg-rose-600 text-white shadow-[0_0_10px_rgba(225,29,72,0.2)]">
+                    NOISE • -4
+                </div>
+                <ul class="text-[10px] text-zinc-400 leading-tight space-y-0.5 list-none">
+                    <li>Structural conversion (IPO/preferred conversion)</li>
+                </ul>
+            </td>
+            <td class="py-2 px-4 text-right">
+                <a href="http://www.sec.gov/Archives/edgar/data/1861123/000119312526041549/xslF345X03/ownership.xml" target="_blank" class="text-zinc-600 hover:text-white transition-colors">
+                    <svg class="w-4 h-4 inline" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2.5"><path d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
+                </a>
+            </td>
+        </tr>
+        
+        <tr class="table-row border-b border-zinc-800/60 hover:bg-zinc-800/40 transition-all duration-150" data-label="NOISE">
+            <td class="py-2 px-4">
+                <div class="flex items-center gap-3">
+                    <div class="w-7 h-7 rounded bg-zinc-800 flex items-center justify-center font-black text-zinc-500 border border-zinc-700 text-[10px]">
+                        U
+                    </div>
+                    <div>
+                        <div class="font-black text-zinc-100 text-sm leading-none tracking-tighter">UUU</div>
+                        <div class="text-[9px] text-blue-400 font-bold mt-0.5 uppercase tracking-wider">Ault Milton C III</div>
+                    </div>
+                </div>
+            </td>
+            <td class="py-2 px-4">
+                <div class="text-[11px] font-bold text-zinc-200">$6.00</div>
+                <div class="text-[9px] text-zinc-500 font-semibold uppercase tracking-tighter">+205,000 shares</div>
+            </td>
+            <td class="py-2 px-4">
+                <div class="text-xs font-black text-zinc-100 tracking-tight">+$1,230,000</div>
+                <div class="text-[9px] text-zinc-500 font-bold uppercase tracking-widest mt-0.5">+75% own</div>
+            </td>
+            <td class="py-2 px-4">
+                <div class="inline-flex items-center px-1.5 py-0.5 rounded text-[8px] font-black uppercase tracking-widest mb-1 bg-rose-600 text-white shadow-[0_0_10px_rgba(225,29,72,0.2)]">
+                    NOISE • 0
+                </div>
+                <ul class="text-[10px] text-zinc-400 leading-tight space-y-0.5 list-none">
+                    
+                </ul>
+            </td>
+            <td class="py-2 px-4 text-right">
+                <a href="http://www.sec.gov/Archives/edgar/data/102109/000121465926001291/xslF345X03/marketforms-72058.xml" target="_blank" class="text-zinc-600 hover:text-white transition-colors">
+                    <svg class="w-4 h-4 inline" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2.5"><path d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
+                </a>
+            </td>
+        </tr>
+        
+        <tr class="table-row border-b border-zinc-800/60 hover:bg-zinc-800/40 transition-all duration-150" data-label="NOISE">
+            <td class="py-2 px-4">
+                <div class="flex items-center gap-3">
+                    <div class="w-7 h-7 rounded bg-zinc-800 flex items-center justify-center font-black text-zinc-500 border border-zinc-700 text-[10px]">
+                        M
+                    </div>
+                    <div>
+                        <div class="font-black text-zinc-100 text-sm leading-none tracking-tighter">MANE</div>
+                        <div class="text-[9px] text-blue-400 font-bold mt-0.5 uppercase tracking-wider">Coric Vlad</div>
+                    </div>
+                </div>
+            </td>
+            <td class="py-2 px-4">
+                <div class="text-[11px] font-bold text-zinc-200">$17.00</div>
+                <div class="text-[9px] text-zinc-500 font-semibold uppercase tracking-tighter">+117,646 shares</div>
+            </td>
+            <td class="py-2 px-4">
+                <div class="text-xs font-black text-zinc-100 tracking-tight">+$1,999,982</div>
+                <div class="text-[9px] text-zinc-500 font-bold uppercase tracking-widest mt-0.5">+35% own</div>
+            </td>
+            <td class="py-2 px-4">
+                <div class="inline-flex items-center px-1.5 py-0.5 rounded text-[8px] font-black uppercase tracking-widest mb-1 bg-rose-600 text-white shadow-[0_0_10px_rgba(225,29,72,0.2)]">
+                    NOISE • -5
+                </div>
+                <ul class="text-[10px] text-zinc-400 leading-tight space-y-0.5 list-none">
+                    <li>Compensation-based transaction (RSU/vesting/grant)</li><li>Structural conversion (IPO/preferred conversion)</li><li>Indirect ownership (reduced conviction)</li>
+                </ul>
+            </td>
+            <td class="py-2 px-4 text-right">
+                <a href="http://www.sec.gov/Archives/edgar/data/1827635/000162828026005907/xslF345X03/wk-form4_1770336262.xml" target="_blank" class="text-zinc-600 hover:text-white transition-colors">
+                    <svg class="w-4 h-4 inline" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2.5"><path d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
+                </a>
+            </td>
+        </tr>
+        
+        <tr class="table-row border-b border-zinc-800/60 hover:bg-zinc-800/40 transition-all duration-150" data-label="NOISE">
+            <td class="py-2 px-4">
+                <div class="flex items-center gap-3">
+                    <div class="w-7 h-7 rounded bg-zinc-800 flex items-center justify-center font-black text-zinc-500 border border-zinc-700 text-[10px]">
+                        M
+                    </div>
+                    <div>
+                        <div class="font-black text-zinc-100 text-sm leading-none tracking-tighter">MANE</div>
+                        <div class="text-[9px] text-blue-400 font-bold mt-0.5 uppercase tracking-wider">Childs John W</div>
+                    </div>
+                </div>
+            </td>
+            <td class="py-2 px-4">
+                <div class="text-[11px] font-bold text-zinc-200">$17.00</div>
+                <div class="text-[9px] text-zinc-500 font-semibold uppercase tracking-tighter">+294,117 shares</div>
+            </td>
+            <td class="py-2 px-4">
+                <div class="text-xs font-black text-zinc-100 tracking-tight">+$4,999,989</div>
+                <div class="text-[9px] text-zinc-500 font-bold uppercase tracking-widest mt-0.5">+15% own</div>
+            </td>
+            <td class="py-2 px-4">
+                <div class="inline-flex items-center px-1.5 py-0.5 rounded text-[8px] font-black uppercase tracking-widest mb-1 bg-rose-600 text-white shadow-[0_0_10px_rgba(225,29,72,0.2)]">
+                    NOISE • -5
+                </div>
+                <ul class="text-[10px] text-zinc-400 leading-tight space-y-0.5 list-none">
+                    <li>Compensation-based transaction (RSU/vesting/grant)</li><li>Structural conversion (IPO/preferred conversion)</li><li>Indirect ownership (reduced conviction)</li>
+                </ul>
+            </td>
+            <td class="py-2 px-4 text-right">
+                <a href="http://www.sec.gov/Archives/edgar/data/1827635/000162828026005906/xslF345X03/wk-form4_1770336237.xml" target="_blank" class="text-zinc-600 hover:text-white transition-colors">
+                    <svg class="w-4 h-4 inline" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2.5"><path d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
+                </a>
+            </td>
+        </tr>
+        
+        <tr class="table-row border-b border-zinc-800/60 hover:bg-zinc-800/40 transition-all duration-150" data-label="NOISE">
+            <td class="py-2 px-4">
+                <div class="flex items-center gap-3">
+                    <div class="w-7 h-7 rounded bg-zinc-800 flex items-center justify-center font-black text-zinc-500 border border-zinc-700 text-[10px]">
+                        M
+                    </div>
+                    <div>
+                        <div class="font-black text-zinc-100 text-sm leading-none tracking-tighter">MANE</div>
+                        <div class="text-[9px] text-blue-400 font-bold mt-0.5 uppercase tracking-wider">Enright Patrick G</div>
+                    </div>
+                </div>
+            </td>
+            <td class="py-2 px-4">
+                <div class="text-[11px] font-bold text-zinc-200">$17.00</div>
+                <div class="text-[9px] text-zinc-500 font-semibold uppercase tracking-tighter">+1,075,000 shares</div>
+            </td>
+            <td class="py-2 px-4">
+                <div class="text-xs font-black text-zinc-100 tracking-tight">+$18,275,000</div>
+                <div class="text-[9px] text-zinc-500 font-bold uppercase tracking-widest mt-0.5">+110% own</div>
+            </td>
+            <td class="py-2 px-4">
+                <div class="inline-flex items-center px-1.5 py-0.5 rounded text-[8px] font-black uppercase tracking-widest mb-1 bg-rose-600 text-white shadow-[0_0_10px_rgba(225,29,72,0.2)]">
+                    NOISE • -5
+                </div>
+                <ul class="text-[10px] text-zinc-400 leading-tight space-y-0.5 list-none">
+                    <li>Compensation-based transaction (RSU/vesting/grant)</li><li>Structural conversion (IPO/preferred conversion)</li>
+                </ul>
+            </td>
+            <td class="py-2 px-4 text-right">
+                <a href="http://www.sec.gov/Archives/edgar/data/1827635/000162828026005904/xslF345X03/wk-form4_1770336183.xml" target="_blank" class="text-zinc-600 hover:text-white transition-colors">
+                    <svg class="w-4 h-4 inline" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2.5"><path d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
+                </a>
+            </td>
+        </tr>
+        
+        <tr class="table-row border-b border-zinc-800/60 hover:bg-zinc-800/40 transition-all duration-150" data-label="BUY_SIGNAL">
+            <td class="py-2 px-4">
+                <div class="flex items-center gap-3">
+                    <div class="w-7 h-7 rounded bg-zinc-800 flex items-center justify-center font-black text-zinc-500 border border-zinc-700 text-[10px]">
+                        J
+                    </div>
+                    <div>
+                        <div class="font-black text-zinc-100 text-sm leading-none tracking-tighter">JCI</div>
+                        <div class="text-[9px] text-blue-400 font-bold mt-0.5 uppercase tracking-wider">Vergnano Mark</div>
+                    </div>
+                </div>
+            </td>
+            <td class="py-2 px-4">
+                <div class="text-[11px] font-bold text-zinc-200">$131.94</div>
+                <div class="text-[9px] text-zinc-500 font-semibold uppercase tracking-tighter">+7,665 shares</div>
+            </td>
+            <td class="py-2 px-4">
+                <div class="text-xs font-black text-zinc-100 tracking-tight">+$1,011,320</div>
+                <div class="text-[9px] text-zinc-500 font-bold uppercase tracking-widest mt-0.5">+26% own</div>
+            </td>
+            <td class="py-2 px-4">
+                <div class="inline-flex items-center px-1.5 py-0.5 rounded text-[8px] font-black uppercase tracking-widest mb-1 bg-blue-600 text-white shadow-[0_0_10px_rgba(37,99,235,0.2)]">
+                    BUY_SIGNAL • 3
+                </div>
+                <ul class="text-[10px] text-zinc-400 leading-tight space-y-0.5 list-none">
+                    <li>Executed via multiple trades (less conviction signal)</li>
+                </ul>
+            </td>
+            <td class="py-2 px-4 text-right">
+                <a href="http://www.sec.gov/Archives/edgar/data/833444/000083344426000021/xslF345X03/form4.xml" target="_blank" class="text-zinc-600 hover:text-white transition-colors">
+                    <svg class="w-4 h-4 inline" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2.5"><path d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
+                </a>
+            </td>
+        </tr>
+        
+        <tr class="table-row border-b border-zinc-800/60 hover:bg-zinc-800/40 transition-all duration-150" data-label="WEAK_SIGNAL">
+            <td class="py-2 px-4">
+                <div class="flex items-center gap-3">
+                    <div class="w-7 h-7 rounded bg-zinc-800 flex items-center justify-center font-black text-zinc-500 border border-zinc-700 text-[10px]">
+                        F
+                    </div>
+                    <div>
+                        <div class="font-black text-zinc-100 text-sm leading-none tracking-tighter">FEAM</div>
+                        <div class="text-[9px] text-blue-400 font-bold mt-0.5 uppercase tracking-wider">Bep Special Situations IV LLC</div>
+                    </div>
+                </div>
+            </td>
+            <td class="py-2 px-4">
+                <div class="text-[11px] font-bold text-zinc-200">$2.00</div>
+                <div class="text-[9px] text-zinc-500 font-semibold uppercase tracking-tighter">+4,000,000 shares</div>
+            </td>
+            <td class="py-2 px-4">
+                <div class="text-xs font-black text-zinc-100 tracking-tight">+$8,000,000</div>
+                <div class="text-[9px] text-zinc-500 font-bold uppercase tracking-widest mt-0.5">+49% own</div>
+            </td>
+            <td class="py-2 px-4">
+                <div class="inline-flex items-center px-1.5 py-0.5 rounded text-[8px] font-black uppercase tracking-widest mb-1 bg-zinc-700 text-zinc-300">
+                    WEAK_SIGNAL • 1
+                </div>
+                <ul class="text-[10px] text-zinc-400 leading-tight space-y-0.5 list-none">
+                    
+                </ul>
+            </td>
+            <td class="py-2 px-4 text-right">
+                <a href="http://www.sec.gov/Archives/edgar/data/1888654/000149315226005108/xslF345X03/ownership.xml" target="_blank" class="text-zinc-600 hover:text-white transition-colors">
+                    <svg class="w-4 h-4 inline" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2.5"><path d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
+                </a>
+            </td>
+        </tr>
+        
+        <tr class="table-row border-b border-zinc-800/60 hover:bg-zinc-800/40 transition-all duration-150" data-label="NOISE">
+            <td class="py-2 px-4">
+                <div class="flex items-center gap-3">
+                    <div class="w-7 h-7 rounded bg-zinc-800 flex items-center justify-center font-black text-zinc-500 border border-zinc-700 text-[10px]">
+                        A
+                    </div>
+                    <div>
+                        <div class="font-black text-zinc-100 text-sm leading-none tracking-tighter">ALXO</div>
+                        <div class="text-[9px] text-blue-400 font-bold mt-0.5 uppercase tracking-wider">Goodman Corey S</div>
+                    </div>
+                </div>
+            </td>
+            <td class="py-2 px-4">
+                <div class="text-[11px] font-bold text-zinc-200">$1.57</div>
+                <div class="text-[9px] text-zinc-500 font-semibold uppercase tracking-tighter">+3,184,713 shares</div>
+            </td>
+            <td class="py-2 px-4">
+                <div class="text-xs font-black text-zinc-100 tracking-tight">+$4,999,999</div>
+                <div class="text-[9px] text-zinc-500 font-bold uppercase tracking-widest mt-0.5">+32% own</div>
+            </td>
+            <td class="py-2 px-4">
+                <div class="inline-flex items-center px-1.5 py-0.5 rounded text-[8px] font-black uppercase tracking-widest mb-1 bg-rose-600 text-white shadow-[0_0_10px_rgba(225,29,72,0.2)]">
+                    NOISE • -0.5
+                </div>
+                <ul class="text-[10px] text-zinc-400 leading-tight space-y-0.5 list-none">
+                    <li>Indirect ownership (reduced conviction)</li>
+                </ul>
+            </td>
+            <td class="py-2 px-4 text-right">
+                <a href="http://www.sec.gov/Archives/edgar/data/1810182/000127841126000002/xslF345X03/form4-02042026_090252.xml" target="_blank" class="text-zinc-600 hover:text-white transition-colors">
+                    <svg class="w-4 h-4 inline" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2.5"><path d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
+                </a>
+            </td>
+        </tr>
+        
+        <tr class="table-row border-b border-zinc-800/60 hover:bg-zinc-800/40 transition-all duration-150" data-label="BUY_SIGNAL">
+            <td class="py-2 px-4">
+                <div class="flex items-center gap-3">
+                    <div class="w-7 h-7 rounded bg-zinc-800 flex items-center justify-center font-black text-zinc-500 border border-zinc-700 text-[10px]">
+                        S
+                    </div>
+                    <div>
+                        <div class="font-black text-zinc-100 text-sm leading-none tracking-tighter">SHCO</div>
+                        <div class="text-[9px] text-blue-400 font-bold mt-0.5 uppercase tracking-wider">Popstefanov Gjorgi</div>
+                    </div>
+                </div>
+            </td>
+            <td class="py-2 px-4">
+                <div class="text-[11px] font-bold text-zinc-200">$9.00</div>
+                <div class="text-[9px] text-zinc-500 font-semibold uppercase tracking-tighter">+11,111,111 shares</div>
+            </td>
+            <td class="py-2 px-4">
+                <div class="text-xs font-black text-zinc-100 tracking-tight">+$99,999,999</div>
+                <div class="text-[9px] text-zinc-500 font-bold uppercase tracking-widest mt-0.5">New own</div>
+            </td>
+            <td class="py-2 px-4">
+                <div class="inline-flex items-center px-1.5 py-0.5 rounded text-[8px] font-black uppercase tracking-widest mb-1 bg-blue-600 text-white shadow-[0_0_10px_rgba(37,99,235,0.2)]">
+                    BUY_SIGNAL • 3.5
+                </div>
+                <ul class="text-[10px] text-zinc-400 leading-tight space-y-0.5 list-none">
+                    <li>Indirect ownership (reduced conviction)</li>
+                </ul>
+            </td>
+            <td class="py-2 px-4 text-right">
+                <a href="http://www.sec.gov/Archives/edgar/data/1846510/000110465926009401/xslF345X03/tm264500-2_4seq1.xml" target="_blank" class="text-zinc-600 hover:text-white transition-colors">
+                    <svg class="w-4 h-4 inline" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2.5"><path d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
+                </a>
+            </td>
+        </tr>
+        
+        <tr class="table-row border-b border-zinc-800/60 hover:bg-zinc-800/40 transition-all duration-150" data-label="NOISE">
+            <td class="py-2 px-4">
+                <div class="flex items-center gap-3">
+                    <div class="w-7 h-7 rounded bg-zinc-800 flex items-center justify-center font-black text-zinc-500 border border-zinc-700 text-[10px]">
+                        L
+                    </div>
+                    <div>
+                        <div class="font-black text-zinc-100 text-sm leading-none tracking-tighter">LIFE</div>
+                        <div class="text-[9px] text-blue-400 font-bold mt-0.5 uppercase tracking-wider">Botha Roelof</div>
+                    </div>
+                </div>
+            </td>
+            <td class="py-2 px-4">
+                <div class="text-[11px] font-bold text-zinc-200">$19.00</div>
+                <div class="text-[9px] text-zinc-500 font-semibold uppercase tracking-tighter">+260,525 shares</div>
+            </td>
+            <td class="py-2 px-4">
+                <div class="text-xs font-black text-zinc-100 tracking-tight">+$4,949,975</div>
+                <div class="text-[9px] text-zinc-500 font-bold uppercase tracking-widest mt-0.5">New own</div>
+            </td>
+            <td class="py-2 px-4">
+                <div class="inline-flex items-center px-1.5 py-0.5 rounded text-[8px] font-black uppercase tracking-widest mb-1 bg-rose-600 text-white shadow-[0_0_10px_rgba(225,29,72,0.2)]">
+                    NOISE • -4
+                </div>
+                <ul class="text-[10px] text-zinc-400 leading-tight space-y-0.5 list-none">
+                    <li>Structural conversion (IPO/preferred conversion)</li>
+                </ul>
+            </td>
+            <td class="py-2 px-4 text-right">
+                <a href="http://www.sec.gov/Archives/edgar/data/1788451/000122228726000004/xslF345X03/form4.xml" target="_blank" class="text-zinc-600 hover:text-white transition-colors">
+                    <svg class="w-4 h-4 inline" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2.5"><path d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
+                </a>
+            </td>
+        </tr>
+        
+        <tr class="table-row border-b border-zinc-800/60 hover:bg-zinc-800/40 transition-all duration-150" data-label="STRONG_BUY_SIGNAL">
+            <td class="py-2 px-4">
+                <div class="flex items-center gap-3">
+                    <div class="w-7 h-7 rounded bg-zinc-800 flex items-center justify-center font-black text-zinc-500 border border-zinc-700 text-[10px]">
+                        I
+                    </div>
+                    <div>
+                        <div class="font-black text-zinc-100 text-sm leading-none tracking-tighter">IP</div>
+                        <div class="text-[9px] text-blue-400 font-bold mt-0.5 uppercase tracking-wider">Connor Christopher M</div>
+                    </div>
+                </div>
+            </td>
+            <td class="py-2 px-4">
+                <div class="text-[11px] font-bold text-zinc-200">$40.37</div>
+                <div class="text-[9px] text-zinc-500 font-semibold uppercase tracking-tighter">+25,000 shares</div>
+            </td>
+            <td class="py-2 px-4">
+                <div class="text-xs font-black text-zinc-100 tracking-tight">+$1,009,250</div>
+                <div class="text-[9px] text-zinc-500 font-bold uppercase tracking-widest mt-0.5">New own</div>
+            </td>
+            <td class="py-2 px-4">
+                <div class="inline-flex items-center px-1.5 py-0.5 rounded text-[8px] font-black uppercase tracking-widest mb-1 bg-emerald-600 text-white shadow-[0_0_10px_rgba(16,185,129,0.2)]">
+                    STRONG_BUY_SIGNAL • 6.5
+                </div>
+                <ul class="text-[10px] text-zinc-400 leading-tight space-y-0.5 list-none">
+                    <li>Indirect ownership (reduced conviction)</li>
+                </ul>
+            </td>
+            <td class="py-2 px-4 text-right">
+                <a href="http://www.sec.gov/Archives/edgar/data/51434/000005143426000021/xslF345X03/form4.xml" target="_blank" class="text-zinc-600 hover:text-white transition-colors">
+                    <svg class="w-4 h-4 inline" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2.5"><path d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
+                </a>
+            </td>
+        </tr>
+        
+        <tr class="table-row border-b border-zinc-800/60 hover:bg-zinc-800/40 transition-all duration-150" data-label="NOISE">
+            <td class="py-2 px-4">
+                <div class="flex items-center gap-3">
+                    <div class="w-7 h-7 rounded bg-zinc-800 flex items-center justify-center font-black text-zinc-500 border border-zinc-700 text-[10px]">
+                        L
+                    </div>
+                    <div>
+                        <div class="font-black text-zinc-100 text-sm leading-none tracking-tighter">LIFE</div>
+                        <div class="text-[9px] text-blue-400 font-bold mt-0.5 uppercase tracking-wider">Wheeler William J</div>
+                    </div>
+                </div>
+            </td>
+            <td class="py-2 px-4">
+                <div class="text-[11px] font-bold text-zinc-200">$19.00</div>
+                <div class="text-[9px] text-zinc-500 font-semibold uppercase tracking-tighter">+260,525 shares</div>
+            </td>
+            <td class="py-2 px-4">
+                <div class="text-xs font-black text-zinc-100 tracking-tight">+$4,949,975</div>
+                <div class="text-[9px] text-zinc-500 font-bold uppercase tracking-widest mt-0.5">>999% own</div>
+            </td>
+            <td class="py-2 px-4">
+                <div class="inline-flex items-center px-1.5 py-0.5 rounded text-[8px] font-black uppercase tracking-widest mb-1 bg-rose-600 text-white shadow-[0_0_10px_rgba(225,29,72,0.2)]">
+                    NOISE • -5
+                </div>
+                <ul class="text-[10px] text-zinc-400 leading-tight space-y-0.5 list-none">
+                    <li>Compensation-based transaction (RSU/vesting/grant)</li>
+                </ul>
+            </td>
+            <td class="py-2 px-4 text-right">
+                <a href="http://www.sec.gov/Archives/edgar/data/1788451/000127328126000003/xslF345X03/form4-01312026_010122.xml" target="_blank" class="text-zinc-600 hover:text-white transition-colors">
+                    <svg class="w-4 h-4 inline" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2.5"><path d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
+                </a>
+            </td>
+        </tr>
+        
+        <tr class="table-row border-b border-zinc-800/60 hover:bg-zinc-800/40 transition-all duration-150" data-label="NOISE">
+            <td class="py-2 px-4">
+                <div class="flex items-center gap-3">
+                    <div class="w-7 h-7 rounded bg-zinc-800 flex items-center justify-center font-black text-zinc-500 border border-zinc-700 text-[10px]">
+                        M
+                    </div>
+                    <div>
+                        <div class="font-black text-zinc-100 text-sm leading-none tracking-tighter">MLAA</div>
+                        <div class="text-[9px] text-blue-400 font-bold mt-0.5 uppercase tracking-wider">Grinberg Paul</div>
+                    </div>
+                </div>
+            </td>
+            <td class="py-2 px-4">
+                <div class="text-[11px] font-bold text-zinc-200">$10.00</div>
+                <div class="text-[9px] text-zinc-500 font-semibold uppercase tracking-tighter">+510,000 shares</div>
+            </td>
+            <td class="py-2 px-4">
+                <div class="text-xs font-black text-zinc-100 tracking-tight">+$5,100,000</div>
+                <div class="text-[9px] text-zinc-500 font-bold uppercase tracking-widest mt-0.5">New own</div>
+            </td>
+            <td class="py-2 px-4">
+                <div class="inline-flex items-center px-1.5 py-0.5 rounded text-[8px] font-black uppercase tracking-widest mb-1 bg-rose-600 text-white shadow-[0_0_10px_rgba(225,29,72,0.2)]">
+                    NOISE • -5
+                </div>
+                <ul class="text-[10px] text-zinc-400 leading-tight space-y-0.5 list-none">
+                    <li>Compensation-based transaction (RSU/vesting/grant)</li><li>Indirect ownership (reduced conviction)</li>
+                </ul>
+            </td>
+            <td class="py-2 px-4 text-right">
+                <a href="http://www.sec.gov/Archives/edgar/data/2094265/000121390026010406/xslF345X03/ownership.xml" target="_blank" class="text-zinc-600 hover:text-white transition-colors">
+                    <svg class="w-4 h-4 inline" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2.5"><path d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
+                </a>
+            </td>
+        </tr>
+        
+        <tr class="table-row border-b border-zinc-800/60 hover:bg-zinc-800/40 transition-all duration-150" data-label="STRONG_BUY_SIGNAL">
+            <td class="py-2 px-4">
+                <div class="flex items-center gap-3">
+                    <div class="w-7 h-7 rounded bg-zinc-800 flex items-center justify-center font-black text-zinc-500 border border-zinc-700 text-[10px]">
+                        I
+                    </div>
+                    <div>
+                        <div class="font-black text-zinc-100 text-sm leading-none tracking-tighter">IP</div>
+                        <div class="text-[9px] text-blue-400 font-bold mt-0.5 uppercase tracking-wider">Silvernail Andrew K</div>
+                    </div>
+                </div>
+            </td>
+            <td class="py-2 px-4">
+                <div class="text-[11px] font-bold text-zinc-200">$39.98</div>
+                <div class="text-[9px] text-zinc-500 font-semibold uppercase tracking-tighter">+50,000 shares</div>
+            </td>
+            <td class="py-2 px-4">
+                <div class="text-xs font-black text-zinc-100 tracking-tight">+$1,998,965</div>
+                <div class="text-[9px] text-zinc-500 font-bold uppercase tracking-widest mt-0.5">New own</div>
+            </td>
+            <td class="py-2 px-4">
+                <div class="inline-flex items-center px-1.5 py-0.5 rounded text-[8px] font-black uppercase tracking-widest mb-1 bg-emerald-600 text-white shadow-[0_0_10px_rgba(16,185,129,0.2)]">
+                    STRONG_BUY_SIGNAL • 8.5
+                </div>
+                <ul class="text-[10px] text-zinc-400 leading-tight space-y-0.5 list-none">
+                    <li>Indirect ownership (reduced conviction)</li><li>Executed via multiple trades (less conviction signal)</li>
+                </ul>
+            </td>
+            <td class="py-2 px-4 text-right">
+                <a href="http://www.sec.gov/Archives/edgar/data/51434/000005143426000019/xslF345X03/form4.xml" target="_blank" class="text-zinc-600 hover:text-white transition-colors">
+                    <svg class="w-4 h-4 inline" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2.5"><path d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
+                </a>
+            </td>
+        </tr>
+        
+        <tr class="table-row border-b border-zinc-800/60 hover:bg-zinc-800/40 transition-all duration-150" data-label="STRONG_BUY_SIGNAL">
+            <td class="py-2 px-4">
+                <div class="flex items-center gap-3">
+                    <div class="w-7 h-7 rounded bg-zinc-800 flex items-center justify-center font-black text-zinc-500 border border-zinc-700 text-[10px]">
+                        H
+                    </div>
+                    <div>
+                        <div class="font-black text-zinc-100 text-sm leading-none tracking-tighter">HLXC</div>
+                        <div class="text-[9px] text-blue-400 font-bold mt-0.5 uppercase tracking-wider">Chen Bihua</div>
+                    </div>
+                </div>
+            </td>
+            <td class="py-2 px-4">
+                <div class="text-[11px] font-bold text-zinc-200">$10.00</div>
+                <div class="text-[9px] text-zinc-500 font-semibold uppercase tracking-tighter">+800,000 shares</div>
+            </td>
+            <td class="py-2 px-4">
+                <div class="text-xs font-black text-zinc-100 tracking-tight">+$8,000,000</div>
+                <div class="text-[9px] text-zinc-500 font-bold uppercase tracking-widest mt-0.5">New own</div>
+            </td>
+            <td class="py-2 px-4">
+                <div class="inline-flex items-center px-1.5 py-0.5 rounded text-[8px] font-black uppercase tracking-widest mb-1 bg-emerald-600 text-white shadow-[0_0_10px_rgba(16,185,129,0.2)]">
+                    STRONG_BUY_SIGNAL • 6.5
+                </div>
+                <ul class="text-[10px] text-zinc-400 leading-tight space-y-0.5 list-none">
+                    <li>Indirect ownership (reduced conviction)</li>
+                </ul>
+            </td>
+            <td class="py-2 px-4 text-right">
+                <a href="http://www.sec.gov/Archives/edgar/data/2099656/000121390026009021/xslF345X03/ownership.xml" target="_blank" class="text-zinc-600 hover:text-white transition-colors">
+                    <svg class="w-4 h-4 inline" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2.5"><path d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
+                </a>
+            </td>
+        </tr>
+        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <script>
+        function applyFilter(label) {
+            const rows = document.querySelectorAll('.table-row');
+            const buttons = document.querySelectorAll('.filter-btn');
+            
+            buttons.forEach(btn => {
+                if (btn.getAttribute('onclick').includes("'" + label + "'")) {
+                    btn.classList.add('active');
+                } else {
+                    btn.classList.remove('active');
+                }
+            });
+
+            rows.forEach(row => {
+                row.style.display = (label === 'ALL' || row.getAttribute('data-label') === label) ? 'table-row' : 'none';
+            });
+        }
+        </script>
+    </body>
+    </html>
+    
