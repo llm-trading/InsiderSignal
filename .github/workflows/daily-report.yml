@@ -54,7 +54,7 @@ jobs:
         run: |
           git config --global user.name "sonua[bot]"
           git config --global user.email "sonua[bot]@mazdoor.com"
-          git pull origin master --rebase  # Get any updates from previous runs
+          git pull origin main --rebase  # Get any updates from previous runs
       # -----------------
       
       - name: Run Pipeline
