@@ -1,0 +1,30 @@
+# Web Scraping & Parsing
+beautifulsoup4==4.14.3
+seleniumbase==4.47.1
+selenium==4.41.0
+requests==2.32.5
+lxml==6.0.2
+
+# SEC Edgar API
+edgartools==5.25.1
+
+# Financial Data
+yfinance==1.2.0
+pandas==3.0.1
+numpy==2.4.2
+
+# Date/Time Handling
+python-dateutil==2.9.0.post0
+pytz==2025.2
+
+# HTTP Client (edgartools dependency)
+httpx==0.28.1
+httpcore==1.0.9
+certifi==2026.2.25
+charset-normalizer==3.4.4
+idna==3.11
+urllib3==2.6.3
+
+# Additional Required Dependencies
+soupsieve==2.8.3
+lxml-html-clean==0.4.4

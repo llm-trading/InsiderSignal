@@ -1,0 +1,89 @@
+name: Generate Daily Insider Signal Report
+
+on:
+  # Run daily at 6:35 AM ET (10:35 AM UTC during EDT, 11:35 AM UTC during EST)
+  schedule:
+    - cron: '35 10 * * *'  # 6:35 AM EDT / 5:35 AM EST
+  
+  # Allow manual trigger
+  workflow_dispatch:
+
+# Prevents multiple pipeline runs from running simultaneously and causing Git merge conflicts
+concurrency:
+  group: insider-signal-pipeline
+  cancel-in-progress: false
+
+jobs:
+  generate-report:
+    runs-on: ubuntu-latest
+    
+    permissions:
+      contents: write
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0  # Ensures full history is available for syncing
+      
+      # --- RANDOM JITTER STEP ---
+      - name: Random Jitter Delay
+        run: |
+          # Sleep for a random time between 1 and 120 seconds (up to 2 mins)
+          jitter=$(( ( RANDOM % 120 ) + 1 ))
+          echo "[*] Adding random jitter of $jitter seconds to avoid detection..."
+          sleep $jitter
+      # ---------------------------
+      
+      - name: Set up Python 3.11
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+          cache: 'pip'
+          cache-dependency-path: 'requirements.txt'
+      
+      - name: Install Dependencies
+        run: |
+          pip install -r requirements.txt
+          sudo apt-get update
+          sbase install chromedriver
+          sudo apt-get install -y xvfb
+      
+      # --- SYNC STEP ---
+      - name: Pull latest changes
+        run: |
+          git config --global user.name "sonua[bot]"
+          git config --global user.email "sonua[bot]@mazdoor.com"
+          git pull origin master --rebase  # Get any updates from previous runs
+      # -----------------
+      
+      - name: Run Pipeline
+        run: python main.py
+        env:
+          PYTHONUNBUFFERED: "1"
+      
+      - name: Cleanup Temp Files
+        if: always()  # Ensures cleanup even if the pipeline crashes
+        run: |
+          rm -rf downloaded_files/
+          find . -name "*.lock" -delete
+          echo "[✓] Temporary SeleniumBase files and locks cleared."
+      
+      - name: Get current date
+        id: date
+        run: echo "date=$(date +'%Y-%m-%d %H:%M UTC')" >> $GITHUB_OUTPUT
+      
+      - name: Stage all generated files
+        run: |
+          git add -f reports/*.html index.html logs/*.log cache/*.db output/*.json 2>/dev/null || true
+          git status
+      
+      - name: Commit Generated Files
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: "Daily report: Run #${{ github.run_number }} - ${{ steps.date.outputs.date }}"
+          commit_user_name: "sonua[bot]"
+          commit_user_email: "sonua[bot]@mazdoor.com"
+          commit_author: "sonua[bot] <sonua[bot]@mazdoor.com>"
+          skip_fetch: true
+          skip_checkout: true
