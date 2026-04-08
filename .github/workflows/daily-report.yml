@@ -81,7 +81,10 @@ jobs:
       - name: Commit Generated Files
         uses: stefanzweifel/git-auto-commit-action@v5
         with:
-          commit_message: "Daily report: Run #${{ github.run_number }} - ${{ steps.date.outputs.date }}"
+          commit_message: |
+             Run #${{ github.run_number }} - ${{ steps.date.outputs.date }}: Daily report by Sonua(mazdoor)
+
+             Signed-off-by: Sonua[bot] <sonua[bot]@mazdoor.com>
           commit_user_name: "sonua[bot]"
           commit_user_email: "sonua[bot]@mazdoor.com"
           commit_author: "sonua[bot] <sonua[bot]@mazdoor.com>"
