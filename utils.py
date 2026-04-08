@@ -4,6 +4,9 @@ import time
 import logging
 from bs4 import BeautifulSoup
 from seleniumbase import SB
+from datetime import datetime
+import math
+
 
 logger = logging.getLogger(__name__)
 
@@ -97,3 +100,20 @@ def fetch_openinsider_table(url: str) -> dict:
     except Exception as e:
         logger.error(f"Failed to fetch OpenInsider page: {str(e)}")
         return {'rows': []}
+
+
+def compute_time_decay(trade_date_str, current_date=None, decay_lambda=0.05):
+    if trade_date_str is None:
+        return 1.0  # fallback (no penalty)
+
+    try:
+        trade_date = datetime.strptime(trade_date_str, "%Y-%m-%d")
+        current_date = current_date or datetime.utcnow()
+
+        days = (current_date - trade_date).days
+        days = max(days, 0)
+
+        return math.exp(-decay_lambda * days)
+
+    except:
+        return 1.0  # fail-safe

@@ -6,6 +6,7 @@ Generates buy signals from enriched insider trading data.
 import math
 import logging
 from typing import Dict, List, Optional, Tuple, Any
+from utils import compute_time_decay
 
 
 class SignalGenerator:
@@ -349,51 +350,74 @@ class SignalGenerator:
         """
         if not transaction_results:
             return None
-        
-        weighted_sum = 0.0
-        total_weight = 0.0
-        max_score = 0.0
-        
+
+        weighted_sum = 0
+        total_weight = 0
+        max_score = 0
+
+        decay_weight_sum = 0
+
         for tx in transaction_results:
             score = tx.get("score")
             C = tx.get("C")
             Q = tx.get("Q")
-            
+            trade_date = tx.get("Trade Date")
+
             if score is None:
                 continue
-            
-            # Default fallback if missing
+
             C = C if C is not None else 0.5
             Q = Q if Q is not None else 0.5
-            
-            weight = 0.6 * C + 0.4 * Q
-            
-            weighted_sum += score * weight
-            total_weight += weight
-            
-            max_score = max(max_score, score)
-        
+
+            base_weight = 0.6 * C + 0.4 * Q
+
+            decay = compute_time_decay(trade_date)
+
+            final_weight = base_weight * decay
+
+            weighted_sum += score * final_weight
+            total_weight += final_weight
+
+            decay_weight_sum += decay
+
+            # 🔥 APPLY DECAY TO MAX SCORE
+            decayed_score = score * decay
+            max_score = max(max_score, decayed_score)
+
         if total_weight == 0:
             return None
-        
+
         weighted_score = weighted_sum / total_weight
-        
-        # Cluster effect
+
         num_insiders = len(transaction_results)
         cluster_adjustment = min(1.0, math.log(1 + num_insiders) / 2)
-        
-        # Final aggregation
-        final_score = (
+
+        # 🔥 DECAY AWARE FINAL SCORE
+        raw_score = (
             0.6 * weighted_score +
             0.3 * max_score +
             0.1 * cluster_adjustment
         )
-        
+
+        avg_decay = decay_weight_sum / max(1, len(transaction_results))
+
+        # 🔥 HARD DECAY PENALTY
+        if avg_decay < 0.2:
+            decay_penalty = 0.5
+        elif avg_decay < 0.4:
+            decay_penalty = 0.75
+        else:
+            decay_penalty = 1.0
+
+        final_score = raw_score * decay_penalty
+
         return {
             "ticker_score": final_score,
             "weighted_score": weighted_score,
             "max_score": max_score,
             "cluster_factor": cluster_adjustment,
+            "avg_decay_factor": avg_decay,
+            "decay_penalty": decay_penalty,
             "num_insiders": num_insiders,
             "signal": self.classify(final_score)
         }
@@ -484,6 +508,16 @@ class SignalGenerator:
             
             if ticker_signal.get("weighted_score", 0) < 0.5:
                 bads.append("Overall insider consensus is weak")
+        
+        # Time decay insight
+        if ticker_signal:
+            avg_decay = ticker_signal.get("avg_decay_factor")
+            
+            if avg_decay is not None:
+                if avg_decay > 0.7:
+                    goods.append("Recent insider activity (high relevance)")
+                elif avg_decay < 0.3:
+                    bads.append("Insider activity is stale (signal may have played out)")
         
         return goods, bads
     
