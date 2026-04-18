@@ -1,0 +1,2286 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Insider Signal Report - April 18, 2026</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        body { 
+            font-family: 'Inter', sans-serif; 
+            background-color: #0c0c0e; 
+            color: #d4d4d8; 
+            margin: 0; 
+            padding: 0; 
+        }
+        * { font-style: normal !important; }
+        
+        .signal-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        
+        .signal-table th {
+            background: #18181b;
+            padding: 12px 16px;
+            text-align: left;
+            font-weight: 800;
+            text-transform: uppercase;
+            font-size: 10px;
+            letter-spacing: 0.1em;
+            color: #71717a;
+            border-bottom: 2px solid #27272a;
+            position: sticky;
+            top: 0;
+            z-index: 10;
+        }
+        
+        .signal-table td {
+            padding: 12px 16px;
+            border-bottom: 1px solid #27272a;
+            vertical-align: top;
+        }
+        
+        .signal-table tbody tr {
+            transition: background-color 0.2s;
+        }
+        
+        .signal-table tbody tr:hover {
+            background: #18181b;
+        }
+        
+        .ticker-icon {
+            width: 32px;
+            height: 32px;
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 900;
+            font-size: 14px;
+            margin-right: 12px;
+        }
+        
+        .signal-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 6px 12px;
+            border-radius: 6px;
+            font-weight: 700;
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+        
+        .signal-strong-buy {
+            background: #065f46;
+            color: #d1fae5;
+            border: 1px solid #10b981;
+            box-shadow: 0 0 20px rgba(16, 185, 129, 0.3);
+        }
+        
+        .signal-buy {
+            background: #1e3a8a;
+            color: #dbeafe;
+            border: 1px solid #3b82f6;
+            box-shadow: 0 0 20px rgba(59, 130, 246, 0.3);
+        }
+        
+        .signal-weak {
+            background: #3f3f46;
+            color: #d4d4d8;
+            border: 1px solid #52525b;
+        }
+        
+        .signal-noise {
+            background: #7f1d1d;
+            color: #fecaca;
+            border: 1px solid #dc2626;
+            box-shadow: 0 0 20px rgba(220, 38, 38, 0.3);
+        }
+        
+        .factor-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        
+        .factor-list li {
+            padding: 4px 0;
+            font-size: 12px;
+            line-height: 1.5;
+        }
+        
+        .factor-list li:before {
+            content: "•";
+            margin-right: 8px;
+            font-weight: 900;
+        }
+        
+        .goods li:before {
+            color: #10b981;
+        }
+        
+        .bads li:before {
+            color: #ef4444;
+        }
+        
+        .filter-btn {
+            padding: 8px 16px;
+            border-radius: 6px;
+            font-weight: 700;
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            border: 2px solid transparent;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        
+        .filter-btn:hover {
+            transform: translateY(-1px);
+        }
+        
+        .filter-btn.active {
+            border-color: currentColor;
+        }
+        
+        .filter-all {
+            background: #27272a;
+            color: #d4d4d8;
+        }
+        
+        .filter-strong-buy {
+            background: #065f46;
+            color: #d1fae5;
+        }
+        
+        .filter-buy {
+            background: #1e3a8a;
+            color: #dbeafe;
+        }
+        
+        .filter-weak {
+            background: #3f3f46;
+            color: #d4d4d8;
+        }
+        
+        .filter-noise {
+            background: #7f1d1d;
+            color: #fecaca;
+        }
+        
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #0c0c0e; }
+        ::-webkit-scrollbar-thumb { background: #27272a; border-radius: 10px; }
+    </style>
+</head>
+<body class="p-4 md:p-6">
+    <div class="max-w-7xl mx-auto">
+        <header class="mb-8">
+            <div class="space-y-3">
+                <h1 class="text-3xl font-black text-white tracking-tighter uppercase leading-none">
+                    Insider Signal Intelligence
+                </h1>
+                <div id="live-clock" class="text-sm font-bold text-zinc-400">
+                    Loading...
+                </div>
+                <div id="data-timestamp" class="text-xs text-zinc-600" data-timestamp="2026-04-18T11:13:23">
+                    Data Generated: Loading...
+                </div>
+            </div>
+        </header>
+
+        <div class="mb-6 flex flex-wrap gap-3">
+            <button class="filter-btn filter-all active" onclick="filterSignals('all')" data-filter="all">
+                All (54)
+            </button>
+            <button class="filter-btn filter-strong-buy" onclick="filterSignals('STRONG_BUY_SIGNAL')" data-filter="STRONG_BUY_SIGNAL">
+                Strong Buy (13)
+            </button>
+            <button class="filter-btn filter-buy" onclick="filterSignals('BUY_SIGNAL')" data-filter="BUY_SIGNAL">
+                Buy (40)
+            </button>
+            <button class="filter-btn filter-weak" onclick="filterSignals('WEAK_SIGNAL')" data-filter="WEAK_SIGNAL">
+                Weak (1)
+            </button>
+            <button class="filter-btn filter-noise" onclick="filterSignals('NOISE')" data-filter="NOISE">
+                Noise (0)
+            </button>
+        </div>
+
+        <div class="bg-zinc-900/10 border border-zinc-800 rounded-xl overflow-hidden shadow-2xl">
+            <div class="overflow-x-auto max-h-[70vh]">
+                <table class="signal-table">
+                    <thead>
+                        <tr>
+                            <th style="width: 200px;">Entity</th>
+                            <th style="width: 150px;">Latest Activity</th>
+                            <th style="width: 180px;">Signal & Score</th>
+                            <th style="width: 300px;">Positive Factors</th>
+                            <th style="width: 300px;">Risk Factors</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr data-signal="STRONG_BUY_SIGNAL">
+                            <td>
+                                <div class="flex items-center">
+                                    <div class="ticker-icon bg-orange-600 text-white">
+                                        N
+                                    </div>
+                                    <div>
+                                        <div class="font-bold text-white text-sm">NKE</div>
+                                        <div class="text-zinc-500 text-xs">Nike, Inc.</div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="text-sm font-semibold text-zinc-300">2026-04-13</div>
+                                <div class="text-xs text-zinc-500">2 insiders</div>
+                            </td>
+                            <td>
+                                <div class="signal-badge signal-strong-buy">
+                                    <span>Strong Buy</span>
+                                    <span class="font-black">0.91</span>
+                                </div>
+                            </td>
+                            <td>
+                                <ul class="factor-list goods">
+                                    <li>Insider buying after negative earnings reaction (1D)</li>
+                                    <li>Sustained negative reaction post earnings (3D)</li>
+                                    <li>Cluster buying detected (2 insiders)</li>
+                                    <li>At least one very strong insider signal present</li>
+                                    <li>Recent insider activity (high relevance)</li>
+                                </ul>
+                            </td>
+                            <td>
+                                <ul class="factor-list bads">
+                                    <li>Low conviction relative to company size</li>
+                                    <li>Stock not significantly discounted</li>
+                                </ul>
+                            </td>
+                        </tr>
+                        <tr data-signal="BUY_SIGNAL">
+                            <td>
+                                <div class="flex items-center">
+                                    <div class="ticker-icon bg-orange-600 text-white">
+                                        O
+                                    </div>
+                                    <div>
+                                        <div class="font-bold text-white text-sm">OSCR</div>
+                                        <div class="text-zinc-500 text-xs">Oscar Health, Inc.</div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="text-sm font-semibold text-zinc-300">2026-04-06</div>
+                                <div class="text-xs text-zinc-500">1 insider</div>
+                            </td>
+                            <td>
+                                <div class="signal-badge signal-buy">
+                                    <span>Buy</span>
+                                    <span class="font-black">0.73</span>
+                                </div>
+                            </td>
+                            <td>
+                                <ul class="factor-list goods">
+                                    <li>Sector weakness — insider buying is contrarian</li>
+                                    <li>Recent insider activity (high relevance)</li>
+                                </ul>
+                            </td>
+                            <td>
+                                <ul class="factor-list bads">
+                                    <li>Low conviction relative to company size</li>
+                                    <li>Stock has already moved significantly above insider buy price</li>
+                                    <li>Single insider — weaker confirmation</li>
+                                </ul>
+                            </td>
+                        </tr>
+                        <tr data-signal="BUY_SIGNAL">
+                            <td>
+                                <div class="flex items-center">
+                                    <div class="ticker-icon bg-orange-600 text-white">
+                                        M
+                                    </div>
+                                    <div>
+                                        <div class="font-bold text-white text-sm">MESO</div>
+                                        <div class="text-zinc-500 text-xs">Mesoblast Ltd</div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="text-sm font-semibold text-zinc-300">2026-04-04</div>
+                                <div class="text-xs text-zinc-500">1 insider</div>
+                            </td>
+                            <td>
+                                <div class="signal-badge signal-buy">
+                                    <span>Buy</span>
+                                    <span class="font-black">0.63</span>
+                                </div>
+                            </td>
+                            <td>
+                                <ul class="factor-list goods">
+                                    <li>Sector weakness — insider buying is contrarian</li>
+                                    <li>Repeated buying by insider — strong conviction signal</li>
+                                    <li>Recent insider activity (high relevance)</li>
+                                </ul>
+                            </td>
+                            <td>
+                                <ul class="factor-list bads">
+                                    <li>Stock not significantly discounted</li>
+                                    <li>Stock has already moved significantly above insider buy price</li>
+                                    <li>Single insider — weaker confirmation</li>
+                                </ul>
+                            </td>
+                        </tr>
+                        <tr data-signal="STRONG_BUY_SIGNAL">
+                            <td>
+                                <div class="flex items-center">
+                                    <div class="ticker-icon bg-blue-600 text-white">
+                                        S
+                                    </div>
+                                    <div>
+                                        <div class="font-bold text-white text-sm">SVC</div>
+                                        <div class="text-zinc-500 text-xs">Service Properties Trust</div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="text-sm font-semibold text-zinc-300">2026-04-02</div>
+                                <div class="text-xs text-zinc-500">1 insider</div>
+                            </td>
+                            <td>
+                                <div class="signal-badge signal-strong-buy">
+                                    <span>Strong Buy</span>
+                                    <span class="font-black">0.82</span>
+                                </div>
+                            </td>
+                            <td>
+                                <ul class="factor-list goods">
+                                    <li>High conviction: insider buying is 5.36% of market cap</li>
+                                    <li>Insider buying after negative earnings reaction (1D)</li>
+                                    <li>Sustained negative reaction post earnings (3D)</li>
+                                    <li>At least one very strong insider signal present</li>
+                                    <li>Recent insider activity (high relevance)</li>
+                                </ul>
+                            </td>
+                            <td>
+                                <ul class="factor-list bads">
+                                    <li>Stock not significantly discounted</li>
+                                    <li>Stock has already moved significantly above insider buy price</li>
+                                    <li>Single insider — weaker confirmation</li>
+                                </ul>
+                            </td>
+                        </tr>
+                        <tr data-signal="BUY_SIGNAL">
+                            <td>
+                                <div class="flex items-center">
+                                    <div class="ticker-icon bg-pink-600 text-white">
+                                        H
+                                    </div>
+                                    <div>
+                                        <div class="font-bold text-white text-sm">HMH</div>
+                                        <div class="text-zinc-500 text-xs">Hmh Holding Inc</div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="text-sm font-semibold text-zinc-300">2026-04-02</div>
+                                <div class="text-xs text-zinc-500">1 insider</div>
+                            </td>
+                            <td>
+                                <div class="signal-badge signal-buy">
+                                    <span>Buy</span>
+                                    <span class="font-black">0.72</span>
+                                </div>
+                            </td>
+                            <td>
+                                <ul class="factor-list goods">
+                                    <li>Sector weakness — insider buying is contrarian</li>
+                                    <li>Recent insider activity (high relevance)</li>
+                                </ul>
+                            </td>
+                            <td>
+                                <ul class="factor-list bads">
+                                    <li>Low conviction relative to company size</li>
+                                    <li>Single insider — weaker confirmation</li>
+                                </ul>
+                            </td>
+                        </tr>
+                        <tr data-signal="BUY_SIGNAL">
+                            <td>
+                                <div class="flex items-center">
+                                    <div class="ticker-icon bg-pink-600 text-white">
+                                        A
+                                    </div>
+                                    <div>
+                                        <div class="font-bold text-white text-sm">ANVS</div>
+                                        <div class="text-zinc-500 text-xs">Annovis Bio, Inc.</div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="text-sm font-semibold text-zinc-300">2026-04-02</div>
+                                <div class="text-xs text-zinc-500">1 insider</div>
+                            </td>
+                            <td>
+                                <div class="signal-badge signal-buy">
+                                    <span>Buy</span>
+                                    <span class="font-black">0.67</span>
+                                </div>
+                            </td>
+                            <td>
+                                <ul class="factor-list goods">
+                                    <li>High conviction: insider buying is 2.32% of market cap</li>
+                                    <li>Insider buying after negative earnings reaction (1D)</li>
+                                    <li>Current price below insider buy price (entry still attractive)</li>
+                                    <li>Sector weakness — insider buying is contrarian</li>
+                                    <li>Recent insider activity (high relevance)</li>
+                                </ul>
+                            </td>
+                            <td>
+                                <ul class="factor-list bads">
+                                    <li>Stock not significantly discounted</li>
+                                    <li>Single insider — weaker confirmation</li>
+                                </ul>
+                            </td>
+                        </tr>
+                        <tr data-signal="STRONG_BUY_SIGNAL">
+                            <td>
+                                <div class="flex items-center">
+                                    <div class="ticker-icon bg-blue-600 text-white">
+                                        Z
+                                    </div>
+                                    <div>
+                                        <div class="font-bold text-white text-sm">ZBIO</div>
+                                        <div class="text-zinc-500 text-xs">Zenas Biopharma, Inc.</div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="text-sm font-semibold text-zinc-300">2026-03-31</div>
+                                <div class="text-xs text-zinc-500">1 insider</div>
+                            </td>
+                            <td>
+                                <div class="signal-badge signal-strong-buy">
+                                    <span>Strong Buy</span>
+                                    <span class="font-black">0.81</span>
+                                </div>
+                            </td>
+                            <td>
+                                <ul class="factor-list goods">
+                                    <li>Insider buying after negative earnings reaction (1D)</li>
+                                    <li>Sustained negative reaction post earnings (3D)</li>
+                                    <li>Sector weakness — insider buying is contrarian</li>
+                                    <li>At least one very strong insider signal present</li>
+                                    <li>Recent insider activity (high relevance)</li>
+                                </ul>
+                            </td>
+                            <td>
+                                <ul class="factor-list bads">
+                                    <li>Stock not significantly discounted</li>
+                                    <li>Single insider — weaker confirmation</li>
+                                </ul>
+                            </td>
+                        </tr>
+                        <tr data-signal="BUY_SIGNAL">
+                            <td>
+                                <div class="flex items-center">
+                                    <div class="ticker-icon bg-pink-600 text-white">
+                                        C
+                                    </div>
+                                    <div>
+                                        <div class="font-bold text-white text-sm">CNTB</div>
+                                        <div class="text-zinc-500 text-xs">Connect Biopharma Holdings Ltd</div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="text-sm font-semibold text-zinc-300">2026-03-31</div>
+                                <div class="text-xs text-zinc-500">1 insider</div>
+                            </td>
+                            <td>
+                                <div class="signal-badge signal-buy">
+                                    <span>Buy</span>
+                                    <span class="font-black">0.61</span>
+                                </div>
+                            </td>
+                            <td>
+                                <ul class="factor-list goods">
+                                    <li>High conviction: insider buying is 2.52% of market cap</li>
+                                    <li>Current price below insider buy price (entry still attractive)</li>
+                                    <li>Sector weakness — insider buying is contrarian</li>
+                                    <li>Recent insider activity (high relevance)</li>
+                                </ul>
+                            </td>
+                            <td>
+                                <ul class="factor-list bads">
+                                    <li>Single insider — weaker confirmation</li>
+                                </ul>
+                            </td>
+                        </tr>
+                        <tr data-signal="BUY_SIGNAL">
+                            <td>
+                                <div class="flex items-center">
+                                    <div class="ticker-icon bg-orange-600 text-white">
+                                        S
+                                    </div>
+                                    <div>
+                                        <div class="font-bold text-white text-sm">SVRE</div>
+                                        <div class="text-zinc-500 text-xs">Saverone 2014 Ltd.</div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="text-sm font-semibold text-zinc-300">2026-03-30</div>
+                                <div class="text-xs text-zinc-500">1 insider</div>
+                            </td>
+                            <td>
+                                <div class="signal-badge signal-buy">
+                                    <span>Buy</span>
+                                    <span class="font-black">0.63</span>
+                                </div>
+                            </td>
+                            <td>
+                                <ul class="factor-list goods">
+                                    <li>High conviction: insider buying is 1568.17% of market cap</li>
+                                    <li>Stock is in drawdown — potential bottoming signal</li>
+                                    <li>Recent insider activity (high relevance)</li>
+                                </ul>
+                            </td>
+                            <td>
+                                <ul class="factor-list bads">
+                                    <li>Stock has already moved significantly above insider buy price</li>
+                                    <li>Sector already strong — less contrarian edge</li>
+                                    <li>Single insider — weaker confirmation</li>
+                                </ul>
+                            </td>
+                        </tr>
+                        <tr data-signal="WEAK_SIGNAL">
+                            <td>
+                                <div class="flex items-center">
+                                    <div class="ticker-icon bg-cyan-600 text-white">
+                                        N
+                                    </div>
+                                    <div>
+                                        <div class="font-bold text-white text-sm">NAVN</div>
+                                        <div class="text-zinc-500 text-xs">Navan, Inc.</div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="text-sm font-semibold text-zinc-300">2026-03-30</div>
+                                <div class="text-xs text-zinc-500">1 insider</div>
+                            </td>
+                            <td>
+                                <div class="signal-badge signal-weak">
+                                    <span>Weak Signal</span>
+                                    <span class="font-black">0.60</span>
+                                </div>
+                            </td>
+                            <td>
+                                <ul class="factor-list goods">
+                                    <li>Stock is in drawdown — potential bottoming signal</li>
+                                    <li>Recent insider activity (high relevance)</li>
+                                </ul>
+                            </td>
+                            <td>
+                                <ul class="factor-list bads">
+                                    <li>Low conviction relative to company size</li>
+                                    <li>Insider buying after strong positive move (less edge)</li>
+                                    <li>Stock has already moved significantly above insider buy price</li>
+                                    <li>Sector already strong — less contrarian edge</li>
+                                    <li>Single insider — weaker confirmation</li>
+                                </ul>
+                            </td>
+                        </tr>
+                        <tr data-signal="STRONG_BUY_SIGNAL">
+                            <td>
+                                <div class="flex items-center">
+                                    <div class="ticker-icon bg-emerald-600 text-white">
+                                        W
+                                    </div>
+                                    <div>
+                                        <div class="font-bold text-white text-sm">WVE</div>
+                                        <div class="text-zinc-500 text-xs">Wave Life Sciences Ltd.</div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="text-sm font-semibold text-zinc-300">2026-03-26</div>
+                                <div class="text-xs text-zinc-500">1 insider</div>
+                            </td>
+                            <td>
+                                <div class="signal-badge signal-strong-buy">
+                                    <span>Strong Buy</span>
+                                    <span class="font-black">0.81</span>
+                                </div>
+                            </td>
+                            <td>
+                                <ul class="factor-list goods">
+                                    <li>High conviction: insider buying is 3.87% of market cap</li>
+                                    <li>Insider buying after negative earnings reaction (1D)</li>
+                                    <li>Sector weakness — insider buying is contrarian</li>
+                                    <li>At least one very strong insider signal present</li>
+                                    <li>Recent insider activity (high relevance)</li>
+                                </ul>
+                            </td>
+                            <td>
+                                <ul class="factor-list bads">
+                                    <li>Stock not significantly discounted</li>
+                                    <li>Stock has already moved significantly above insider buy price</li>
+                                    <li>Single insider — weaker confirmation</li>
+                                </ul>
+                            </td>
+                        </tr>
+                        <tr data-signal="STRONG_BUY_SIGNAL">
+                            <td>
+                                <div class="flex items-center">
+                                    <div class="ticker-icon bg-purple-600 text-white">
+                                        P
+                                    </div>
+                                    <div>
+                                        <div class="font-bold text-white text-sm">PICS</div>
+                                        <div class="text-zinc-500 text-xs">Pics N.V.</div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="text-sm font-semibold text-zinc-300">2026-03-26</div>
+                                <div class="text-xs text-zinc-500">2 insiders</div>
+                            </td>
+                            <td>
+                                <div class="signal-badge signal-strong-buy">
+                                    <span>Strong Buy</span>
+                                    <span class="font-black">0.80</span>
+                                </div>
+                            </td>
+                            <td>
+                                <ul class="factor-list goods">
+                                    <li>Cluster buying detected (2 insiders)</li>
+                                    <li>At least one very strong insider signal present</li>
+                                    <li>Recent insider activity (high relevance)</li>
+                                </ul>
+                            </td>
+                            <td>
+                                <ul class="factor-list bads">
+                                    <li>Low conviction relative to company size</li>
+                                    <li>Stock not significantly discounted</li>
+                                    <li>Stock has already moved significantly above insider buy price</li>
+                                    <li>Sector already strong — less contrarian edge</li>
+                                </ul>
+                            </td>
+                        </tr>
+                        <tr data-signal="BUY_SIGNAL">
+                            <td>
+                                <div class="flex items-center">
+                                    <div class="ticker-icon bg-blue-600 text-white">
+                                        I
+                                    </div>
+                                    <div>
+                                        <div class="font-bold text-white text-sm">IAUX</div>
+                                        <div class="text-zinc-500 text-xs">I-80 Gold Corp.</div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="text-sm font-semibold text-zinc-300">2026-03-25</div>
+                                <div class="text-xs text-zinc-500">1 insider</div>
+                            </td>
+                            <td>
+                                <div class="signal-badge signal-buy">
+                                    <span>Buy</span>
+                                    <span class="font-black">0.68</span>
+                                </div>
+                            </td>
+                            <td>
+                                <ul class="factor-list goods">
+                                    <li>Recent insider activity (high relevance)</li>
+                                </ul>
+                            </td>
+                            <td>
+                                <ul class="factor-list bads">
+                                    <li>Low conviction relative to company size</li>
+                                    <li>Stock not significantly discounted</li>
+                                    <li>Stock has already moved significantly above insider buy price</li>
+                                    <li>Single insider — weaker confirmation</li>
+                                </ul>
+                            </td>
+                        </tr>
+                        <tr data-signal="BUY_SIGNAL">
+                            <td>
+                                <div class="flex items-center">
+                                    <div class="ticker-icon bg-pink-600 text-white">
+                                        B
+                                    </div>
+                                    <div>
+                                        <div class="font-bold text-white text-sm">BORR</div>
+                                        <div class="text-zinc-500 text-xs">Borr Drilling Ltd</div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="text-sm font-semibold text-zinc-300">2026-03-24</div>
+                                <div class="text-xs text-zinc-500">1 insider</div>
+                            </td>
+                            <td>
+                                <div class="signal-badge signal-buy">
+                                    <span>Buy</span>
+                                    <span class="font-black">0.65</span>
+                                </div>
+                            </td>
+                            <td>
+                                <ul class="factor-list goods">
+                                    <li>Sector weakness — insider buying is contrarian</li>
+                                    <li>Recent insider activity (high relevance)</li>
+                                </ul>
+                            </td>
+                            <td>
+                                <ul class="factor-list bads">
+                                    <li>Low conviction relative to company size</li>
+                                    <li>Stock not significantly discounted</li>
+                                    <li>Single insider — weaker confirmation</li>
+                                </ul>
+                            </td>
+                        </tr>
+                        <tr data-signal="STRONG_BUY_SIGNAL">
+                            <td>
+                                <div class="flex items-center">
+                                    <div class="ticker-icon bg-blue-600 text-white">
+                                        J
+                                    </div>
+                                    <div>
+                                        <div class="font-bold text-white text-sm">JAN</div>
+                                        <div class="text-zinc-500 text-xs">Janus Living, Inc.</div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="text-sm font-semibold text-zinc-300">2026-03-23</div>
+                                <div class="text-xs text-zinc-500">2 insiders</div>
+                            </td>
+                            <td>
+                                <div class="signal-badge signal-strong-buy">
+                                    <span>Strong Buy</span>
+                                    <span class="font-black">0.82</span>
+                                </div>
+                            </td>
+                            <td>
+                                <ul class="factor-list goods">
+                                    <li>Cluster buying detected (2 insiders)</li>
+                                    <li>At least one very strong insider signal present</li>
+                                    <li>Recent insider activity (high relevance)</li>
+                                </ul>
+                            </td>
+                            <td>
+                                <ul class="factor-list bads">
+                                    <li>Low conviction relative to company size</li>
+                                </ul>
+                            </td>
+                        </tr>
+                        <tr data-signal="STRONG_BUY_SIGNAL">
+                            <td>
+                                <div class="flex items-center">
+                                    <div class="ticker-icon bg-purple-600 text-white">
+                                        F
+                                    </div>
+                                    <div>
+                                        <div class="font-bold text-white text-sm">FRPH</div>
+                                        <div class="text-zinc-500 text-xs">Frp Holdings, Inc.</div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="text-sm font-semibold text-zinc-300">2026-03-23</div>
+                                <div class="text-xs text-zinc-500">1 insider</div>
+                            </td>
+                            <td>
+                                <div class="signal-badge signal-strong-buy">
+                                    <span>Strong Buy</span>
+                                    <span class="font-black">0.79</span>
+                                </div>
+                            </td>
+                            <td>
+                                <ul class="factor-list goods">
+                                    <li>High conviction: insider buying is 2.34% of market cap</li>
+                                    <li>Insider buying after negative earnings reaction (1D)</li>
+                                    <li>Sustained negative reaction post earnings (3D)</li>
+                                    <li>At least one very strong insider signal present</li>
+                                    <li>Recent insider activity (high relevance)</li>
+                                </ul>
+                            </td>
+                            <td>
+                                <ul class="factor-list bads">
+                                    <li>Stock not significantly discounted</li>
+                                    <li>Single insider — weaker confirmation</li>
+                                </ul>
+                            </td>
+                        </tr>
+                        <tr data-signal="STRONG_BUY_SIGNAL">
+                            <td>
+                                <div class="flex items-center">
+                                    <div class="ticker-icon bg-cyan-600 text-white">
+                                        G
+                                    </div>
+                                    <div>
+                                        <div class="font-bold text-white text-sm">GO</div>
+                                        <div class="text-zinc-500 text-xs">Grocery Outlet Holding Corp.</div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="text-sm font-semibold text-zinc-300">2026-03-19</div>
+                                <div class="text-xs text-zinc-500">2 insiders</div>
+                            </td>
+                            <td>
+                                <div class="signal-badge signal-strong-buy">
+                                    <span>Strong Buy</span>
+                                    <span class="font-black">0.84</span>
+                                </div>
+                            </td>
+                            <td>
+                                <ul class="factor-list goods">
+                                    <li>Sector weakness — insider buying is contrarian</li>
+                                    <li>Cluster buying detected (2 insiders)</li>
+                                    <li>At least one very strong insider signal present</li>
+                                    <li>Recent insider activity (high relevance)</li>
+                                </ul>
+                            </td>
+                            <td>
+                                <ul class="factor-list bads">
+                                    <li>Low conviction relative to company size</li>
+                                    <li>Stock has already moved significantly above insider buy price</li>
+                                </ul>
+                            </td>
+                        </tr>
+                        <tr data-signal="STRONG_BUY_SIGNAL">
+                            <td>
+                                <div class="flex items-center">
+                                    <div class="ticker-icon bg-purple-600 text-white">
+                                        N
+                                    </div>
+                                    <div>
+                                        <div class="font-bold text-white text-sm">NSP</div>
+                                        <div class="text-zinc-500 text-xs">Insperity, Inc.</div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="text-sm font-semibold text-zinc-300">2026-03-17</div>
+                                <div class="text-xs text-zinc-500">1 insider</div>
+                            </td>
+                            <td>
+                                <div class="signal-badge signal-strong-buy">
+                                    <span>Strong Buy</span>
+                                    <span class="font-black">0.75</span>
+                                </div>
+                            </td>
+                            <td>
+                                <ul class="factor-list goods">
+                                    <li>Stock is in drawdown — potential bottoming signal</li>
+                                    <li>Recent insider activity (high relevance)</li>
+                                </ul>
+                            </td>
+                            <td>
+                                <ul class="factor-list bads">
+                                    <li>Low conviction relative to company size</li>
+                                    <li>Stock has already moved significantly above insider buy price</li>
+                                    <li>Single insider — weaker confirmation</li>
+                                </ul>
+                            </td>
+                        </tr>
+                        <tr data-signal="BUY_SIGNAL">
+                            <td>
+                                <div class="flex items-center">
+                                    <div class="ticker-icon bg-cyan-600 text-white">
+                                        M
+                                    </div>
+                                    <div>
+                                        <div class="font-bold text-white text-sm">MTN</div>
+                                        <div class="text-zinc-500 text-xs">Vail Resorts Inc</div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="text-sm font-semibold text-zinc-300">2026-03-16</div>
+                                <div class="text-xs text-zinc-500">1 insider</div>
+                            </td>
+                            <td>
+                                <div class="signal-badge signal-buy">
+                                    <span>Buy</span>
+                                    <span class="font-black">0.74</span>
+                                </div>
+                            </td>
+                            <td>
+                                <ul class="factor-list goods">
+                                    <li>Recent insider activity (high relevance)</li>
+                                </ul>
+                            </td>
+                            <td>
+                                <ul class="factor-list bads">
+                                    <li>Low conviction relative to company size</li>
+                                    <li>Stock not significantly discounted</li>
+                                    <li>Single insider — weaker confirmation</li>
+                                </ul>
+                            </td>
+                        </tr>
+                        <tr data-signal="BUY_SIGNAL">
+                            <td>
+                                <div class="flex items-center">
+                                    <div class="ticker-icon bg-blue-600 text-white">
+                                        F
+                                    </div>
+                                    <div>
+                                        <div class="font-bold text-white text-sm">FOX</div>
+                                        <div class="text-zinc-500 text-xs">Fox Corp</div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="text-sm font-semibold text-zinc-300">2026-03-13</div>
+                                <div class="text-xs text-zinc-500">1 insider</div>
+                            </td>
+                            <td>
+                                <div class="signal-badge signal-buy">
+                                    <span>Buy</span>
+                                    <span class="font-black">0.74</span>
+                                </div>
+                            </td>
+                            <td>
+                                <ul class="factor-list goods">
+                                    <li>Current price below insider buy price (entry still attractive)</li>
+                                    <li>Recent insider activity (high relevance)</li>
+                                </ul>
+                            </td>
+                            <td>
+                                <ul class="factor-list bads">
+                                    <li>Low conviction relative to company size</li>
+                                    <li>Single insider — weaker confirmation</li>
+                                </ul>
+                            </td>
+                        </tr>
+                        <tr data-signal="BUY_SIGNAL">
+                            <td>
+                                <div class="flex items-center">
+                                    <div class="ticker-icon bg-orange-600 text-white">
+                                        P
+                                    </div>
+                                    <div>
+                                        <div class="font-bold text-white text-sm">PTLO</div>
+                                        <div class="text-zinc-500 text-xs">Portillo'S Inc.</div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="text-sm font-semibold text-zinc-300">2026-03-13</div>
+                                <div class="text-xs text-zinc-500">1 insider</div>
+                            </td>
+                            <td>
+                                <div class="signal-badge signal-buy">
+                                    <span>Buy</span>
+                                    <span class="font-black">0.67</span>
+                                </div>
+                            </td>
+                            <td>
+                                <ul class="factor-list goods">
+                                    <li>Recent insider activity (high relevance)</li>
+                                </ul>
+                            </td>
+                            <td>
+                                <ul class="factor-list bads">
+                                    <li>Low conviction relative to company size</li>
+                                    <li>Single insider — weaker confirmation</li>
+                                </ul>
+                            </td>
+                        </tr>
+                        <tr data-signal="BUY_SIGNAL">
+                            <td>
+                                <div class="flex items-center">
+                                    <div class="ticker-icon bg-pink-600 text-white">
+                                        R
+                                    </div>
+                                    <div>
+                                        <div class="font-bold text-white text-sm">RDDT</div>
+                                        <div class="text-zinc-500 text-xs">Reddit, Inc.</div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="text-sm font-semibold text-zinc-300">2026-03-13</div>
+                                <div class="text-xs text-zinc-500">1 insider</div>
+                            </td>
+                            <td>
+                                <div class="signal-badge signal-buy">
+                                    <span>Buy</span>
+                                    <span class="font-black">0.64</span>
+                                </div>
+                            </td>
+                            <td>
+                                <ul class="factor-list goods">
+                                    <li>Recent insider activity (high relevance)</li>
+                                </ul>
+                            </td>
+                            <td>
+                                <ul class="factor-list bads">
+                                    <li>Low conviction relative to company size</li>
+                                    <li>Stock has already moved significantly above insider buy price</li>
+                                    <li>Single insider — weaker confirmation</li>
+                                </ul>
+                            </td>
+                        </tr>
+                        <tr data-signal="BUY_SIGNAL">
+                            <td>
+                                <div class="flex items-center">
+                                    <div class="ticker-icon bg-orange-600 text-white">
+                                        S
+                                    </div>
+                                    <div>
+                                        <div class="font-bold text-white text-sm">SUMA</div>
+                                        <div class="text-zinc-500 text-xs">Suma Acquisition Corp</div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="text-sm font-semibold text-zinc-300">2026-03-12</div>
+                                <div class="text-xs text-zinc-500">1 insider</div>
+                            </td>
+                            <td>
+                                <div class="signal-badge signal-buy">
+                                    <span>Buy</span>
+                                    <span class="font-black">0.73</span>
+                                </div>
+                            </td>
+                            <td>
+                                <ul class="factor-list goods">
+                                    <li>Recent insider activity (high relevance)</li>
+                                </ul>
+                            </td>
+                            <td>
+                                <ul class="factor-list bads">
+                                    <li>Single insider — weaker confirmation</li>
+                                </ul>
+                            </td>
+                        </tr>
+                        <tr data-signal="BUY_SIGNAL">
+                            <td>
+                                <div class="flex items-center">
+                                    <div class="ticker-icon bg-orange-600 text-white">
+                                        I
+                                    </div>
+                                    <div>
+                                        <div class="font-bold text-white text-sm">IP</div>
+                                        <div class="text-zinc-500 text-xs">International Paper Co /New/</div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="text-sm font-semibold text-zinc-300">2026-03-11</div>
+                                <div class="text-xs text-zinc-500">1 insider</div>
+                            </td>
+                            <td>
+                                <div class="signal-badge signal-buy">
+                                    <span>Buy</span>
+                                    <span class="font-black">0.66</span>
+                                </div>
+                            </td>
+                            <td>
+                                <ul class="factor-list goods">
+                                    <li>Current price below insider buy price (entry still attractive)</li>
+                                    <li>Recent insider activity (high relevance)</li>
+                                </ul>
+                            </td>
+                            <td>
+                                <ul class="factor-list bads">
+                                    <li>Low conviction relative to company size</li>
+                                    <li>Stock not significantly discounted</li>
+                                    <li>Single insider — weaker confirmation</li>
+                                </ul>
+                            </td>
+                        </tr>
+                        <tr data-signal="BUY_SIGNAL">
+                            <td>
+                                <div class="flex items-center">
+                                    <div class="ticker-icon bg-emerald-600 text-white">
+                                        C
+                                    </div>
+                                    <div>
+                                        <div class="font-bold text-white text-sm">CPNG</div>
+                                        <div class="text-zinc-500 text-xs">Coupang, Inc.</div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="text-sm font-semibold text-zinc-300">2026-03-11</div>
+                                <div class="text-xs text-zinc-500">1 insider</div>
+                            </td>
+                            <td>
+                                <div class="signal-badge signal-buy">
+                                    <span>Buy</span>
+                                    <span class="font-black">0.64</span>
+                                </div>
+                            </td>
+                            <td>
+                                <ul class="factor-list goods">
+                                    <li>Recent insider activity (high relevance)</li>
+                                </ul>
+                            </td>
+                            <td>
+                                <ul class="factor-list bads">
+                                    <li>Low conviction relative to company size</li>
+                                    <li>Stock has already moved significantly above insider buy price</li>
+                                    <li>Single insider — weaker confirmation</li>
+                                </ul>
+                            </td>
+                        </tr>
+                        <tr data-signal="BUY_SIGNAL">
+                            <td>
+                                <div class="flex items-center">
+                                    <div class="ticker-icon bg-orange-600 text-white">
+                                        C
+                                    </div>
+                                    <div>
+                                        <div class="font-bold text-white text-sm">CVSA</div>
+                                        <div class="text-zinc-500 text-xs">Covista Inc.</div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="text-sm font-semibold text-zinc-300">2026-03-10</div>
+                                <div class="text-xs text-zinc-500">1 insider</div>
+                            </td>
+                            <td>
+                                <div class="signal-badge signal-buy">
+                                    <span>Buy</span>
+                                    <span class="font-black">0.66</span>
+                                </div>
+                            </td>
+                            <td>
+                                <ul class="factor-list goods">
+                                    <li>Sector weakness — insider buying is contrarian</li>
+                                    <li>Recent insider activity (high relevance)</li>
+                                </ul>
+                            </td>
+                            <td>
+                                <ul class="factor-list bads">
+                                    <li>Low conviction relative to company size</li>
+                                    <li>Stock has already moved significantly above insider buy price</li>
+                                    <li>Single insider — weaker confirmation</li>
+                                </ul>
+                            </td>
+                        </tr>
+                        <tr data-signal="BUY_SIGNAL">
+                            <td>
+                                <div class="flex items-center">
+                                    <div class="ticker-icon bg-emerald-600 text-white">
+                                        A
+                                    </div>
+                                    <div>
+                                        <div class="font-bold text-white text-sm">AVTR</div>
+                                        <div class="text-zinc-500 text-xs">Avantor, Inc.</div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="text-sm font-semibold text-zinc-300">2026-03-10</div>
+                                <div class="text-xs text-zinc-500">1 insider</div>
+                            </td>
+                            <td>
+                                <div class="signal-badge signal-buy">
+                                    <span>Buy</span>
+                                    <span class="font-black">0.66</span>
+                                </div>
+                            </td>
+                            <td>
+                                <ul class="factor-list goods">
+                                    <li>Sector weakness — insider buying is contrarian</li>
+                                    <li>Recent insider activity (high relevance)</li>
+                                </ul>
+                            </td>
+                            <td>
+                                <ul class="factor-list bads">
+                                    <li>Low conviction relative to company size</li>
+                                    <li>Stock not significantly discounted</li>
+                                    <li>Single insider — weaker confirmation</li>
+                                </ul>
+                            </td>
+                        </tr>
+                        <tr data-signal="BUY_SIGNAL">
+                            <td>
+                                <div class="flex items-center">
+                                    <div class="ticker-icon bg-purple-600 text-white">
+                                        K
+                                    </div>
+                                    <div>
+                                        <div class="font-bold text-white text-sm">KOS</div>
+                                        <div class="text-zinc-500 text-xs">Kosmos Energy Ltd.</div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="text-sm font-semibold text-zinc-300">2026-03-10</div>
+                                <div class="text-xs text-zinc-500">1 insider</div>
+                            </td>
+                            <td>
+                                <div class="signal-badge signal-buy">
+                                    <span>Buy</span>
+                                    <span class="font-black">0.65</span>
+                                </div>
+                            </td>
+                            <td>
+                                <ul class="factor-list goods">
+                                    <li>Sector weakness — insider buying is contrarian</li>
+                                    <li>Recent insider activity (high relevance)</li>
+                                </ul>
+                            </td>
+                            <td>
+                                <ul class="factor-list bads">
+                                    <li>Low conviction relative to company size</li>
+                                    <li>Stock not significantly discounted</li>
+                                    <li>Stock has already moved significantly above insider buy price</li>
+                                    <li>Single insider — weaker confirmation</li>
+                                </ul>
+                            </td>
+                        </tr>
+                        <tr data-signal="BUY_SIGNAL">
+                            <td>
+                                <div class="flex items-center">
+                                    <div class="ticker-icon bg-pink-600 text-white">
+                                        A
+                                    </div>
+                                    <div>
+                                        <div class="font-bold text-white text-sm">ALKT</div>
+                                        <div class="text-zinc-500 text-xs">Alkami Technology, Inc.</div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="text-sm font-semibold text-zinc-300">2026-03-09</div>
+                                <div class="text-xs text-zinc-500">2 insiders</div>
+                            </td>
+                            <td>
+                                <div class="signal-badge signal-buy">
+                                    <span>Buy</span>
+                                    <span class="font-black">0.74</span>
+                                </div>
+                            </td>
+                            <td>
+                                <ul class="factor-list goods">
+                                    <li>High conviction: insider buying is 5.3% of market cap</li>
+                                    <li>Cluster buying detected (2 insiders)</li>
+                                    <li>Recent insider activity (high relevance)</li>
+                                </ul>
+                            </td>
+                            <td>
+                                <ul class="factor-list bads">
+                                    <li>Stock not significantly discounted</li>
+                                    <li>Sector already strong — less contrarian edge</li>
+                                </ul>
+                            </td>
+                        </tr>
+                        <tr data-signal="BUY_SIGNAL">
+                            <td>
+                                <div class="flex items-center">
+                                    <div class="ticker-icon bg-orange-600 text-white">
+                                        C
+                                    </div>
+                                    <div>
+                                        <div class="font-bold text-white text-sm">CSX</div>
+                                        <div class="text-zinc-500 text-xs">Csx Corp</div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="text-sm font-semibold text-zinc-300">2026-03-06</div>
+                                <div class="text-xs text-zinc-500">1 insider</div>
+                            </td>
+                            <td>
+                                <div class="signal-badge signal-buy">
+                                    <span>Buy</span>
+                                    <span class="font-black">0.75</span>
+                                </div>
+                            </td>
+                            <td>
+                                <ul class="factor-list goods">
+                                    <li>Recent insider activity (high relevance)</li>
+                                </ul>
+                            </td>
+                            <td>
+                                <ul class="factor-list bads">
+                                    <li>Low conviction relative to company size</li>
+                                    <li>Single insider — weaker confirmation</li>
+                                </ul>
+                            </td>
+                        </tr>
+                        <tr data-signal="BUY_SIGNAL">
+                            <td>
+                                <div class="flex items-center">
+                                    <div class="ticker-icon bg-blue-600 text-white">
+                                        P
+                                    </div>
+                                    <div>
+                                        <div class="font-bold text-white text-sm">PRCT</div>
+                                        <div class="text-zinc-500 text-xs">Procept Biorobotics Corp</div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="text-sm font-semibold text-zinc-300">2026-03-05</div>
+                                <div class="text-xs text-zinc-500">1 insider</div>
+                            </td>
+                            <td>
+                                <div class="signal-badge signal-buy">
+                                    <span>Buy</span>
+                                    <span class="font-black">0.68</span>
+                                </div>
+                            </td>
+                            <td>
+                                <ul class="factor-list goods">
+                                    <li>Sector weakness — insider buying is contrarian</li>
+                                    <li>Recent insider activity (high relevance)</li>
+                                </ul>
+                            </td>
+                            <td>
+                                <ul class="factor-list bads">
+                                    <li>Stock not significantly discounted</li>
+                                    <li>Single insider — weaker confirmation</li>
+                                </ul>
+                            </td>
+                        </tr>
+                        <tr data-signal="BUY_SIGNAL">
+                            <td>
+                                <div class="flex items-center">
+                                    <div class="ticker-icon bg-blue-600 text-white">
+                                        V
+                                    </div>
+                                    <div>
+                                        <div class="font-bold text-white text-sm">VSNT</div>
+                                        <div class="text-zinc-500 text-xs">Versant Media Group, Inc.</div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="text-sm font-semibold text-zinc-300">2026-03-05</div>
+                                <div class="text-xs text-zinc-500">1 insider</div>
+                            </td>
+                            <td>
+                                <div class="signal-badge signal-buy">
+                                    <span>Buy</span>
+                                    <span class="font-black">0.66</span>
+                                </div>
+                            </td>
+                            <td>
+                                <ul class="factor-list goods">
+                                    <li>Recent insider activity (high relevance)</li>
+                                </ul>
+                            </td>
+                            <td>
+                                <ul class="factor-list bads">
+                                    <li>Low conviction relative to company size</li>
+                                    <li>Single insider — weaker confirmation</li>
+                                </ul>
+                            </td>
+                        </tr>
+                        <tr data-signal="BUY_SIGNAL">
+                            <td>
+                                <div class="flex items-center">
+                                    <div class="ticker-icon bg-orange-600 text-white">
+                                        K
+                                    </div>
+                                    <div>
+                                        <div class="font-bold text-white text-sm">KKR</div>
+                                        <div class="text-zinc-500 text-xs">Kkr & Co. Inc.</div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="text-sm font-semibold text-zinc-300">2026-03-04</div>
+                                <div class="text-xs text-zinc-500">2 insiders</div>
+                            </td>
+                            <td>
+                                <div class="signal-badge signal-buy">
+                                    <span>Buy</span>
+                                    <span class="font-black">0.72</span>
+                                </div>
+                            </td>
+                            <td>
+                                <ul class="factor-list goods">
+                                    <li>Cluster buying detected (2 insiders)</li>
+                                    <li>Recent insider activity (high relevance)</li>
+                                </ul>
+                            </td>
+                            <td>
+                                <ul class="factor-list bads">
+                                    <li>Low conviction relative to company size</li>
+                                </ul>
+                            </td>
+                        </tr>
+                        <tr data-signal="BUY_SIGNAL">
+                            <td>
+                                <div class="flex items-center">
+                                    <div class="ticker-icon bg-orange-600 text-white">
+                                        T
+                                    </div>
+                                    <div>
+                                        <div class="font-bold text-white text-sm">TPC</div>
+                                        <div class="text-zinc-500 text-xs">Tutor Perini Corp</div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="text-sm font-semibold text-zinc-300">2026-03-04</div>
+                                <div class="text-xs text-zinc-500">1 insider</div>
+                            </td>
+                            <td>
+                                <div class="signal-badge signal-buy">
+                                    <span>Buy</span>
+                                    <span class="font-black">0.62</span>
+                                </div>
+                            </td>
+                            <td>
+                                <ul class="factor-list goods">
+                                    <li>Recent insider activity (high relevance)</li>
+                                </ul>
+                            </td>
+                            <td>
+                                <ul class="factor-list bads">
+                                    <li>Low conviction relative to company size</li>
+                                    <li>Stock has already moved significantly above insider buy price</li>
+                                    <li>Single insider — weaker confirmation</li>
+                                </ul>
+                            </td>
+                        </tr>
+                        <tr data-signal="BUY_SIGNAL">
+                            <td>
+                                <div class="flex items-center">
+                                    <div class="ticker-icon bg-cyan-600 text-white">
+                                        A
+                                    </div>
+                                    <div>
+                                        <div class="font-bold text-white text-sm">ABTC</div>
+                                        <div class="text-zinc-500 text-xs">American Bitcoin Corp.</div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="text-sm font-semibold text-zinc-300">2026-03-03</div>
+                                <div class="text-xs text-zinc-500">1 insider</div>
+                            </td>
+                            <td>
+                                <div class="signal-badge signal-buy">
+                                    <span>Buy</span>
+                                    <span class="font-black">0.66</span>
+                                </div>
+                            </td>
+                            <td>
+                                <ul class="factor-list goods">
+                                    <li>Recent insider activity (high relevance)</li>
+                                </ul>
+                            </td>
+                            <td>
+                                <ul class="factor-list bads">
+                                    <li>Low conviction relative to company size</li>
+                                    <li>Stock has already moved significantly above insider buy price</li>
+                                    <li>Single insider — weaker confirmation</li>
+                                </ul>
+                            </td>
+                        </tr>
+                        <tr data-signal="BUY_SIGNAL">
+                            <td>
+                                <div class="flex items-center">
+                                    <div class="ticker-icon bg-cyan-600 text-white">
+                                        C
+                                    </div>
+                                    <div>
+                                        <div class="font-bold text-white text-sm">CARG</div>
+                                        <div class="text-zinc-500 text-xs">Cargurus, Inc.</div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="text-sm font-semibold text-zinc-300">2026-03-03</div>
+                                <div class="text-xs text-zinc-500">1 insider</div>
+                            </td>
+                            <td>
+                                <div class="signal-badge signal-buy">
+                                    <span>Buy</span>
+                                    <span class="font-black">0.62</span>
+                                </div>
+                            </td>
+                            <td>
+                                <ul class="factor-list goods">
+                                    <li>Recent insider activity (high relevance)</li>
+                                </ul>
+                            </td>
+                            <td>
+                                <ul class="factor-list bads">
+                                    <li>Low conviction relative to company size</li>
+                                    <li>Single insider — weaker confirmation</li>
+                                </ul>
+                            </td>
+                        </tr>
+                        <tr data-signal="STRONG_BUY_SIGNAL">
+                            <td>
+                                <div class="flex items-center">
+                                    <div class="ticker-icon bg-pink-600 text-white">
+                                        T
+                                    </div>
+                                    <div>
+                                        <div class="font-bold text-white text-sm">TTD</div>
+                                        <div class="text-zinc-500 text-xs">Trade Desk, Inc.</div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="text-sm font-semibold text-zinc-300">2026-03-02</div>
+                                <div class="text-xs text-zinc-500">1 insider</div>
+                            </td>
+                            <td>
+                                <div class="signal-badge signal-strong-buy">
+                                    <span>Strong Buy</span>
+                                    <span class="font-black">0.78</span>
+                                </div>
+                            </td>
+                            <td>
+                                <ul class="factor-list goods">
+                                    <li>Current price below insider buy price (entry still attractive)</li>
+                                    <li>At least one very strong insider signal present</li>
+                                    <li>Recent insider activity (high relevance)</li>
+                                </ul>
+                            </td>
+                            <td>
+                                <ul class="factor-list bads">
+                                    <li>Stock not significantly discounted</li>
+                                    <li>Single insider — weaker confirmation</li>
+                                </ul>
+                            </td>
+                        </tr>
+                        <tr data-signal="BUY_SIGNAL">
+                            <td>
+                                <div class="flex items-center">
+                                    <div class="ticker-icon bg-blue-600 text-white">
+                                        I
+                                    </div>
+                                    <div>
+                                        <div class="font-bold text-white text-sm">IDYA</div>
+                                        <div class="text-zinc-500 text-xs">Ideaya Biosciences, Inc.</div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="text-sm font-semibold text-zinc-300">2026-03-02</div>
+                                <div class="text-xs text-zinc-500">1 insider</div>
+                            </td>
+                            <td>
+                                <div class="signal-badge signal-buy">
+                                    <span>Buy</span>
+                                    <span class="font-black">0.66</span>
+                                </div>
+                            </td>
+                            <td>
+                                <ul class="factor-list goods">
+                                    <li>Sector weakness — insider buying is contrarian</li>
+                                    <li>Recent insider activity (high relevance)</li>
+                                </ul>
+                            </td>
+                            <td>
+                                <ul class="factor-list bads">
+                                    <li>Low conviction relative to company size</li>
+                                    <li>Stock not significantly discounted</li>
+                                    <li>Single insider — weaker confirmation</li>
+                                </ul>
+                            </td>
+                        </tr>
+                        <tr data-signal="STRONG_BUY_SIGNAL">
+                            <td>
+                                <div class="flex items-center">
+                                    <div class="ticker-icon bg-emerald-600 text-white">
+                                        N
+                                    </div>
+                                    <div>
+                                        <div class="font-bold text-white text-sm">NOW</div>
+                                        <div class="text-zinc-500 text-xs">Servicenow, Inc.</div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="text-sm font-semibold text-zinc-300">2026-02-27</div>
+                                <div class="text-xs text-zinc-500">1 insider</div>
+                            </td>
+                            <td>
+                                <div class="signal-badge signal-strong-buy">
+                                    <span>Strong Buy</span>
+                                    <span class="font-black">0.85</span>
+                                </div>
+                            </td>
+                            <td>
+                                <ul class="factor-list goods">
+                                    <li>Insider buying after negative earnings reaction (1D)</li>
+                                    <li>Sustained negative reaction post earnings (3D)</li>
+                                    <li>Current price below insider buy price (entry still attractive)</li>
+                                    <li>At least one very strong insider signal present</li>
+                                    <li>Recent insider activity (high relevance)</li>
+                                </ul>
+                            </td>
+                            <td>
+                                <ul class="factor-list bads">
+                                    <li>Low conviction relative to company size</li>
+                                    <li>Stock not significantly discounted</li>
+                                    <li>Sector already strong — less contrarian edge</li>
+                                    <li>Single insider — weaker confirmation</li>
+                                </ul>
+                            </td>
+                        </tr>
+                        <tr data-signal="BUY_SIGNAL">
+                            <td>
+                                <div class="flex items-center">
+                                    <div class="ticker-icon bg-purple-600 text-white">
+                                        S
+                                    </div>
+                                    <div>
+                                        <div class="font-bold text-white text-sm">SKWD</div>
+                                        <div class="text-zinc-500 text-xs">Skyward Specialty Insurance Group, Inc.</div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="text-sm font-semibold text-zinc-300">2026-02-27</div>
+                                <div class="text-xs text-zinc-500">1 insider</div>
+                            </td>
+                            <td>
+                                <div class="signal-badge signal-buy">
+                                    <span>Buy</span>
+                                    <span class="font-black">0.74</span>
+                                </div>
+                            </td>
+                            <td>
+                                <ul class="factor-list goods">
+                                    <li>Recent insider activity (high relevance)</li>
+                                </ul>
+                            </td>
+                            <td>
+                                <ul class="factor-list bads">
+                                    <li>Low conviction relative to company size</li>
+                                    <li>Stock not significantly discounted</li>
+                                    <li>Single insider — weaker confirmation</li>
+                                </ul>
+                            </td>
+                        </tr>
+                        <tr data-signal="BUY_SIGNAL">
+                            <td>
+                                <div class="flex items-center">
+                                    <div class="ticker-icon bg-cyan-600 text-white">
+                                        V
+                                    </div>
+                                    <div>
+                                        <div class="font-bold text-white text-sm">VNO</div>
+                                        <div class="text-zinc-500 text-xs">Vornado Realty Trust</div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="text-sm font-semibold text-zinc-300">2026-02-27</div>
+                                <div class="text-xs text-zinc-500">1 insider</div>
+                            </td>
+                            <td>
+                                <div class="signal-badge signal-buy">
+                                    <span>Buy</span>
+                                    <span class="font-black">0.67</span>
+                                </div>
+                            </td>
+                            <td>
+                                <ul class="factor-list goods">
+                                    <li>Recent insider activity (high relevance)</li>
+                                </ul>
+                            </td>
+                            <td>
+                                <ul class="factor-list bads">
+                                    <li>Low conviction relative to company size</li>
+                                    <li>Single insider — weaker confirmation</li>
+                                </ul>
+                            </td>
+                        </tr>
+                        <tr data-signal="BUY_SIGNAL">
+                            <td>
+                                <div class="flex items-center">
+                                    <div class="ticker-icon bg-pink-600 text-white">
+                                        L
+                                    </div>
+                                    <div>
+                                        <div class="font-bold text-white text-sm">LAW</div>
+                                        <div class="text-zinc-500 text-xs">Cs Disco, Inc.</div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="text-sm font-semibold text-zinc-300">2026-02-27</div>
+                                <div class="text-xs text-zinc-500">1 insider</div>
+                            </td>
+                            <td>
+                                <div class="signal-badge signal-buy">
+                                    <span>Buy</span>
+                                    <span class="font-black">0.66</span>
+                                </div>
+                            </td>
+                            <td>
+                                <ul class="factor-list goods">
+                                    <li>Recent insider activity (high relevance)</li>
+                                </ul>
+                            </td>
+                            <td>
+                                <ul class="factor-list bads">
+                                    <li>Stock not significantly discounted</li>
+                                    <li>Stock has already moved significantly above insider buy price</li>
+                                    <li>Sector already strong — less contrarian edge</li>
+                                    <li>Single insider — weaker confirmation</li>
+                                </ul>
+                            </td>
+                        </tr>
+                        <tr data-signal="BUY_SIGNAL">
+                            <td>
+                                <div class="flex items-center">
+                                    <div class="ticker-icon bg-orange-600 text-white">
+                                        L
+                                    </div>
+                                    <div>
+                                        <div class="font-bold text-white text-sm">LRMR</div>
+                                        <div class="text-zinc-500 text-xs">Larimar Therapeutics, Inc.</div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="text-sm font-semibold text-zinc-300">2026-02-27</div>
+                                <div class="text-xs text-zinc-500">1 insider</div>
+                            </td>
+                            <td>
+                                <div class="signal-badge signal-buy">
+                                    <span>Buy</span>
+                                    <span class="font-black">0.64</span>
+                                </div>
+                            </td>
+                            <td>
+                                <ul class="factor-list goods">
+                                    <li>High conviction: insider buying is 5.01% of market cap</li>
+                                    <li>Current price below insider buy price (entry still attractive)</li>
+                                    <li>Sector weakness — insider buying is contrarian</li>
+                                    <li>Recent insider activity (high relevance)</li>
+                                </ul>
+                            </td>
+                            <td>
+                                <ul class="factor-list bads">
+                                    <li>Stock not significantly discounted</li>
+                                    <li>Single insider — weaker confirmation</li>
+                                </ul>
+                            </td>
+                        </tr>
+                        <tr data-signal="BUY_SIGNAL">
+                            <td>
+                                <div class="flex items-center">
+                                    <div class="ticker-icon bg-pink-600 text-white">
+                                        L
+                                    </div>
+                                    <div>
+                                        <div class="font-bold text-white text-sm">LOGC</div>
+                                        <div class="text-zinc-500 text-xs">Contextlogic Holdings Inc.</div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="text-sm font-semibold text-zinc-300">2026-02-26</div>
+                                <div class="text-xs text-zinc-500">2 insiders</div>
+                            </td>
+                            <td>
+                                <div class="signal-badge signal-buy">
+                                    <span>Buy</span>
+                                    <span class="font-black">0.74</span>
+                                </div>
+                            </td>
+                            <td>
+                                <ul class="factor-list goods">
+                                    <li>High conviction: insider buying is 6.16% of market cap</li>
+                                    <li>Cluster buying detected (2 insiders)</li>
+                                    <li>Recent insider activity (high relevance)</li>
+                                </ul>
+                            </td>
+                            <td>
+                                <ul class="factor-list bads">
+                                    <li>Stock has already moved significantly above insider buy price</li>
+                                </ul>
+                            </td>
+                        </tr>
+                        <tr data-signal="BUY_SIGNAL">
+                            <td>
+                                <div class="flex items-center">
+                                    <div class="ticker-icon bg-cyan-600 text-white">
+                                        U
+                                    </div>
+                                    <div>
+                                        <div class="font-bold text-white text-sm">UBER</div>
+                                        <div class="text-zinc-500 text-xs">Uber Technologies, Inc</div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="text-sm font-semibold text-zinc-300">2026-02-24</div>
+                                <div class="text-xs text-zinc-500">1 insider</div>
+                            </td>
+                            <td>
+                                <div class="signal-badge signal-buy">
+                                    <span>Buy</span>
+                                    <span class="font-black">0.72</span>
+                                </div>
+                            </td>
+                            <td>
+                                <ul class="factor-list goods">
+                                    <li>Recent insider activity (high relevance)</li>
+                                </ul>
+                            </td>
+                            <td>
+                                <ul class="factor-list bads">
+                                    <li>Low conviction relative to company size</li>
+                                    <li>Stock not significantly discounted</li>
+                                    <li>Sector already strong — less contrarian edge</li>
+                                    <li>Single insider — weaker confirmation</li>
+                                </ul>
+                            </td>
+                        </tr>
+                        <tr data-signal="BUY_SIGNAL">
+                            <td>
+                                <div class="flex items-center">
+                                    <div class="ticker-icon bg-blue-600 text-white">
+                                        H
+                                    </div>
+                                    <div>
+                                        <div class="font-bold text-white text-sm">HLNE</div>
+                                        <div class="text-zinc-500 text-xs">Hamilton Lane Inc</div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="text-sm font-semibold text-zinc-300">2026-02-24</div>
+                                <div class="text-xs text-zinc-500">1 insider</div>
+                            </td>
+                            <td>
+                                <div class="signal-badge signal-buy">
+                                    <span>Buy</span>
+                                    <span class="font-black">0.66</span>
+                                </div>
+                            </td>
+                            <td>
+                                <ul class="factor-list goods">
+                                    <li>Recent insider activity (high relevance)</li>
+                                </ul>
+                            </td>
+                            <td>
+                                <ul class="factor-list bads">
+                                    <li>Low conviction relative to company size</li>
+                                    <li>Stock not significantly discounted</li>
+                                    <li>Single insider — weaker confirmation</li>
+                                </ul>
+                            </td>
+                        </tr>
+                        <tr data-signal="BUY_SIGNAL">
+                            <td>
+                                <div class="flex items-center">
+                                    <div class="ticker-icon bg-blue-600 text-white">
+                                        I
+                                    </div>
+                                    <div>
+                                        <div class="font-bold text-white text-sm">IBATF</div>
+                                        <div class="text-zinc-500 text-xs">International Battery Metals Ltd.</div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="text-sm font-semibold text-zinc-300">2026-02-23</div>
+                                <div class="text-xs text-zinc-500">1 insider</div>
+                            </td>
+                            <td>
+                                <div class="signal-badge signal-buy">
+                                    <span>Buy</span>
+                                    <span class="font-black">0.70</span>
+                                </div>
+                            </td>
+                            <td>
+                                <ul class="factor-list goods">
+                                    <li>High conviction: insider buying is 5.52% of market cap</li>
+                                    <li>Recent insider activity (high relevance)</li>
+                                </ul>
+                            </td>
+                            <td>
+                                <ul class="factor-list bads">
+                                    <li>Stock not significantly discounted</li>
+                                    <li>Stock has already moved significantly above insider buy price</li>
+                                    <li>Single insider — weaker confirmation</li>
+                                </ul>
+                            </td>
+                        </tr>
+                        <tr data-signal="BUY_SIGNAL">
+                            <td>
+                                <div class="flex items-center">
+                                    <div class="ticker-icon bg-pink-600 text-white">
+                                        T
+                                    </div>
+                                    <div>
+                                        <div class="font-bold text-white text-sm">TLSI</div>
+                                        <div class="text-zinc-500 text-xs">Trisalus Life Sciences, Inc.</div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="text-sm font-semibold text-zinc-300">2026-02-23</div>
+                                <div class="text-xs text-zinc-500">1 insider</div>
+                            </td>
+                            <td>
+                                <div class="signal-badge signal-buy">
+                                    <span>Buy</span>
+                                    <span class="font-black">0.67</span>
+                                </div>
+                            </td>
+                            <td>
+                                <ul class="factor-list goods">
+                                    <li>Sector weakness — insider buying is contrarian</li>
+                                    <li>Recent insider activity (high relevance)</li>
+                                </ul>
+                            </td>
+                            <td>
+                                <ul class="factor-list bads">
+                                    <li>Stock not significantly discounted</li>
+                                    <li>Single insider — weaker confirmation</li>
+                                </ul>
+                            </td>
+                        </tr>
+                        <tr data-signal="BUY_SIGNAL">
+                            <td>
+                                <div class="flex items-center">
+                                    <div class="ticker-icon bg-emerald-600 text-white">
+                                        C
+                                    </div>
+                                    <div>
+                                        <div class="font-bold text-white text-sm">CADL</div>
+                                        <div class="text-zinc-500 text-xs">Candel Therapeutics, Inc.</div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="text-sm font-semibold text-zinc-300">2026-02-23</div>
+                                <div class="text-xs text-zinc-500">1 insider</div>
+                            </td>
+                            <td>
+                                <div class="signal-badge signal-buy">
+                                    <span>Buy</span>
+                                    <span class="font-black">0.65</span>
+                                </div>
+                            </td>
+                            <td>
+                                <ul class="factor-list goods">
+                                    <li>Stock is in drawdown — potential bottoming signal</li>
+                                    <li>Sector weakness — insider buying is contrarian</li>
+                                    <li>Recent insider activity (high relevance)</li>
+                                </ul>
+                            </td>
+                            <td>
+                                <ul class="factor-list bads">
+                                    <li>Stock has already moved significantly above insider buy price</li>
+                                    <li>Single insider — weaker confirmation</li>
+                                </ul>
+                            </td>
+                        </tr>
+                        <tr data-signal="STRONG_BUY_SIGNAL">
+                            <td>
+                                <div class="flex items-center">
+                                    <div class="ticker-icon bg-cyan-600 text-white">
+                                        P
+                                    </div>
+                                    <div>
+                                        <div class="font-bold text-white text-sm">PODD</div>
+                                        <div class="text-zinc-500 text-xs">Insulet Corp</div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="text-sm font-semibold text-zinc-300">2026-02-20</div>
+                                <div class="text-xs text-zinc-500">1 insider</div>
+                            </td>
+                            <td>
+                                <div class="signal-badge signal-strong-buy">
+                                    <span>Strong Buy</span>
+                                    <span class="font-black">0.76</span>
+                                </div>
+                            </td>
+                            <td>
+                                <ul class="factor-list goods">
+                                    <li>Current price below insider buy price (entry still attractive)</li>
+                                    <li>Sector weakness — insider buying is contrarian</li>
+                                    <li>At least one very strong insider signal present</li>
+                                    <li>Recent insider activity (high relevance)</li>
+                                </ul>
+                            </td>
+                            <td>
+                                <ul class="factor-list bads">
+                                    <li>Low conviction relative to company size</li>
+                                    <li>Stock not significantly discounted</li>
+                                    <li>Single insider — weaker confirmation</li>
+                                </ul>
+                            </td>
+                        </tr>
+                        <tr data-signal="STRONG_BUY_SIGNAL">
+                            <td>
+                                <div class="flex items-center">
+                                    <div class="ticker-icon bg-purple-600 text-white">
+                                        T
+                                    </div>
+                                    <div>
+                                        <div class="font-bold text-white text-sm">TZOO</div>
+                                        <div class="text-zinc-500 text-xs">Travelzoo</div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="text-sm font-semibold text-zinc-300">2026-02-20</div>
+                                <div class="text-xs text-zinc-500">1 insider</div>
+                            </td>
+                            <td>
+                                <div class="signal-badge signal-strong-buy">
+                                    <span>Strong Buy</span>
+                                    <span class="font-black">0.75</span>
+                                </div>
+                            </td>
+                            <td>
+                                <ul class="factor-list goods">
+                                    <li>Recent insider activity (high relevance)</li>
+                                </ul>
+                            </td>
+                            <td>
+                                <ul class="factor-list bads">
+                                    <li>Stock has already moved significantly above insider buy price</li>
+                                    <li>Single insider — weaker confirmation</li>
+                                </ul>
+                            </td>
+                        </tr>
+                        <tr data-signal="BUY_SIGNAL">
+                            <td>
+                                <div class="flex items-center">
+                                    <div class="ticker-icon bg-cyan-600 text-white">
+                                        A
+                                    </div>
+                                    <div>
+                                        <div class="font-bold text-white text-sm">ARDX</div>
+                                        <div class="text-zinc-500 text-xs">Ardelyx, Inc.</div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="text-sm font-semibold text-zinc-300">2026-02-20</div>
+                                <div class="text-xs text-zinc-500">1 insider</div>
+                            </td>
+                            <td>
+                                <div class="signal-badge signal-buy">
+                                    <span>Buy</span>
+                                    <span class="font-black">0.62</span>
+                                </div>
+                            </td>
+                            <td>
+                                <ul class="factor-list goods">
+                                    <li>Sector weakness — insider buying is contrarian</li>
+                                    <li>Recent insider activity (high relevance)</li>
+                                </ul>
+                            </td>
+                            <td>
+                                <ul class="factor-list bads">
+                                    <li>Low conviction relative to company size</li>
+                                    <li>Stock not significantly discounted</li>
+                                    <li>Single insider — weaker confirmation</li>
+                                </ul>
+                            </td>
+                        </tr>
+                        <tr data-signal="BUY_SIGNAL">
+                            <td>
+                                <div class="flex items-center">
+                                    <div class="ticker-icon bg-blue-600 text-white">
+                                        L
+                                    </div>
+                                    <div>
+                                        <div class="font-bold text-white text-sm">LPX</div>
+                                        <div class="text-zinc-500 text-xs">Louisiana-Pacific Corp</div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="text-sm font-semibold text-zinc-300">2026-02-19</div>
+                                <div class="text-xs text-zinc-500">1 insider</div>
+                            </td>
+                            <td>
+                                <div class="signal-badge signal-buy">
+                                    <span>Buy</span>
+                                    <span class="font-black">0.67</span>
+                                </div>
+                            </td>
+                            <td>
+                                <ul class="factor-list goods">
+                                    <li>Current price below insider buy price (entry still attractive)</li>
+                                    <li>Recent insider activity (high relevance)</li>
+                                </ul>
+                            </td>
+                            <td>
+                                <ul class="factor-list bads">
+                                    <li>Low conviction relative to company size</li>
+                                    <li>Stock not significantly discounted</li>
+                                    <li>Single insider — weaker confirmation</li>
+                                </ul>
+                            </td>
+                        </tr>
+                        <tr data-signal="BUY_SIGNAL">
+                            <td>
+                                <div class="flex items-center">
+                                    <div class="ticker-icon bg-emerald-600 text-white">
+                                        M
+                                    </div>
+                                    <div>
+                                        <div class="font-bold text-white text-sm">MSCI</div>
+                                        <div class="text-zinc-500 text-xs">Msci Inc.</div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="text-sm font-semibold text-zinc-300">2026-02-18</div>
+                                <div class="text-xs text-zinc-500">1 insider</div>
+                            </td>
+                            <td>
+                                <div class="signal-badge signal-buy">
+                                    <span>Buy</span>
+                                    <span class="font-black">0.64</span>
+                                </div>
+                            </td>
+                            <td>
+                                <ul class="factor-list goods">
+                                    <li>Recent insider activity (high relevance)</li>
+                                </ul>
+                            </td>
+                            <td>
+                                <ul class="factor-list bads">
+                                    <li>Low conviction relative to company size</li>
+                                    <li>Stock not significantly discounted</li>
+                                    <li>Single insider — weaker confirmation</li>
+                                </ul>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <footer class="mt-6 text-center text-zinc-600 text-xs">
+            <p>Generated from insider trading data • Signals are for informational purposes only</p>
+        </footer>
+    </div>
+
+    <script>
+        // Check if market is open
+        function isMarketOpen() {
+            const now = new Date();
+            const etTime = new Date(now.toLocaleString('en-US', {timeZone: 'America/New_York'}));
+            
+            const day = etTime.getDay(); // 0=Sunday, 6=Saturday
+            const hour = etTime.getHours();
+            const minute = etTime.getMinutes();
+            const timeInMinutes = hour * 60 + minute;
+            
+            // Market hours: Mon-Fri, 9:30 AM - 4:00 PM ET
+            const marketOpen = 9 * 60 + 30;  // 9:30 AM
+            const marketClose = 16 * 60;      // 4:00 PM
+            
+            const isWeekday = day >= 1 && day <= 5;
+            const isDuringHours = timeInMinutes >= marketOpen && timeInMinutes < marketClose;
+            
+            return isWeekday && isDuringHours;
+        }
+        
+        // Update live clock
+        function updateLiveClock() {
+            const now = new Date();
+            
+            // Format ET time
+            const options = {
+                timeZone: 'America/New_York',
+                month: 'short',
+                day: '2-digit',
+                year: 'numeric',
+                hour: '2-digit',
+                minute: '2-digit',
+                second: '2-digit',
+                hour12: true
+            };
+            
+            const etTime = now.toLocaleString('en-US', options);
+            
+            // Check market status
+            const marketOpen = isMarketOpen();
+            const statusDot = marketOpen ? '🟢' : '🔴';
+            const statusText = marketOpen ? 
+                '<span style="color: #10b981;">Market Open</span>' : 
+                '<span style="color: #ef4444;">Market Closed</span>';
+            
+            document.getElementById('live-clock').innerHTML = 
+                `${statusDot} LIVE • ${etTime} ET • ${statusText}`;
+        }
+        
+        // Update data timestamp
+        function updateDataTimestamp() {
+            const timestampEl = document.getElementById('data-timestamp');
+            const timestamp = timestampEl.dataset.timestamp;
+            
+            if (timestamp) {
+                try {
+                    const dt = new Date(timestamp);
+                    const options = {
+                        timeZone: 'America/New_York',
+                        month: 'short',
+                        day: '2-digit',
+                        year: 'numeric',
+                        hour: '2-digit',
+                        minute: '2-digit',
+                        hour12: true
+                    };
+                    const etTime = dt.toLocaleString('en-US', options);
+                    timestampEl.textContent = `Data Generated: ${etTime} ET`;
+                } catch (e) {
+                    timestampEl.textContent = 'Data Generated: ' + timestamp;
+                }
+            }
+        }
+        
+        // Filter signals
+        function filterSignals(signal) {
+            const rows = document.querySelectorAll('.signal-table tbody tr');
+            const buttons = document.querySelectorAll('.filter-btn');
+            
+            // Update active button
+            buttons.forEach(btn => {
+                if (btn.dataset.filter === signal) {
+                    btn.classList.add('active');
+                } else {
+                    btn.classList.remove('active');
+                }
+            });
+            
+            // Filter rows
+            rows.forEach(row => {
+                if (signal === 'all' || row.dataset.signal === signal) {
+                    row.style.display = '';
+                } else {
+                    row.style.display = 'none';
+                }
+            });
+        }
+        
+        // Initialize on page load
+        updateLiveClock();
+        updateDataTimestamp();
+        
+        // Update clock every second
+        setInterval(updateLiveClock, 1000);
+    </script>
+</body>
+</html>
