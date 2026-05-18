@@ -1,0 +1,2262 @@
+{
+  "ticker": "ALL",
+  "fetch_date": "2026-05-18T14:10:14.918184",
+  "source_url": "http://openinsider.com/screener?s=&o=&pl=&ph=&ll=&lh=&fd=60&fdr=&td=60&tdr=&fdlyl=&fdlyh=&daysago=&xp=1&vl=1000&vh=&ocl=10&och=&sic1=-1&sicl=100&sich=9999&isceo=1&iscoo=1&iscfo=1&isdirector=1&grp=0&nfl=&nfh=&nil=3&nih=&nol=&noh=&v2l=&v2h=&oc2l=&oc2h=&sortcol=0&cnt=100&page=1",
+  "finviz_url": "https://finviz.com/quote.ashx?a=30565236&t=LODE,BLND,ARTV,VRDN,KHC,WCN,ODTX,AXIA,MOBI,WGS,TXO,GEHC,CFTR.,COAG,SRAD,SVRE,GVH,SPGI,JEF,AVLN,IBATF,CXIIU,TORO,NKE,ALMR,KLRA,MESO,OSCR,HMH,ANVS,SVC,CNTB,ZBIO,NAVN,WVE,IAUX,PICS,BORR,FRPH,JAN",
+  "total_transactions": 49,
+  "unique_tickers": 40,
+  "transactions": [
+    {
+      "X": "M",
+      "Filing Date": "2026-05-14 17:41:56",
+      "Trade Date": "2026-05-13",
+      "Ticker": "LODE",
+      "Ticker_link": "http://openinsider.com/LODE",
+      "Company Name": "Comstock Inc.",
+      "Insider Name": "Pei Steven Yu-Tsung",
+      "Insider Name_link": "http://openinsider.com/insider/Pei-Steven-Yu-Tsung/2128873",
+      "Title": "Dir",
+      "Trade Type": "P - Purchase",
+      "Price": "$3.38",
+      "Qty": "+424,559",
+      "Owned": "1,530,980",
+      "ΔOwn": "+38%",
+      "Value": "+$1,436,865",
+      "sec_filing_data": {
+        "source_url": "http://www.sec.gov/Archives/edgar/data/1120970/000143774926017150/xslF345X03/rdgdoc.xml",
+        "row_count": 2,
+        "table_rows": [
+          {
+            "3. Transaction Code (Instr. \n      8) | Code": "P",
+            "3. Transaction Code (Instr. \n      8) | V": "",
+            "6. Ownership Form: Direct (D) or Indirect (I) (Instr. \n      4)": "I",
+            "7. Nature of Indirect Beneficial Ownership (Instr. \n      4)": "Gratia Capital"
+          },
+          {
+            "3. Transaction Code (Instr. \n      8) | Code": "P",
+            "3. Transaction Code (Instr. \n      8) | V": "",
+            "6. Ownership Form: Direct (D) or Indirect (I) (Instr. \n      4)": "I",
+            "7. Nature of Indirect Beneficial Ownership (Instr. \n      4)": "Gratia Capital"
+          }
+        ],
+        "explanation_rows": {
+          "foot_notes": {},
+          "Remarks": ""
+        }
+      }
+    },
+    {
+      "X": "M",
+      "Filing Date": "2026-05-13 20:19:20",
+      "Trade Date": "2026-05-11",
+      "Ticker": "BLND",
+      "Ticker_link": "http://openinsider.com/BLND",
+      "Company Name": "Blend Labs, Inc.",
+      "Insider Name": "Haveli Investments, L.P.",
+      "Insider Name_link": "http://openinsider.com/insider/Haveli-Investments--L.P./2022284",
+      "Title": "Dir, 10%",
+      "Trade Type": "P - Purchase",
+      "Price": "$1.43",
+      "Qty": "+1,951,635",
+      "Owned": "12,930,508",
+      "ΔOwn": "+18%",
+      "Value": "+$2,789,590",
+      "sec_filing_data": {
+        "source_url": "http://www.sec.gov/Archives/edgar/data/1855747/000119312526222296/xslF345X03/ownership.xml",
+        "row_count": 3,
+        "table_rows": [
+          {
+            "3. Transaction Code (Instr. \n      8) | Code": "P",
+            "3. Transaction Code (Instr. \n      8) | V": "",
+            "6. Ownership Form: Direct (D) or Indirect (I) (Instr. \n      4)": "I",
+            "7. Nature of Indirect Beneficial Ownership (Instr. \n      4)": "See footnotes (4) (5)"
+          },
+          {
+            "3. Transaction Code (Instr. \n      8) | Code": "P",
+            "3. Transaction Code (Instr. \n      8) | V": "",
+            "6. Ownership Form: Direct (D) or Indirect (I) (Instr. \n      4)": "I",
+            "7. Nature of Indirect Beneficial Ownership (Instr. \n      4)": "See footnotes (4) (5)"
+          },
+          {
+            "3. Transaction Code (Instr. \n      8) | Code": "P",
+            "3. Transaction Code (Instr. \n      8) | V": "",
+            "6. Ownership Form: Direct (D) or Indirect (I) (Instr. \n      4)": "I",
+            "7. Nature of Indirect Beneficial Ownership (Instr. \n      4)": "See footnotes (4) (5)"
+          }
+        ],
+        "explanation_rows": {
+          "foot_notes": {
+            "1": "The price reported in Column 4 is a weighted average price. These shares were acquired in multiple transactions at prices ranging from $1.3371 to $1.459, inclusive. The reporting person undertakes to provide Blend Labs, Inc. any security holder of Blend Labs, Inc., or the staff of the Securities and Exchange Commission, upon request, full information regarding the number of shares purchased at each separate price within the ranges set forth in footnote (1) to this Form 4.",
+            "2": "The price reported in Column 4 is a weighted average price. These shares were acquired in multiple transactions at prices ranging from $1.38 to $1.44, inclusive. The reporting person undertakes to provide Blend Labs, Inc. any security holder of Blend Labs, Inc., or the staff of the Securities and Exchange Commission, upon request, full information regarding the number of shares purchased at each separate price within the ranges set forth in footnote (2) to this Form 4.",
+            "3": "The price reported in Column 4 is a weighted average price. These shares were acquired in multiple transactions at prices ranging from $1.405 to $1.465, inclusive. The reporting person undertakes to provide Blend Labs, Inc. any security holder of Blend Labs, Inc., or the staff of the Securities and Exchange Commission, upon request, full information regarding the number of shares purchased at each separate price within the ranges set forth in footnote (3) to this Form 4.",
+            "4": "Represents securities held directly by Haveli Brooks Aggregator, L.P. (\"Haveli Aggregator\"). Haveli Investments Software Fund I GP, LLC (\"Haveli Investments Software GP\"), is the general partner of Haveli Aggregator. Whanau Interests LLC (\"Whanau\") is the sole member of Haveli Investments Software GP. Haveli Software Management LLC (\"Haveli Software Management\") is the investment adviser to Haveli Investments Software GP. Haveli Investment Management LLC (\"Haveli Investment Management\"), a Delaware limited liability company, is the sole member of Haveli Software Management. Haveli Investments, L.P. (\"Haveli Investments\") is the sole member of Haveli Investment Management. Whanau is the general partner of Haveli Investments. Mr. Brian N. Sheth is managing member of Whanau.",
+            "5": "As a result, Haveli Investments Software GP, Whanau, Haveli Software Management, Haveli Investments, Haveli Investment Management and Mr. Sheth may each be deemed to share voting and dispositive power with respect to the securities held by Haveli Aggregator. Haveli Investments Software GP, Whanau, Haveli Software Management, Haveli Investments, Haveli Investment Management and Mr. Sheth each disclaim beneficial ownership of such securities except to the extent of their pecuniary interest therein.",
+            "6": "Held through a family trust of which Mr. Sheth's spouse is the trustee."
+          },
+          "Remarks": ""
+        }
+      }
+    },
+    {
+      "X": "D",
+      "Filing Date": "2026-05-13 17:45:56",
+      "Trade Date": "2026-05-11",
+      "Ticker": "ARTV",
+      "Ticker_link": "http://openinsider.com/ARTV",
+      "Company Name": "Artiva Biotherapeutics, Inc.",
+      "Insider Name": "Ra Capital Management, L.P.",
+      "Insider Name_link": "http://openinsider.com/insider/Ra-Capital-Management--L.P./1346824",
+      "Title": "Dir, 10%",
+      "Trade Type": "P - Purchase",
+      "Price": "$11.52",
+      "Qty": "+6,510,416",
+      "Owned": "16,363,718",
+      "ΔOwn": "+66%",
+      "Value": "+$74,999,992",
+      "sec_filing_data": {
+        "source_url": "http://www.sec.gov/Archives/edgar/data/1817241/000123191926000491/xslF345X03/form4-05132026_090548.xml",
+        "row_count": 1,
+        "table_rows": [
+          {
+            "3. Transaction Code (Instr. \n      8) | Code": "P",
+            "3. Transaction Code (Instr. \n      8) | V": "",
+            "6. Ownership Form: Direct (D) or Indirect (I) (Instr. \n      4)": "I",
+            "7. Nature of Indirect Beneficial Ownership (Instr. \n      4)": "See footnotes (1) (2)"
+          }
+        ],
+        "explanation_rows": {
+          "foot_notes": {
+            "1": "RA Capital Management, L.P. (the \"Adviser\") is the investment manager for RA Capital Healthcare Fund, L.P. (the \"Fund\"), RA Capital Nexus Fund, L.P. (the \"Nexus Fund\"), RA Capital Nexus III Fund, L.P. (the \"Nexus Fund III\"), and a separately managed account (the \"Account\"). The general partner of the Adviser is RA Capital Management GP, LLC (the \"Adviser GP\"), of which Dr. Peter Kolchinsky and Mr. Rajeev Shah are the managing members. The Adviser, the Adviser GP, the Fund, the Nexus Fund, the Nexus Fund III, Dr. Kolchinsky and Mr. Shah disclaim beneficial ownership of any of the reported securities, except to the extent of their pecuniary interest therein.",
+            "2": "Held directly by the Fund.",
+            "3": "Held directly by the Nexus Fund.",
+            "4": "Held directly by Nexus Fund III.",
+            "5": "Held directly by the Account.",
+            "6": "The Pre-Funded Warrants have no expiration date and are exercisable immediately. Notwithstanding the foregoing, the Fund shall not be entitled to exercise the Pre-Funded Warrant if it would cause the aggregate number of shares of Common Stock beneficially owned by the Fund, together with its Attribution Parties (as defined in the Pre-Funded Warrant), to exceed 9.99% of the total number of issued and outstanding shares of Common Stock of the Issuer following such exercise."
+          },
+          "Remarks": "Laura Stoppel, a Principal of the Adviser, serves on the Issuer's board of directors"
+        }
+      }
+    },
+    {
+      "X": "",
+      "Filing Date": "2026-05-13 16:31:15",
+      "Trade Date": "2026-05-11",
+      "Ticker": "VRDN",
+      "Ticker_link": "http://openinsider.com/VRDN",
+      "Company Name": "Viridian Therapeutics, Inc.De",
+      "Insider Name": "Fairmount Funds Management LLC",
+      "Insider Name_link": "http://openinsider.com/insider/Fairmount-Funds-Management-LLC/1802528",
+      "Title": "Dir, 10%",
+      "Trade Type": "P - Purchase",
+      "Price": "$17.00",
+      "Qty": "+1,176,470",
+      "Owned": "5,090,928",
+      "ΔOwn": "+30%",
+      "Value": "+$19,999,990",
+      "sec_filing_data": {
+        "source_url": "http://www.sec.gov/Archives/edgar/data/1590750/000110465926060294/xslF345X03/tm2614357-1_4seq1.xml",
+        "row_count": 1,
+        "table_rows": [
+          {
+            "3. Transaction Code (Instr. \n      8) | Code": "P",
+            "3. Transaction Code (Instr. \n      8) | V": "",
+            "6. Ownership Form: Direct (D) or Indirect (I) (Instr. \n      4)": "I",
+            "7. Nature of Indirect Beneficial Ownership (Instr. \n      4)": "By Fairmount Healthcare Fund II L.P. (1)"
+          }
+        ],
+        "explanation_rows": {
+          "foot_notes": {
+            "1": "Fairmount Funds Management LLC (\"Fairmount\") and Fairmount Healthcare Fund II GP LLC (\"Fairmount GP II\") have voting power and investment power over the securities held by Fairmount Healthcare Fund II LP (\"Fund II\"). They disclaim beneficial ownership of securities held by Fund II for purposes of Rule 16a-1(a)(2), except to the extent of their pecuniary interest therein."
+          },
+          "Remarks": "The Reporting Persons may each be deemed a director by deputization of Issuer by virtue of the fact that Tomas Kiselak serves on the board of directors of Issuer and is also a Managing Member of Fairmount Funds Management LLC."
+        }
+      }
+    },
+    {
+      "X": "",
+      "Filing Date": "2026-05-13 16:08:04",
+      "Trade Date": "2026-05-12",
+      "Ticker": "KHC",
+      "Ticker_link": "http://openinsider.com/KHC",
+      "Company Name": "Kraft Heinz Co",
+      "Insider Name": "Cahillane Steven A",
+      "Insider Name_link": "http://openinsider.com/insider/Cahillane-Steven-A/1416390",
+      "Title": "CEO",
+      "Trade Type": "P - Purchase",
+      "Price": "$23.46",
+      "Qty": "+213,106",
+      "Owned": "636,701",
+      "ΔOwn": "+50%",
+      "Value": "+$4,999,808",
+      "sec_filing_data": {
+        "source_url": "http://www.sec.gov/Archives/edgar/data/1637459/000141639026000012/xslF345X03/wk-form4_1778702880.xml",
+        "row_count": 1,
+        "table_rows": [
+          {
+            "3. Transaction Code (Instr. \n      8) | Code": "P",
+            "3. Transaction Code (Instr. \n      8) | V": "",
+            "6. Ownership Form: Direct (D) or Indirect (I) (Instr. \n      4)": "D",
+            "7. Nature of Indirect Beneficial Ownership (Instr. \n      4)": ""
+          }
+        ],
+        "explanation_rows": {
+          "foot_notes": {
+            "1": "This transaction was executed in multiple trades at prices ranging from $23.30 to $23.57. The price reported above reflects the weighted average purchase price. Mr. Cahillane hereby undertakes to\nprovide upon request to the SEC Staff, the Issuer, or a stockholder of the Issuer full information regarding the number of shares and the prices at which the transaction was effected.",
+            "2": "Includes an additional 7,524 shares acquired through a dividend reinvestment program."
+          },
+          "Remarks": ""
+        }
+      }
+    },
+    {
+      "X": "",
+      "Filing Date": "2026-05-13 10:03:39",
+      "Trade Date": "2026-05-12",
+      "Ticker": "WCN",
+      "Ticker_link": "http://openinsider.com/WCN",
+      "Company Name": "Waste Connections, Inc.",
+      "Insider Name": "Mittelstaedt Ronald J",
+      "Insider Name_link": "http://openinsider.com/insider/Mittelstaedt-Ronald-J/1064299",
+      "Title": "Pres, CEO",
+      "Trade Type": "P - Purchase",
+      "Price": "$152.24",
+      "Qty": "+50,000",
+      "Owned": "301,017",
+      "ΔOwn": "+20%",
+      "Value": "+$7,611,750",
+      "sec_filing_data": {
+        "source_url": "http://www.sec.gov/Archives/edgar/data/1318220/000106429926000005/xslF345X03/primarydocument.xml",
+        "row_count": 1,
+        "table_rows": [
+          {
+            "3. Transaction Code (Instr. \n      8) | Code": "P",
+            "3. Transaction Code (Instr. \n      8) | V": "",
+            "6. Ownership Form: Direct (D) or Indirect (I) (Instr. \n      4)": "D",
+            "7. Nature of Indirect Beneficial Ownership (Instr. \n      4)": ""
+          }
+        ],
+        "explanation_rows": {
+          "foot_notes": {},
+          "Remarks": ""
+        }
+      }
+    },
+    {
+      "X": "D",
+      "Filing Date": "2026-05-12 17:37:36",
+      "Trade Date": "2026-05-08",
+      "Ticker": "ODTX",
+      "Ticker_link": "http://openinsider.com/ODTX",
+      "Company Name": "Odyssey Therapeutics, Inc.",
+      "Insider Name": "Dimension Capital Ii, L.P.",
+      "Insider Name_link": "http://openinsider.com/insider/Dimension-Capital-Ii--L.P./2040933",
+      "Title": "Dir",
+      "Trade Type": "P - Purchase",
+      "Price": "$18.00",
+      "Qty": "+1,111,111",
+      "Owned": "3,333,516",
+      "ΔOwn": "+50%",
+      "Value": "+$19,999,998",
+      "sec_filing_data": {
+        "source_url": "http://www.sec.gov/Archives/edgar/data/1882782/000101297526000417/xslF345X03/form4.xml",
+        "row_count": 1,
+        "table_rows": [
+          {
+            "3. Transaction Code (Instr. \n      8) | Code": "P",
+            "3. Transaction Code (Instr. \n      8) | V": "",
+            "6. Ownership Form: Direct (D) or Indirect (I) (Instr. \n      4)": "D (2) (3)",
+            "7. Nature of Indirect Beneficial Ownership (Instr. \n      4)": ""
+          }
+        ],
+        "explanation_rows": {
+          "foot_notes": {
+            "1": "The Series D Preferred Stock automatically converted into Common Stock immediately prior to the closing of the Issuer's initial public offering on a 1-for-9.7170 basis for no additional consideration.",
+            "2": "Held directly by Dimension Capital II, L.P. (\"Dimension Capital II\"). Dimension Management, L.P. (\"Dimension Management\") is the investment advisor to Dimension Capital II. Dimension Management GP, L.P. is the general partner of Dimension Management, and Dimension Management GP, LLC (\"Dimension Management GP\") is the general partner of Dimension Management GP, L.P. Dimension Capital II GP, LLC (\"Dimension Capital II GP\") is the general partner to the general partner of Dimension Capital II. Adam Goulburn, Zavain Dar, and Nan Li are members of each of Dimension Management GP and Dimension Capital II GP. Mr. Li serves on the Issuer's board of directors.",
+            "3": "Each of Dimension Management, Dimension Management GP, Dimension Capital II GP, Mr. Goulburn, Mr. Dar, and Mr. Li disclaims, for purposes of Section 16 of the Securities Exchange Act of 1934, beneficial ownership of such securities, except to the extent of his/its indirect pecuniary interest therein.",
+            "4": "Gives effect to the 1-for-9.7170 reverse stock split effected prior to the closing of the Issuer's initial public offering."
+          },
+          "Remarks": ""
+        }
+      }
+    },
+    {
+      "X": "D",
+      "Filing Date": "2026-05-12 17:20:18",
+      "Trade Date": "2026-05-08",
+      "Ticker": "AXIA",
+      "Ticker_link": "http://openinsider.com/AXIA",
+      "Company Name": "Axia Energia S.A.",
+      "Insider Name": "Batista De Lima Filho Pedro",
+      "Insider Name_link": "http://openinsider.com/insider/Batista-De-Lima-Filho-Pedro/2121444",
+      "Title": "Dir",
+      "Trade Type": "P - Purchase",
+      "Price": "$11.90",
+      "Qty": "+3,656,500",
+      "Owned": "5,823,238",
+      "ΔOwn": "+169%",
+      "Value": "+$43,515,365",
+      "sec_filing_data": {
+        "source_url": "http://www.sec.gov/Archives/edgar/data/1439124/000121390026055204/xslF345X03/marketforms-73163.xml",
+        "row_count": 6,
+        "table_rows": [
+          {
+            "3. Transaction Code (Instr. \n      8) | Code": "P",
+            "3. Transaction Code (Instr. \n      8) | V": "",
+            "6. Ownership Form: Direct (D) or Indirect (I) (Instr. \n      4)": "I",
+            "7. Nature of Indirect Beneficial Ownership (Instr. \n      4)": "By managed account (4)"
+          },
+          {
+            "3. Transaction Code (Instr. \n      8) | Code": "P",
+            "3. Transaction Code (Instr. \n      8) | V": "",
+            "6. Ownership Form: Direct (D) or Indirect (I) (Instr. \n      4)": "I",
+            "7. Nature of Indirect Beneficial Ownership (Instr. \n      4)": "By managed account (7)"
+          },
+          {
+            "3. Transaction Code (Instr. \n      8) | Code": "P",
+            "3. Transaction Code (Instr. \n      8) | V": "",
+            "6. Ownership Form: Direct (D) or Indirect (I) (Instr. \n      4)": "I",
+            "7. Nature of Indirect Beneficial Ownership (Instr. \n      4)": "By managed account (9)"
+          },
+          {
+            "3. Transaction Code (Instr. \n      8) | Code": "P",
+            "3. Transaction Code (Instr. \n      8) | V": "",
+            "6. Ownership Form: Direct (D) or Indirect (I) (Instr. \n      4)": "I",
+            "7. Nature of Indirect Beneficial Ownership (Instr. \n      4)": "By managed account (2)"
+          },
+          {
+            "3. Transaction Code (Instr. \n      8) | Code": "P",
+            "3. Transaction Code (Instr. \n      8) | V": "",
+            "6. Ownership Form: Direct (D) or Indirect (I) (Instr. \n      4)": "I",
+            "7. Nature of Indirect Beneficial Ownership (Instr. \n      4)": "By managed account (11)"
+          },
+          {
+            "3. Transaction Code (Instr. \n      8) | Code": "P",
+            "3. Transaction Code (Instr. \n      8) | V": "",
+            "6. Ownership Form: Direct (D) or Indirect (I) (Instr. \n      4)": "I",
+            "7. Nature of Indirect Beneficial Ownership (Instr. \n      4)": "By managed account (13)"
+          }
+        ],
+        "explanation_rows": {
+          "foot_notes": {
+            "1": "The price reported in column 4 is a weighted average price. The reporting person undertakes to provide to AXIA Energia S.A. (\"AXIA\"), any security holder of AXIA, or the staff of the Securities and Exchange Commission (the \"SEC\"), upon request, full information regarding the number of shares sold at each separate price. The weighted average price, $58.75 Brazilian reals (\"BRL\") per share, has been converted to U.S. dollars (\"USD\") using the U.S. Department of the Treasury Bureau of the Fiscal Service Treasury Reporting Rates of Exchange as of March 31, 2026 (the most recently published quarterly rate, applicable to transactions through June 30, 2026), at a rate of 5.2540 BRL per USD (fiscaldata.treasury.gov). Brokerage commissions and other costs of execution, if any, are excluded from the reported price.",
+            "2": "Pedro Batista de Lima Filho (\"Mr. Filho\") is a partner at Radar Gestora de Recursos Ltda. (\"Radar Gestora\"), which is responsible for the portfolio management of MALIKO INVESTMENTS LLC - BANCO BTG PACTUAL S/A (\"Maliko\") and receives a performance-based compensation in his capacity as a partner of Radar Gestora. Mr. Filho may be deemed to indirectly beneficially own these shares by virtue of its relationship with Maliko. For the purposes of this filing, each of Maliko and Mr. Filho disclaims beneficial ownership of the reported securities except to the extent of his or its pecuniary interest therein. This filing shall not be deemed an admission that Maliko or Mr. Filho is the beneficial owner of any of the reported securities for purposes of Section 16 of the Securities Exchange Act of 1934, as amended (the \"Exchange Act\"), or otherwise.",
+            "3": "The price reported in column 4 is a weighted average price. The reporting person undertakes to provide to AXIA, any security holder of AXIA, or the staff of the SEC, upon request, full information regarding the number of shares sold at each separate price. The weighted average price, $58.79 BRL per share, has been converted to USD using the U.S. Department of the Treasury Bureau of the Fiscal Service Treasury Reporting Rates of Exchange as of March 31, 2026 (the most recently published quarterly rate, applicable to transactions through June 30, 2026), at a rate of 5.2540 BRL per USD (fiscaldata.treasury.gov). Brokerage commissions and other costs of execution, if any, are excluded from the reported price.",
+            "4": "Mr. Filho is a partner at Radar Gestora, which is responsible for the portfolio management of MANUKA INVESTMENTS LLC - BANCO BTG PACTUAL S/A (\"Manuka\") and receives a performance-based compensation in his capacity as a partner of Radar Gestora. Mr. Filho may be deemed to indirectly beneficially own these shares by virtue of its relationship with Manuka. For the purposes of this filing, each of Manuka and Mr. Filho disclaims beneficial ownership of the reported securities except to the extent of his or its pecuniary interest therein. This filing shall not be deemed an admission that Manuka or Mr. Filho is the beneficial owner of any of the reported securities for purposes of Section 16 of the Exchange Act, or otherwise.",
+            "5": "The price reported in column 4 is a weighted average price. The reporting person undertakes to provide to AXIA, any security holder of AXIA, or the staff of the SEC, upon request, full information regarding the number of shares purchased at each separate price. The weighted average price, $58.75 BRL per share, has been converted to USD using the U.S. Department of the Treasury Bureau of the Fiscal Service Treasury Reporting Rates of Exchange as of March 31, 2026 (the most recently published quarterly rate, applicable to transactions through June 30, 2026), at a rate of 5.2540 BRL per USD (fiscaldata.treasury.gov). Brokerage commissions and other costs of execution, if any, are excluded from the reported price.",
+            "6": "The price reported in column 4 is a weighted average price. The reporting person undertakes to provide to AXIA, or the staff of the SEC, upon request, full information regarding the number of shares purchased at each separate price. The weighted average price, $58.75 BRL per share, has been converted to USD using the U.S. Department of the Treasury Bureau of the Fiscal Service Treasury Reporting Rates of Exchange as of March 31, 2026 (the most recently published quarterly rate, applicable to transactions through June 30, 2026), at a rate of 5.2540 BRL per USD (fiscaldata.treasury.gov). Brokerage commissions and other costs of execution, if any, are excluded from the reported price.",
+            "7": "Mr. Filho is a partner at Radar Gestora, which is responsible for the portfolio management of TUCURUI MASTER FUNDO DE INVESTIMENTO FINANCEIRO EM ACOES (\"Tucurui\") and receives a performance-based compensation in his capacity as a partner of Radar Gestora. Mr. Filho may be deemed to indirectly beneficially own these shares by virtue of its relationship with Tucurui. For the purposes of this filing, each of Tucurui and Mr. Filho disclaims beneficial ownership of the reported securities except to the extent of his or its pecuniary interest therein. This filing shall not be deemed an admission that Tucurui or Mr. Filho is the beneficial owner of any of the reported securities for purposes of Section 16 of the Exchange Act, or otherwise.",
+            "8": "The price reported in column 4 is a weighted average price. The reporting person undertakes to provide to AXIA, or the staff of the SEC, upon request, full information regarding the number of shares purchased at each separate price. The weighted average price, $58.75 BRL per share, has been converted to USD using the U.S. Department of the Treasury Bureau of the Fiscal Service Treasury Reporting Rates of Exchange as of March 31, 2026 (the most recently published quarterly rate, applicable to transactions through June 30, 2026), at a rate of 5.2540 BRL per USD (fiscaldata.treasury.gov). Brokerage commissions and other costs of execution, if any, are excluded from the reported price.",
+            "9": "Mr. Filho is a partner at Radar Gestora, which is responsible for the portfolio management of XINGO MASTER FUNDO DE INVESTIMENTO FINANCEIRO DE ACOES (\"Xingo\") and receives a performance-based compensation in his capacity as a partner of Radar Gestora. Mr. Filho may be deemed to indirectly beneficially own these shares by virtue of its relationship with Xingo. For the purposes of this filing, each of Xingo and Mr. Filho disclaims beneficial ownership of the reported securities except to the extent of his or its pecuniary interest therein. This filing shall not be deemed an admission that Xingo or Mr. Filho is the beneficial owner of any of the reported securities for purposes of Section 16 of the Exchange Act, or otherwise.",
+            "10": "The price reported in column 4 is a weighted average price. The reporting person undertakes to provide to AXIA, or the staff of the SEC, upon request, full information regarding the number of shares sold at each separate price. The weighted average price, $58.76 BRL per share, has been converted to USD using the U.S. Department of the Treasury Bureau of the Fiscal Service Treasury Reporting Rates of Exchange as of March 31, 2026 (the most recently published quarterly rate, applicable to transactions through June 30, 2026), at a rate of 5.2540 BRL per USD (fiscaldata.treasury.gov). Brokerage commissions and other costs of execution, if any, are excluded from the reported price.",
+            "11": "Mr. Filho is a partner at Radar Gestora, which is responsible for the portfolio management of RADAR MASTER FUNDO DE INVESTIMENTO FINANCEIRO EM ACOES (\"Radar\") and receives a performance-based compensation in his capacity as a partner of Radar Gestora. Mr. Filho may be deemed to indirectly beneficially own these shares by virtue of its relationship with Radar. For the purposes of this filing, each of Radar and Mr. Filho disclaims beneficial ownership of the reported securities except to the extent of his or its pecuniary interest therein. This filing shall not be deemed an admission that Radar or Mr. Filho is the beneficial owner of any of the reported securities for purposes of Section 16 of the Exchange Act, or otherwise.",
+            "12": "The price reported in column 4 is a weighted average price. The reporting person undertakes to provide to AXIA, or the staff of the SEC, upon request, full information regarding the number of shares sold at each separate price. The weighted average price, $58.78 BRL per share, has been converted to USD using the U.S. Department of the Treasury Bureau of the Fiscal Service Treasury Reporting Rates of Exchange as of March 31, 2026 (the most recently published quarterly rate, applicable to transactions through June 30, 2026), at a rate of 5.2540 BRL per USD (fiscaldata.treasury.gov). Brokerage commissions and other costs of execution, if any, are excluded from the reported price.",
+            "13": "Mr. Filho is a partner at Radar Gestora, which is responsible for the portfolio management of INFRAD MASTER FUNDO DE INVESTIMENTO FINANCEIRO EM ACOES (\"Infrad\") and receives a performance-based compensation in his capacity as a partner of Radar Gestora. Mr. Filho may be deemed to indirectly beneficially own these shares by virtue of its relationship with Infrad. For the purposes of this filing, each of Infrad and Mr. Filho disclaims beneficial ownership of the reported securities except to the extent of his or its pecuniary interest therein. This filing shall not be deemed an admission that Infrad or Mr. Filho is the beneficial owner of any of the reported securities for purposes of Section 16 of the Exchange Act, or otherwise.",
+            "14": "The price reported in column 4 is a weighted average price. The reporting person undertakes to provide to AXIA, or the staff of the SEC, upon request, full information regarding the number of shares sold at each separate price. The weighted average price, $64.53 BRL per share, has been converted to USD using the U.S. Department of the Treasury Bureau of the Fiscal Service Treasury Reporting Rates of Exchange as of March 31, 2026 (the most recently published quarterly rate, applicable to transactions through June 30, 2026), at a rate of 5.2540 BRL per USD (fiscaldata.treasury.gov). Brokerage commissions and other costs of execution, if any, are excluded from the reported price.",
+            "15": "The price reported in column 4 is a weighted average price. The reporting person undertakes to provide to AXIA, or the staff of the SEC, upon request, full information regarding the number of shares purchased at each separate price. The weighted average price, $64.57 BRL per share, has been converted to USD using the U.S. Department of the Treasury Bureau of the Fiscal Service Treasury Reporting Rates of Exchange as of March 31, 2026 (the most recently published quarterly rate, applicable to transactions through June 30, 2026), at a rate of 5.2540 BRL per USD (fiscaldata.treasury.gov). Brokerage commissions and other costs of execution, if any, are excluded from the reported price.",
+            "16": "The price reported in column 4 is a weighted average price. The reporting person undertakes to provide to AXIA, or the staff of the SEC, upon request, full information regarding the number of shares sold at each separate price. The weighted average price, $64.57 BRL per share, has been converted to USD using the U.S. Department of the Treasury Bureau of the Fiscal Service Treasury Reporting Rates of Exchange as of March 31, 2026 (the most recently published quarterly rate, applicable to transactions through June 30, 2026), at a rate of 5.2540 BRL per USD (fiscaldata.treasury.gov). Brokerage commissions and other costs of execution, if any, are excluded from the reported price.",
+            "17": "The price reported in column 4 is a weighted average price. The reporting person undertakes to provide to AXIA, or the staff of the SEC, upon request, full information regarding the number of shares sold at each separate price. The weighted average price, $64.57 BRL per share, has been converted to USD using the U.S. Department of the Treasury Bureau of the Fiscal Service Treasury Reporting Rates of Exchange as of March 31, 2026 (the most recently published quarterly rate, applicable to transactions through June 30, 2026), at a rate of 5.2540 BRL per USD (fiscaldata.treasury.gov). Brokerage commissions and other costs of execution, if any, are excluded from the reported price.",
+            "18": "The price reported in column 4 is a weighted average price. The reporting person undertakes to provide to AXIA, or the staff of the SEC, upon request, full information regarding the number of shares sold at each separate price. The weighted average price, $64.57 BRL per share, has been converted to USD using the U.S. Department of the Treasury Bureau of the Fiscal Service Treasury Reporting Rates of Exchange as of March 31, 2026 (the most recently published quarterly rate, applicable to transactions through June 30, 2026), at a rate of 5.2540 BRL per USD (fiscaldata.treasury.gov). Brokerage commissions and other costs of execution, if any, are excluded from the reported price.",
+            "19": "The price reported in column 4 is a weighted average price. The reporting person undertakes to provide to AXIA, or the staff of the SEC, upon request, full information regarding the number of shares sold at each separate price. The weighted average price, $64.53 BRL per share, has been converted to USD using the U.S. Department of the Treasury Bureau of the Fiscal Service Treasury Reporting Rates of Exchange as of March 31, 2026 (the most recently published quarterly rate, applicable to transactions through June 30, 2026), at a rate of 5.2540 BRL per USD (fiscaldata.treasury.gov). Brokerage commissions and other costs of execution, if any, are excluded from the reported price.",
+            "20": "The price reported in column 4 is a weighted average price. The reporting person undertakes to provide to AXIA, or the staff of the SEC, upon request, full information regarding the number of shares purchased at each separate price. The weighted average price, $64.57 BRL per share, has been converted to USD using the U.S. Department of the Treasury Bureau of the Fiscal Service Treasury Reporting Rates of Exchange as of March 31, 2026 (the most recently published quarterly rate, applicable to transactions through June 30, 2026), at a rate of 5.2540 BRL per USD (fiscaldata.treasury.gov). Brokerage commissions and other costs of execution, if any, are excluded from the reported price.",
+            "21": "The price reported in column 4 is a weighted average price. The reporting person undertakes to provide to AXIA, or the staff of the SEC, upon request, full information regarding the number of shares sold at each separate price. The weighted average price, $64.53 BRL per share, has been converted to USD using the U.S. Department of the Treasury Bureau of the Fiscal Service Treasury Reporting Rates of Exchange as of March 31, 2026 (the most recently published quarterly rate, applicable to transactions through June 30, 2026), at a rate of 5.2540 BRL per USD (fiscaldata.treasury.gov). Brokerage commissions and other costs of execution, if any, are excluded from the reported price.",
+            "22": "The price reported in column 4 is a weighted average price. The reporting person undertakes to provide to AXIA, or the staff of the SEC, upon request, full information regarding the number of shares purchased at each separate price. The weighted average price, $64.57 BRL per share, has been converted to USD using the U.S. Department of the Treasury Bureau of the Fiscal Service Treasury Reporting Rates of Exchange as of March 31, 2026 (the most recently published quarterly rate, applicable to transactions through June 30, 2026), at a rate of 5.2540 BRL per USD (fiscaldata.treasury.gov). Brokerage commissions and other costs of execution, if any, are excluded from the reported price.",
+            "23": "Pursuant to Article 11 of the Bylaws of the Company, the Class \"C\" Preferred Shares shall be automatically converted into Common Shares, assuming such Class \"C\" Preferred Shares are not earlier mandatorily redeemed by the Company in accordance with its Bylaws, at a ratio of 1:1, as follows: 4% of the total volume of originally-issued Class \"C\" Preferred Shares, allocated proportionally among all holders, in each of the fiscal years 2026, 2027, 2028, 2029 and 2030; and all Class \"C\" Preferred Shares remaining, in fiscal year 2031.",
+            "24": "The price reported in column 4 is a weighted average price. The reporting person undertakes to provide to AXIA, or the staff of the SEC, upon request, full information regarding the number of shares sold at each separate price. The weighted average price, $56.72 BRL per share, has been converted to USD using the U.S. Department of the Treasury Bureau of the Fiscal Service Treasury Reporting Rates of Exchange as of March 31, 2026 (the most recently published quarterly rate, applicable to transactions through June 30, 2026), at a rate of 5.2540 BRL per USD (fiscaldata.treasury.gov). Brokerage commissions and other costs of execution, if any, are excluded from the reported price.",
+            "25": "The price reported in column 4 is a weighted average price. The reporting person undertakes to provide to AXIA, or the staff of the SEC, upon request, full information regarding the number of shares purchased at each separate price. The weighted average price, $56.72 BRL per share, has been converted to USD using the U.S. Department of the Treasury Bureau of the Fiscal Service Treasury Reporting Rates of Exchange as of March 31, 2026 (the most recently published quarterly rate, applicable to transactions through June 30, 2026), at a rate of 5.2540 BRL per USD (fiscaldata.treasury.gov). Brokerage commissions and other costs of execution, if any, are excluded from the reported price."
+          },
+          "Remarks": ""
+        }
+      }
+    },
+    {
+      "X": "D",
+      "Filing Date": "2026-05-11 21:36:56",
+      "Trade Date": "2026-05-11",
+      "Ticker": "MOBI",
+      "Ticker_link": "http://openinsider.com/MOBI",
+      "Company Name": "Mobia Medical, Inc.",
+      "Insider Name": "Harrington William T",
+      "Insider Name_link": "http://openinsider.com/insider/Harrington-William-T/1256742",
+      "Title": "Dir, 10%",
+      "Trade Type": "P - Purchase",
+      "Price": "$15.00",
+      "Qty": "+533,333",
+      "Owned": "1,404,183",
+      "ΔOwn": "+61%",
+      "Value": "+$7,999,995",
+      "sec_filing_data": {
+        "source_url": "http://www.sec.gov/Archives/edgar/data/1489993/000162828026033811/xslF345X03/wk-form4_1778549813.xml",
+        "row_count": 2,
+        "table_rows": [
+          {
+            "3. Transaction Code (Instr. \n      8) | Code": "P",
+            "3. Transaction Code (Instr. \n      8) | V": "",
+            "6. Ownership Form: Direct (D) or Indirect (I) (Instr. \n      4)": "I",
+            "7. Nature of Indirect Beneficial Ownership (Instr. \n      4)": "See Footnote (2)"
+          },
+          {
+            "3. Transaction Code (Instr. \n      8) | Code": "P",
+            "3. Transaction Code (Instr. \n      8) | V": "",
+            "6. Ownership Form: Direct (D) or Indirect (I) (Instr. \n      4)": "I",
+            "7. Nature of Indirect Beneficial Ownership (Instr. \n      4)": "See Footnote (3)"
+          }
+        ],
+        "explanation_rows": {
+          "foot_notes": {
+            "1": "The Convertible Notes automatically converted into Common Stock immediately prior to the closing of the Issuer's initial public offering (the \"Offering\"). The conversion price is the lower of (a) 80% of the Offering price per share and (b) the valuation of the Issuer immediately prior to the closing of the Offering divided by the number of fully diluted shares of capital stock (on an as-converted basis) outstanding immediately prior to Offering, excluding the Convertible Notes.",
+            "2": "The securities are held by Osage University Partners III, LP (\"OUP III\"). Osage University GP III, LLC (\"OUP III GP\") is the general partner of OUP III. The Reporting Person is a manager of OUP III GP and may be deemed to share voting and dispositive power over the shares held by OUP III. Each of OUP III GP and the Reporting Person disclaims beneficial ownership over the securities held by OUP III, except to the extent of their pecuniary interests therein, if any.",
+            "3": "The securities are held by Osage University Partners IV, LP (\"OUP IV\"). Osage University GP IV, LLC (\"OUP IV GP\") is the general partner of OUP IV. The Reporting Person is a manager of OUP IV GP and may be deemed to share voting and dispositive power over the shares held by OUP IV. Each of OUP IV GP and the Reporting Person disclaims beneficial ownership over the securities held by OUP IV, except to the extent of their pecuniary interests therein, if any.",
+            "4": "Each share of the Series F Preferred Stock and Series E-2 Preferred Stock converted into Common Stock immediately prior to the completion of the Offering pursuant to its terms.",
+            "5": "This transaction occurred prior to the Issuer's registration of a class of equity securities under Section 12 of the Securities Exchange Act of 1934, as amended, in connection with the Offering, and is reported herein pursuant to Rule 16a-2(a).",
+            "6": "The stock option will vest in three substantially equal installments on the first three anniversaries of the grant date."
+          },
+          "Remarks": ""
+        }
+      }
+    },
+    {
+      "X": "D",
+      "Filing Date": "2026-05-11 21:36:49",
+      "Trade Date": "2026-05-11",
+      "Ticker": "MOBI",
+      "Ticker_link": "http://openinsider.com/MOBI",
+      "Company Name": "Mobia Medical, Inc.",
+      "Insider Name": "Lucchese Cynthia L",
+      "Insider Name_link": "http://openinsider.com/insider/Lucchese-Cynthia-L/1337319",
+      "Title": "Dir",
+      "Trade Type": "P - Purchase",
+      "Price": "$15.00",
+      "Qty": "+125,000",
+      "Owned": "125,000",
+      "ΔOwn": "New",
+      "Value": "+$1,875,000",
+      "sec_filing_data": {
+        "source_url": "http://www.sec.gov/Archives/edgar/data/1489993/000162828026033810/xslF345X03/wk-form4_1778549807.xml",
+        "row_count": 1,
+        "table_rows": [
+          {
+            "3. Transaction Code (Instr. \n      8) | Code": "P",
+            "3. Transaction Code (Instr. \n      8) | V": "",
+            "6. Ownership Form: Direct (D) or Indirect (I) (Instr. \n      4)": "D",
+            "7. Nature of Indirect Beneficial Ownership (Instr. \n      4)": ""
+          }
+        ],
+        "explanation_rows": {
+          "foot_notes": {
+            "1": "The stock option will vest in three substantially equal installments on the first three anniversaries of the grant date."
+          },
+          "Remarks": ""
+        }
+      }
+    },
+    {
+      "X": "M",
+      "Filing Date": "2026-05-11 21:21:58",
+      "Trade Date": "2026-05-07",
+      "Ticker": "WGS",
+      "Ticker_link": "http://openinsider.com/WGS",
+      "Company Name": "Genedx Holdings Corp.",
+      "Insider Name": "Meister Keith A.",
+      "Insider Name_link": "http://openinsider.com/insider/Meister-Keith-A./1307631",
+      "Title": "Dir, 10%",
+      "Trade Type": "P - Purchase",
+      "Price": "$38.84",
+      "Qty": "+1,205,147",
+      "Owned": "4,786,570",
+      "ΔOwn": "+34%",
+      "Value": "+$46,806,729",
+      "sec_filing_data": {
+        "source_url": "http://www.sec.gov/Archives/edgar/data/1818331/000101143826000276/xslF345X03/form4.xml",
+        "row_count": 13,
+        "table_rows": [
+          {
+            "3. Transaction Code (Instr. \n      8) | Code": "P",
+            "3. Transaction Code (Instr. \n      8) | V": "",
+            "6. Ownership Form: Direct (D) or Indirect (I) (Instr. \n      4)": "I",
+            "7. Nature of Indirect Beneficial Ownership (Instr. \n      4)": "See footnotes (2) (3)"
+          },
+          {
+            "3. Transaction Code (Instr. \n      8) | Code": "P",
+            "3. Transaction Code (Instr. \n      8) | V": "",
+            "6. Ownership Form: Direct (D) or Indirect (I) (Instr. \n      4)": "I",
+            "7. Nature of Indirect Beneficial Ownership (Instr. \n      4)": "See footnotes (2) (3)"
+          },
+          {
+            "3. Transaction Code (Instr. \n      8) | Code": "P",
+            "3. Transaction Code (Instr. \n      8) | V": "",
+            "6. Ownership Form: Direct (D) or Indirect (I) (Instr. \n      4)": "I",
+            "7. Nature of Indirect Beneficial Ownership (Instr. \n      4)": "See footnotes (2) (3)"
+          },
+          {
+            "3. Transaction Code (Instr. \n      8) | Code": "P",
+            "3. Transaction Code (Instr. \n      8) | V": "",
+            "6. Ownership Form: Direct (D) or Indirect (I) (Instr. \n      4)": "I",
+            "7. Nature of Indirect Beneficial Ownership (Instr. \n      4)": "See footnotes (2) (3)"
+          },
+          {
+            "3. Transaction Code (Instr. \n      8) | Code": "P",
+            "3. Transaction Code (Instr. \n      8) | V": "",
+            "6. Ownership Form: Direct (D) or Indirect (I) (Instr. \n      4)": "I",
+            "7. Nature of Indirect Beneficial Ownership (Instr. \n      4)": "See footnotes (2) (3)"
+          },
+          {
+            "3. Transaction Code (Instr. \n      8) | Code": "P",
+            "3. Transaction Code (Instr. \n      8) | V": "",
+            "6. Ownership Form: Direct (D) or Indirect (I) (Instr. \n      4)": "I",
+            "7. Nature of Indirect Beneficial Ownership (Instr. \n      4)": "See footnotes (2) (3)"
+          },
+          {
+            "3. Transaction Code (Instr. \n      8) | Code": "P",
+            "3. Transaction Code (Instr. \n      8) | V": "",
+            "6. Ownership Form: Direct (D) or Indirect (I) (Instr. \n      4)": "I",
+            "7. Nature of Indirect Beneficial Ownership (Instr. \n      4)": "See footnotes (2) (3)"
+          },
+          {
+            "3. Transaction Code (Instr. \n      8) | Code": "P",
+            "3. Transaction Code (Instr. \n      8) | V": "",
+            "6. Ownership Form: Direct (D) or Indirect (I) (Instr. \n      4)": "I",
+            "7. Nature of Indirect Beneficial Ownership (Instr. \n      4)": "See footnotes (2) (3)"
+          },
+          {
+            "3. Transaction Code (Instr. \n      8) | Code": "P",
+            "3. Transaction Code (Instr. \n      8) | V": "",
+            "6. Ownership Form: Direct (D) or Indirect (I) (Instr. \n      4)": "I",
+            "7. Nature of Indirect Beneficial Ownership (Instr. \n      4)": "See footnotes (2) (3)"
+          },
+          {
+            "3. Transaction Code (Instr. \n      8) | Code": "P",
+            "3. Transaction Code (Instr. \n      8) | V": "",
+            "6. Ownership Form: Direct (D) or Indirect (I) (Instr. \n      4)": "I",
+            "7. Nature of Indirect Beneficial Ownership (Instr. \n      4)": "See footnotes (2) (3)"
+          },
+          {
+            "3. Transaction Code (Instr. \n      8) | Code": "P",
+            "3. Transaction Code (Instr. \n      8) | V": "",
+            "6. Ownership Form: Direct (D) or Indirect (I) (Instr. \n      4)": "I",
+            "7. Nature of Indirect Beneficial Ownership (Instr. \n      4)": "See footnotes (2) (3)"
+          },
+          {
+            "3. Transaction Code (Instr. \n      8) | Code": "P",
+            "3. Transaction Code (Instr. \n      8) | V": "",
+            "6. Ownership Form: Direct (D) or Indirect (I) (Instr. \n      4)": "I",
+            "7. Nature of Indirect Beneficial Ownership (Instr. \n      4)": "See footnotes (2) (3)"
+          },
+          {
+            "3. Transaction Code (Instr. \n      8) | Code": "P",
+            "3. Transaction Code (Instr. \n      8) | V": "",
+            "6. Ownership Form: Direct (D) or Indirect (I) (Instr. \n      4)": "I",
+            "7. Nature of Indirect Beneficial Ownership (Instr. \n      4)": "See footnotes (2) (3)"
+          }
+        ],
+        "explanation_rows": {
+          "foot_notes": {
+            "1": "The price reported in Column 4 is a weighted average price. These shares were bought in multiple transactions within the range of $34.97 to $35.94. The Reporting Persons undertake to provide to the Issuer, any security holder of the Issuer or the staff of the Securities and Exchange Commission, upon request, full information regarding the number of shares bought at each separate price within the ranges set forth in footnotes (1), (4), (5), (6), (7), (8), (9), (10), (11), (12), (13), (14) and (15) to this Form 4.",
+            "2": "Investment funds advised by Corvex Management LP (\"Corvex\") are the direct holders of 4,433,297 shares of the Class A Common Stock, par value $0.0001 per share (\"Class A Common Stock\") of GeneDX Holdings Corp. (the \"Issuer\") reported herein. Mr. Meister may be deemed to indirectly beneficially own these shares by virtue of Mr. Meister's control of the general partner of Corvex.",
+            "3": "For the purposes of this filing, each of Corvex and Mr. Meister disclaims beneficial ownership of the reported securities except to the extent of his or its pecuniary interest therein. This filing shall not be deemed an admission that Corvex or Mr. Meister is the beneficial owner of any of the reported securities for purposes of Section 16 of the Securities Exchange Act of 1934, as amended, or otherwise.",
+            "4": "The price reported in Column 4 is a weighted average price. These shares were bought in multiple transactions within the range of $35.97 to $36.84.",
+            "5": "The price reported in Column 4 is a weighted average price. These shares were bought in multiple transactions within the range of $37.05 to $38.04.",
+            "6": "The price reported in Column 4 is a weighted average price. These shares were bought in multiple transactions within the range of $38.05 to $39.04.",
+            "7": "The price reported in Column 4 is a weighted average price. These shares were bought in multiple transactions within the range of $39.05 to $40.04.",
+            "8": "The price reported in Column 4 is a weighted average price. These shares were bought in multiple transactions within the range of $40.05 to $40.66.",
+            "9": "The price reported in Column 4 is a weighted average price. These shares were bought in multiple transactions within the range of $37.59 to $38.58.",
+            "10": "The price reported in Column 4 is a weighted average price. These shares were bought in multiple transactions within the range of $38.59 to $38.94.",
+            "11": "The price reported in Column 4 is a weighted average price. These shares were bought in multiple transactions within the range of $39.95 to $40.94.",
+            "12": "The price reported in Column 4 is a weighted average price. These shares were bought in multiple transactions within the range of $40.95 to $41.50.",
+            "13": "The price reported in Column 4 is a weighted average price. These shares were bought in multiple transactions within the range of $38.22 to $39.21.",
+            "14": "The price reported in Column 4 is a weighted average price. These shares were bought in multiple transactions within the range of $39.22 to $40.21.",
+            "15": "The price reported in Column 4 is a weighted average price. These shares were bought in multiple transactions within the range of $40.22 to $40.41.",
+            "16": "CMLS Holdings LLC (\"CMLS Holdings\") is the record holder of 333,144 shares of the Class A Common Stock reported herein. Mr. Meister is one of two members of the Board of Managers of CMLS Holdings, and Mr. Meister shares voting and investment discretion with respect to the securities held of record by CMLS Holdings reported herein.",
+            "17": "The shares of Class A Common Stock reflected as beneficially owned by Mr. Meister include 20,129 shares of Class A Common Stock that were issued upon the vesting of restricted stock units, that were granted to Mr. Meister in connection with his service on the board of directors of the Issuer."
+          },
+          "Remarks": ""
+        }
+      }
+    },
+    {
+      "X": "D",
+      "Filing Date": "2026-05-11 20:30:26",
+      "Trade Date": "2026-05-11",
+      "Ticker": "ODTX",
+      "Ticker_link": "http://openinsider.com/ODTX",
+      "Company Name": "Odyssey Therapeutics, Inc.",
+      "Insider Name": "Li Nan (Ln)",
+      "Insider Name_link": "http://openinsider.com/insider/Li-Nan-%28Ln%29/2131608",
+      "Title": "Dir",
+      "Trade Type": "P - Purchase",
+      "Price": "$18.00",
+      "Qty": "+1,111,111",
+      "Owned": "3,333,516",
+      "ΔOwn": "+50%",
+      "Value": "+$19,999,998",
+      "sec_filing_data": {
+        "source_url": "http://www.sec.gov/Archives/edgar/data/1882782/000119312526217593/xslF345X03/ownership.xml",
+        "row_count": 1,
+        "table_rows": [
+          {
+            "3. Transaction Code (Instr. \n      8) | Code": "P",
+            "3. Transaction Code (Instr. \n      8) | V": "",
+            "6. Ownership Form: Direct (D) or Indirect (I) (Instr. \n      4)": "I",
+            "7. Nature of Indirect Beneficial Ownership (Instr. \n      4)": "See footnote (2)"
+          }
+        ],
+        "explanation_rows": {
+          "foot_notes": {
+            "1": "The Series D Preferred Stock automatically converted into Common Stock immediately prior to the closing of the Issuer's initial public offering on a 1-for-9.7170 basis for no additional consideration.",
+            "2": "These securities are held by Dimension Capital II, L.P. Dimension Capital II, L.P. is controlled by Dimension Capital II GP, L.P., its general partner, which is itself controlled by Dimension Capital II GP, LLC. The Reporting Person, Adam Goulburn and Zavain Dar serve as the members of Dimension Capital II GP, LLC. The Reporting Person disclaims, for purposes of Section 16 of the Securities Exchange Act of 1934, beneficial ownership of such securities, except to the extent of his indirect pecuniary interest therein.",
+            "3": "Reflects shares purchased in the Issuer's initial public offering.",
+            "4": "Gives effect to the 1-for-9.7170 reverse stock split effected prior to the closing of the Issuer's initial public offering."
+          },
+          "Remarks": ""
+        }
+      }
+    },
+    {
+      "X": "M",
+      "Filing Date": "2026-05-11 17:38:43",
+      "Trade Date": "2026-05-07",
+      "Ticker": "TXO",
+      "Ticker_link": "http://openinsider.com/TXO",
+      "Company Name": "Txo Partners, L.P.",
+      "Insider Name": "Simpson Bob R",
+      "Insider Name_link": "http://openinsider.com/insider/Simpson-Bob-R/1182684",
+      "Title": "Dir, 10%",
+      "Trade Type": "P - Purchase",
+      "Price": "$12.61",
+      "Qty": "+750,000",
+      "Owned": "7,500,000",
+      "ΔOwn": "+11%",
+      "Value": "+$9,456,496",
+      "sec_filing_data": {
+        "source_url": "http://www.sec.gov/Archives/edgar/data/1559432/000118268426000003/xslF345X03/ownership.xml",
+        "row_count": 3,
+        "table_rows": [
+          {
+            "3. Transaction Code (Instr. \n      8) | Code": "P",
+            "3. Transaction Code (Instr. \n      8) | V": "",
+            "6. Ownership Form: Direct (D) or Indirect (I) (Instr. \n      4)": "D",
+            "7. Nature of Indirect Beneficial Ownership (Instr. \n      4)": ""
+          },
+          {
+            "3. Transaction Code (Instr. \n      8) | Code": "P",
+            "3. Transaction Code (Instr. \n      8) | V": "",
+            "6. Ownership Form: Direct (D) or Indirect (I) (Instr. \n      4)": "D",
+            "7. Nature of Indirect Beneficial Ownership (Instr. \n      4)": ""
+          },
+          {
+            "3. Transaction Code (Instr. \n      8) | Code": "P",
+            "3. Transaction Code (Instr. \n      8) | V": "",
+            "6. Ownership Form: Direct (D) or Indirect (I) (Instr. \n      4)": "D",
+            "7. Nature of Indirect Beneficial Ownership (Instr. \n      4)": ""
+          }
+        ],
+        "explanation_rows": {
+          "foot_notes": {
+            "1": "This transaction was executed in multiple trades at prices ranging from $12.20 to $12.50.  The price reported above reflects the weighted average purchase price.  The reporting person hereby undertakes to provide upon request to the SEC staff, the issuer or a secruity holder of the issuer full information regarding the number of shares and prices at which the transaction was effected.",
+            "2": "This transaction was executed in multiple trades at prices ranging from $12.37 to $12.60.  The price reported above reflects the weighted average purchase price.  The reporting person hereby undertakes to provide upon request to the SEC staff, the issuer or a secruity holder of the issuer full information regarding the number of shares and prices at which the transaction was effected.",
+            "3": "This transaction was executed in multiple trades at prices ranging from $12.57 to $12.80.  The price reported above reflects the weighted average purchase price.  The reporting person hereby undertakes to provide upon request to the SEC staff, the issuer or a secruity holder of the issuer full information regarding the number of shares and prices at which the transaction was effected."
+          },
+          "Remarks": "The Reporting Person is Chairman of TXO GP, LLC, the general partner of the Issuer (the \"General Partner\").  The Issuer is managed by the board of directors and executive officers of the General Partner."
+        }
+      }
+    },
+    {
+      "X": "",
+      "Filing Date": "2026-05-07 16:14:32",
+      "Trade Date": "2026-05-06",
+      "Ticker": "GEHC",
+      "Ticker_link": "http://openinsider.com/GEHC",
+      "Company Name": "Ge Healthcare Technologies Inc.",
+      "Insider Name": "Culp H Lawrence Jr",
+      "Insider Name_link": "http://openinsider.com/insider/Culp-H-Lawrence-Jr/1205247",
+      "Title": "Dir",
+      "Trade Type": "P - Purchase",
+      "Price": "$61.88",
+      "Qty": "+80,805",
+      "Owned": "492,174",
+      "ΔOwn": "+20%",
+      "Value": "+$5,000,076",
+      "sec_filing_data": {
+        "source_url": "http://www.sec.gov/Archives/edgar/data/1932393/000120524726000006/xslF345X03/wk-form4_1778184869.xml",
+        "row_count": 1,
+        "table_rows": [
+          {
+            "3. Transaction Code (Instr. \n      8) | Code": "P",
+            "3. Transaction Code (Instr. \n      8) | V": "",
+            "6. Ownership Form: Direct (D) or Indirect (I) (Instr. \n      4)": "I",
+            "7. Nature of Indirect Beneficial Ownership (Instr. \n      4)": "By holding company"
+          }
+        ],
+        "explanation_rows": {
+          "foot_notes": {
+            "1": "The price reported represents the weighted average price of shares purchased. These shares were purchased in multiple transactions at prices ranging from $61.50 to $62.22, inclusive. The Reporting Person undertakes to provide to GE HealthCare Technologies Inc. (\"GE HealthCare\"), any security holder of GE HealthCare, or the staff of the Securities and Exchange Commission, upon request, full information regarding the number of shares purchased at each separate price within the ranges set forth in this footnote.",
+            "2": "Reflects the transfer by the reporting person of 37,091 shares of GE HealthCare common stock to a family trust on May 1, 2025."
+          },
+          "Remarks": ""
+        }
+      }
+    },
+    {
+      "X": "",
+      "Filing Date": "2026-05-06 20:19:14",
+      "Trade Date": "2026-04-08",
+      "Ticker": "CFTR.",
+      "Ticker_link": "http://openinsider.com/CFTR.",
+      "Company Name": "Cantor Fitzgerald Income Trust, Inc.",
+      "Insider Name": "Lutnick Brandon",
+      "Insider Name_link": "http://openinsider.com/insider/Lutnick-Brandon/2048880",
+      "Title": "Dir",
+      "Trade Type": "P - Purchase",
+      "Price": "$25.00",
+      "Qty": "+100,000",
+      "Owned": "853,025",
+      "ΔOwn": "+13%",
+      "Value": "+$2,500,000",
+      "sec_filing_data": {
+        "source_url": "http://www.sec.gov/Archives/edgar/data/1666244/000121390026052981/xslF345X03/ownership.xml",
+        "row_count": 1,
+        "table_rows": [
+          {
+            "3. Transaction Code (Instr. \n      8) | Code": "P (1)",
+            "3. Transaction Code (Instr. \n      8) | V": "",
+            "6. Ownership Form: Direct (D) or Indirect (I) (Instr. \n      4)": "I",
+            "7. Nature of Indirect Beneficial Ownership (Instr. \n      4)": "See Footnote (1)"
+          }
+        ],
+        "explanation_rows": {
+          "foot_notes": {
+            "1": "On April 8, 2026, CF Real Estate Holdings, LLC (\"CF Real Estate\") a wholly-owned subsidiary of Cantor Fitzgerald Investors, LLC (\"CFI\") purchased 100,000 shares of the Issuer's 9.50% Series A Cumulative Redeemable Preferred Stock at $25.00 / share in an underwritten public offering. CFI is indirectly owned by Cantor Fitzgerald, L.P. (\"Cantor\") whose managing general partner is CF Group Management, Inc. (\"CFGM\"). Brandon Lutnick, as trustee with decision-making control of the trusts holding all voting shares of CFGM and as Chairman and CEO of Cantor and CFGM, may be deemed to beneficially own the shares held by CFI and CF Real Estate. The reporting person disclaims beneficial ownership of all securities held by CFI in excess of his pecuniary interest if any and this report shall not be deemed an admission of beneficial ownership or pecuniary interest in any such excess securities for purposes of Section 16 of the Securities Exchange Act of 1934 as amended or any other purpose.",
+            "2": "CFI is the record holder of 1,830.72 shares of Class I Common Stock reported herein. CFI is the beneficial owner of the remaining 556,659.57 shares of Class I Common Stock reported herein, which it owns through its wholly-owned subsidiary CF Real Estate. CF Real Estate is the record holder of 186,217.61 shares of Class IX Common Stock and 8,316.68 shares of Class AX Common Stock reported herein. The reporting person disclaims beneficial ownership of all securities held by CFI in excess of his pecuniary interest, if any, and this report shall not be deemed an admission that he was the beneficial owner of, or had pecuniary interest in, any such excess securities for purposes of Section 16 of the Securities Exchange Act of 1934, as amended, or for any other purpose."
+          },
+          "Remarks": ""
+        }
+      }
+    },
+    {
+      "X": "DM",
+      "Filing Date": "2026-05-06 19:16:36",
+      "Trade Date": "2026-05-04",
+      "Ticker": "COAG",
+      "Ticker_link": "http://openinsider.com/COAG",
+      "Company Name": "Hemab Therapeutics Holdings, Inc.",
+      "Insider Name": "Ra Capital Management, L.P.",
+      "Insider Name_link": "http://openinsider.com/insider/Ra-Capital-Management--L.P./1346824",
+      "Title": "Dir, 10%",
+      "Trade Type": "P - Purchase",
+      "Price": "$18.39",
+      "Qty": "+2,840,429",
+      "Owned": "6,314,525",
+      "ΔOwn": "+82%",
+      "Value": "+$52,222,946",
+      "sec_filing_data": {
+        "source_url": "http://www.sec.gov/Archives/edgar/data/2114044/000123191926000457/xslF345X03/form4-05062026_110527.xml",
+        "row_count": 6,
+        "table_rows": [
+          {
+            "3. Transaction Code (Instr. \n      8) | Code": "P",
+            "3. Transaction Code (Instr. \n      8) | V": "",
+            "6. Ownership Form: Direct (D) or Indirect (I) (Instr. \n      4)": "I",
+            "7. Nature of Indirect Beneficial Ownership (Instr. \n      4)": "See footnotes (2) (3)"
+          },
+          {
+            "3. Transaction Code (Instr. \n      8) | Code": "P",
+            "3. Transaction Code (Instr. \n      8) | V": "",
+            "6. Ownership Form: Direct (D) or Indirect (I) (Instr. \n      4)": "I",
+            "7. Nature of Indirect Beneficial Ownership (Instr. \n      4)": "See footnotes (2) (5)"
+          },
+          {
+            "3. Transaction Code (Instr. \n      8) | Code": "P",
+            "3. Transaction Code (Instr. \n      8) | V": "",
+            "6. Ownership Form: Direct (D) or Indirect (I) (Instr. \n      4)": "I",
+            "7. Nature of Indirect Beneficial Ownership (Instr. \n      4)": "See footnotes (2) (3)"
+          },
+          {
+            "3. Transaction Code (Instr. \n      8) | Code": "P",
+            "3. Transaction Code (Instr. \n      8) | V": "",
+            "6. Ownership Form: Direct (D) or Indirect (I) (Instr. \n      4)": "I",
+            "7. Nature of Indirect Beneficial Ownership (Instr. \n      4)": "See footnotes (2) (3)"
+          },
+          {
+            "3. Transaction Code (Instr. \n      8) | Code": "P",
+            "3. Transaction Code (Instr. \n      8) | V": "",
+            "6. Ownership Form: Direct (D) or Indirect (I) (Instr. \n      4)": "I",
+            "7. Nature of Indirect Beneficial Ownership (Instr. \n      4)": "See footnotes (2) (3)"
+          },
+          {
+            "3. Transaction Code (Instr. \n      8) | Code": "P",
+            "3. Transaction Code (Instr. \n      8) | V": "",
+            "6. Ownership Form: Direct (D) or Indirect (I) (Instr. \n      4)": "I",
+            "7. Nature of Indirect Beneficial Ownership (Instr. \n      4)": "See footnotes (2) (3)"
+          }
+        ],
+        "explanation_rows": {
+          "foot_notes": {
+            "1": "Each share of Series A Preferred Stock, Series B Preferred Stock and Series C Preferred Stock automatically converted into shares of Common Stock immediately prior to the closing of the Issuer's initial public offering for no additional consideration, on a 22-for-1 basis, and had no expiration date.",
+            "2": "RA Capital Management, L.P. (the \"Adviser\") is the investment manager for RA Capital Healthcare Fund, L.P. (the \"Fund\"), RA Capital Nexus II Fund, L.P. (the \"Nexus Fund II\") and RA Capital Nexus IV Fund, L.P. (the \"Nexus Fund IV\"). The general partner of the Adviser is RA Capital Management GP, LLC (the \"Adviser GP\"), of which Dr. Peter Kolchinsky and Mr. Rajeev Shah are the managing members. The Adviser, the Adviser GP, the Fund, the Nexus Fund II, the Nexus Fund IV, Dr. Kolchinsky and Mr. Shah disclaim beneficial ownership of any of the reported securities, except to the extent of their pecuniary interest therein.",
+            "3": "Held directly by the Fund.",
+            "4": "Held directly by Nexus Fund II.",
+            "5": "Held directly by Nexus Fund IV.",
+            "6": "The price reported in Column 4 is a weighted average price. These shares were purchased in multiple transactions at prices ranging from $24.00 to $24.9994 inclusive. The Reporting Persons undertake to provide to the Issuer, any security holder of the Issuer, or the staff of the Securities and Exchange Commission, upon request, full information regarding the number of shares purchased at each separate price within the range set forth in this footnote.",
+            "7": "The price reported in Column 4 is a weighted average price. These shares were purchased in multiple transactions at prices ranging from $23.495 to $24.455 inclusive. The Reporting Persons undertake to provide to the Issuer, any security holder of the Issuer, or the staff of the Securities and Exchange Commission, upon request, full information regarding the number of shares purchased at each separate price within the range set forth in this footnote.",
+            "8": "The price reported in Column 4 is a weighted average price. These shares were purchased in multiple transactions at prices ranging from $24.505 to $25.00 inclusive. The Reporting Persons undertake to provide to the Issuer, any security holder of the Issuer, or the staff of the Securities and Exchange Commission, upon request, full information regarding the number of shares purchased at each separate price within the range set forth in this footnote."
+          },
+          "Remarks": "Dr. Laura Tadvalkar, a Managing Director of the Adviser, serves on the Issuer's board of directors."
+        }
+      }
+    },
+    {
+      "X": "M",
+      "Filing Date": "2026-05-06 16:10:16",
+      "Trade Date": "2026-05-04",
+      "Ticker": "SRAD",
+      "Ticker_link": "http://openinsider.com/SRAD",
+      "Company Name": "Sportradar Group AG",
+      "Insider Name": "Koerl Carsten",
+      "Insider Name_link": "http://openinsider.com/insider/Koerl-Carsten/1910612",
+      "Title": "CEO",
+      "Trade Type": "P - Purchase",
+      "Price": "$13.39",
+      "Qty": "+340,000",
+      "Owned": "2,618,272",
+      "ΔOwn": "+15%",
+      "Value": "+$4,552,360",
+      "sec_filing_data": {
+        "source_url": "http://www.sec.gov/Archives/edgar/data/1836470/000110465926056245/xslF345X03/tm2613747-1_4seq1.xml",
+        "row_count": 2,
+        "table_rows": [
+          {
+            "3. Transaction Code (Instr. \n      8) | Code": "P",
+            "3. Transaction Code (Instr. \n      8) | V": "",
+            "6. Ownership Form: Direct (D) or Indirect (I) (Instr. \n      4)": "D",
+            "7. Nature of Indirect Beneficial Ownership (Instr. \n      4)": ""
+          },
+          {
+            "3. Transaction Code (Instr. \n      8) | Code": "P",
+            "3. Transaction Code (Instr. \n      8) | V": "",
+            "6. Ownership Form: Direct (D) or Indirect (I) (Instr. \n      4)": "D",
+            "7. Nature of Indirect Beneficial Ownership (Instr. \n      4)": ""
+          }
+        ],
+        "explanation_rows": {
+          "foot_notes": {
+            "1": "The price reported in Column 4 is a weighted average price. These shares were purchased in multiple transactions at prices ranging from $13.01 to $13.95, inclusive. The reporting person undertakes to provide to the Issuer, any security holder of the Issuer or the staff of the Securities and Exchange Commission (the \"SEC\"), upon request, full information regarding the number of shares purchased at each separate price within the range set forth in this footnote.",
+            "2": "The price reported in Column 4 is a weighted average price. These shares were purchased in multiple transactions at prices ranging from $13.23 to $13.49, inclusive. The reporting person undertakes to provide to the Issuer, any security holder of the Issuer or the staff of the SEC, upon request, full information regarding the number of shares purchased at each separate price within the range set forth in this footnote."
+          },
+          "Remarks": ""
+        }
+      }
+    },
+    {
+      "X": "M",
+      "Filing Date": "2026-05-06 06:16:02",
+      "Trade Date": "2026-04-28",
+      "Ticker": "SVRE",
+      "Ticker_link": "http://openinsider.com/SVRE",
+      "Company Name": "Saverone 2014 Ltd.",
+      "Insider Name": "Visionwave Holdings, Inc.",
+      "Insider Name_link": "http://openinsider.com/insider/Visionwave-Holdings--Inc./2038439",
+      "Title": "Dir",
+      "Trade Type": "P - Purchase",
+      "Price": "$4.00",
+      "Qty": "+1,538,697,600",
+      "Owned": "2,147,483,647",
+      "ΔOwn": "+14%",
+      "Value": "+$2,147,483,647",
+      "sec_filing_data": {
+        "source_url": "http://www.sec.gov/Archives/edgar/data/1894693/000173112226000677/xslF345X03/ownership.xml",
+        "row_count": 2,
+        "table_rows": [
+          {
+            "3. Transaction Code (Instr. \n      8) | Code": "P",
+            "3. Transaction Code (Instr. \n      8) | V": "",
+            "6. Ownership Form: Direct (D) or Indirect (I) (Instr. \n      4)": "D",
+            "7. Nature of Indirect Beneficial Ownership (Instr. \n      4)": ""
+          },
+          {
+            "3. Transaction Code (Instr. \n      8) | Code": "P",
+            "3. Transaction Code (Instr. \n      8) | V": "",
+            "6. Ownership Form: Direct (D) or Indirect (I) (Instr. \n      4)": "D",
+            "7. Nature of Indirect Beneficial Ownership (Instr. \n      4)": ""
+          }
+        ],
+        "explanation_rows": {
+          "foot_notes": {
+            "1": "The price reported is the price per American Depositary Share (\"ADS\") acquired in an open-market transaction on The Nasdaq Stock Market LLC. Each ADS represents 43,200 ordinary shares of the Issuer pursuant to the ADS ratio effective February 25, 2026. The Reporting Person acquired 25,000 ADSs on April 28, 2026 at $4.00, and 10,618 ADSs on April 29, 2026 at $4.00, 1, resulting in the underlying ordinary shares reported.",
+            "2": "The Reporting Person is deemed a director of the Issuer under Section 16(a) by deputization due to its designation and control over Douglas Davis, who serves on the Issuer's Board of Directors pursuant to rights granted under the Exchange Agreement dated January 26, 2026. Reflects beneficial ownership following the reported transactions. The Reporting Person has sole voting and dispositive power over these shares. No other equity securities or derivative securities of the Issuer are beneficially owned by the Reporting Person as of the date hereof, except as previously reported on Form filed April 2, 2026."
+          },
+          "Remarks": ""
+        }
+      }
+    },
+    {
+      "X": "",
+      "Filing Date": "2026-05-04 17:07:13",
+      "Trade Date": "2026-04-29",
+      "Ticker": "GVH",
+      "Ticker_link": "http://openinsider.com/GVH",
+      "Company Name": "Globavend Holdings Ltd",
+      "Insider Name": "Yu Tsz Ngo",
+      "Insider Name_link": "http://openinsider.com/insider/Yu-Tsz-Ngo/2121118",
+      "Title": "CFO, 10%",
+      "Trade Type": "P - Purchase",
+      "Price": "$61.05",
+      "Qty": "+57,324",
+      "Owned": "57,324",
+      "ΔOwn": "New",
+      "Value": "+$3,499,820",
+      "sec_filing_data": {
+        "source_url": "http://www.sec.gov/Archives/edgar/data/1978527/000121390026051690/xslF345X03/ownership.xml",
+        "row_count": 2,
+        "table_rows": [
+          {
+            "3. Transaction Code (Instr. \n      8) | Code": "P",
+            "3. Transaction Code (Instr. \n      8) | V": "",
+            "6. Ownership Form: Direct (D) or Indirect (I) (Instr. \n      4)": "I",
+            "7. Nature of Indirect Beneficial Ownership (Instr. \n      4)": "By Corporation (2)"
+          },
+          {
+            "3. Transaction Code (Instr. \n      8) | Code": "P",
+            "3. Transaction Code (Instr. \n      8) | V": "",
+            "6. Ownership Form: Direct (D) or Indirect (I) (Instr. \n      4)": "I",
+            "7. Nature of Indirect Beneficial Ownership (Instr. \n      4)": "By Corporation (2)"
+          }
+        ],
+        "explanation_rows": {
+          "foot_notes": {
+            "1": "The reported securities represent approximately 97.7% of the total voting power of Globavend Holdings Limited based on 2,286,819 shares issued and outstanding as of February 13, 2026.",
+            "2": "The reported securities are directly held by Central Master Enterprises Limited. Mr. Tsz Ngo Yu, as a controlling shareholder of Central Master Enterprises Limited, may be deemed to beneficially own the securities owned directly by Central Master Enterprises Limited."
+          },
+          "Remarks": ""
+        }
+      }
+    },
+    {
+      "X": "D",
+      "Filing Date": "2026-05-04 16:18:28",
+      "Trade Date": "2026-05-01",
+      "Ticker": "SPGI",
+      "Ticker_link": "http://openinsider.com/SPGI",
+      "Company Name": "S&P Global Inc.",
+      "Insider Name": "Clay Catherine R",
+      "Insider Name_link": "http://openinsider.com/insider/Clay-Catherine-R/1853497",
+      "Title": "CEO, S, P Dow Jones Indices",
+      "Trade Type": "P - Purchase",
+      "Price": "$431.39",
+      "Qty": "+2,500",
+      "Owned": "2,500",
+      "ΔOwn": "New",
+      "Value": "+$1,078,475",
+      "sec_filing_data": {
+        "source_url": "http://www.sec.gov/Archives/edgar/data/64040/000185349726000004/xslF345X03/wk-form4_1777925906.xml",
+        "row_count": 1,
+        "table_rows": [
+          {
+            "3. Transaction Code (Instr. \n      8) | Code": "P",
+            "3. Transaction Code (Instr. \n      8) | V": "",
+            "6. Ownership Form: Direct (D) or Indirect (I) (Instr. \n      4)": "D",
+            "7. Nature of Indirect Beneficial Ownership (Instr. \n      4)": ""
+          }
+        ],
+        "explanation_rows": {
+          "foot_notes": {
+            "1": "Each restricted stock unit represents a contingent right to receive one share of SPGI common stock.",
+            "2": "As previously reported, the reporting person was granted 1,325 restricted stock units on 03/01/2026, subject to 3-year vesting. The restricted stock units will vest 33% on 03/01/2027, 33% on 03/01/2028 and 34% on 03/01/2029.",
+            "3": "As previously reported, the reporting person was granted 857 restricted stock units on 03/01/2026, subject to 3-year vesting. The restricted stock units will vest 33% on 03/01/2027, 33% on 03/01/2028 and 34% on 03/01/2029."
+          },
+          "Remarks": ""
+        }
+      }
+    },
+    {
+      "X": "M",
+      "Filing Date": "2026-05-04 16:05:25",
+      "Trade Date": "2026-04-30",
+      "Ticker": "SRAD",
+      "Ticker_link": "http://openinsider.com/SRAD",
+      "Company Name": "Sportradar Group AG",
+      "Insider Name": "Koerl Carsten",
+      "Insider Name_link": "http://openinsider.com/insider/Koerl-Carsten/1910612",
+      "Title": "CEO",
+      "Trade Type": "P - Purchase",
+      "Price": "$13.16",
+      "Qty": "+254,100",
+      "Owned": "2,278,272",
+      "ΔOwn": "+13%",
+      "Value": "+$3,342,856",
+      "sec_filing_data": {
+        "source_url": "http://www.sec.gov/Archives/edgar/data/1836470/000110465926054872/xslF345X03/tm2613482-1_4seq1.xml",
+        "row_count": 2,
+        "table_rows": [
+          {
+            "3. Transaction Code (Instr. \n      8) | Code": "P",
+            "3. Transaction Code (Instr. \n      8) | V": "",
+            "6. Ownership Form: Direct (D) or Indirect (I) (Instr. \n      4)": "D",
+            "7. Nature of Indirect Beneficial Ownership (Instr. \n      4)": ""
+          },
+          {
+            "3. Transaction Code (Instr. \n      8) | Code": "P",
+            "3. Transaction Code (Instr. \n      8) | V": "",
+            "6. Ownership Form: Direct (D) or Indirect (I) (Instr. \n      4)": "D",
+            "7. Nature of Indirect Beneficial Ownership (Instr. \n      4)": ""
+          }
+        ],
+        "explanation_rows": {
+          "foot_notes": {
+            "1": "The price reported in Column 4 is a weighted average price. These shares were purchased in multiple transactions at prices ranging from $12.445 to $13.18, inclusive. The reporting person undertakes to provide to the Issuer, any security holder of the Issuer or the staff of the Securities and Exchange Commission (the \"SEC\"), upon request, full information regarding the number of shares purchased at each separate price within the range set forth in this footnote.",
+            "2": "The price reported in Column 4 is a weighted average price. These shares were purchased in multiple transactions at prices ranging from $13.11 to $13.40, inclusive. The reporting person undertakes to provide to the Issuer, any security holder of the Issuer or the staff of the SEC, upon request, full information regarding the number of shares purchased at each separate price within the range set forth in this footnote."
+          },
+          "Remarks": ""
+        }
+      }
+    },
+    {
+      "X": "",
+      "Filing Date": "2026-05-04 08:00:04",
+      "Trade Date": "2026-05-01",
+      "Ticker": "JEF",
+      "Ticker_link": "http://openinsider.com/JEF",
+      "Company Name": "Jefferies Financial Group Inc.",
+      "Insider Name": "Sumitomo Mitsui Financial Group, Inc.",
+      "Insider Name_link": "http://openinsider.com/insider/Sumitomo-Mitsui-Financial-Group--Inc./1022837",
+      "Title": "Dir",
+      "Trade Type": "P - Purchase",
+      "Price": "$48.22",
+      "Qty": "+6,429,337",
+      "Owned": "6,429,337",
+      "ΔOwn": "New",
+      "Value": "+$310,022,630",
+      "sec_filing_data": {
+        "source_url": "http://www.sec.gov/Archives/edgar/data/96223/000119312526202612/xslF345X03/ownership.xml",
+        "row_count": 1,
+        "table_rows": [
+          {
+            "3. Transaction Code (Instr. \n      8) | Code": "P",
+            "3. Transaction Code (Instr. \n      8) | V": "",
+            "6. Ownership Form: Direct (D) or Indirect (I) (Instr. \n      4)": "I",
+            "7. Nature of Indirect Beneficial Ownership (Instr. \n      4)": "See footnotes (2) (3)"
+          }
+        ],
+        "explanation_rows": {
+          "foot_notes": {
+            "1": "The price paid by an affiliate of the Reporting Person for the reported securities is subject to adjustment following an approximately two-month reference period pursuant to an agreement previously entered into between an affiliate of the Reporting Person and an unaffiliated third-party.",
+            "2": "The reported securities are held directly by Sumitomo Mitsui Banking Corporation, a direct, wholly-owned subsidiary of the Reporting Person.",
+            "3": "The Reporting Person disclaims beneficial ownership of the reported securities, except to the extent of its pecuniary interest therein."
+          },
+          "Remarks": "The Reporting Person may be deemed to be a director by deputization of the Issuer for purposes of Section 16 of the Securities and Exchange Act of 1934, by virtue of the fact that Mr. Hyakutome, Deputy President of SMFG, currently serves on the board of directors of the Issuer."
+        }
+      }
+    },
+    {
+      "X": "D",
+      "Filing Date": "2026-05-01 18:50:38",
+      "Trade Date": "2026-05-01",
+      "Ticker": "AVLN",
+      "Ticker_link": "http://openinsider.com/AVLN",
+      "Company Name": "Avalyn Pharma Inc.",
+      "Insider Name": "Carroll Jill",
+      "Insider Name_link": "http://openinsider.com/insider/Carroll-Jill/1598542",
+      "Title": "Dir",
+      "Trade Type": "P - Purchase",
+      "Price": "$18.00",
+      "Qty": "+277,778",
+      "Owned": "2,186,562",
+      "ΔOwn": "+15%",
+      "Value": "+$5,000,004",
+      "sec_filing_data": {
+        "source_url": "http://www.sec.gov/Archives/edgar/data/1540171/000119312526201894/xslF345X03/ownership.xml",
+        "row_count": 1,
+        "table_rows": [
+          {
+            "3. Transaction Code (Instr. \n      8) | Code": "P",
+            "3. Transaction Code (Instr. \n      8) | V": "",
+            "6. Ownership Form: Direct (D) or Indirect (I) (Instr. \n      4)": "I",
+            "7. Nature of Indirect Beneficial Ownership (Instr. \n      4)": "See Note 2 (2)"
+          }
+        ],
+        "explanation_rows": {
+          "foot_notes": {
+            "1": "On May 1, 2026, each share of Series C-1 Convertible Preferred Stock (the \"Series C-1 Preferred Stock\") automatically converted into shares of Common Stock on a one-for-19.2417 basis without payment of further consideration immediately prior to the closing of the Issuer's initial public offering. The Series C-1 Preferred Stock had no expiration date.",
+            "2": "The securities are directly held by SR One Capital Fund II Aggregator, LP (\"SR One Fund II Aggregator\"). SR One Capital Partners II, LP (\"SR One Partners II\") serves as the general partner of SR One Fund II Aggregator, and SR One Capital Management, LLC serves as the general partner of SR One Partners II. The Reporting Person is a partner of SR One Capital Management, LP, an entity affiliated with SR One Fund II Aggregator, and a limited partner of SR One Partners II. The Reporting Person disclaims beneficial ownership of these securities for purposes of Section 16 of the Securities Exchange Act of 1934, as amended (\"Section 16\"), except to the extent of her pecuniary interest therein, if any, and this report shall not be deemed an admission that the Reporting Person is the beneficial owner of such securities for Section 16 or any other purpose.",
+            "3": "On May 1, 2026, each share of Series D Convertible Preferred Stock (the \"Series D Preferred Stock\") automatically converted into shares of Common Stock on a one-for-19.2417 basis without payment of further consideration immediately prior to the closing of the Issuer's initial public offering. The Series D Preferred Stock had no expiration date."
+          },
+          "Remarks": ""
+        }
+      }
+    },
+    {
+      "X": "D",
+      "Filing Date": "2026-04-30 17:00:04",
+      "Trade Date": "2026-04-29",
+      "Ticker": "IBATF",
+      "Ticker_link": "http://openinsider.com/IBATF",
+      "Company Name": "International Battery Metals Ltd.",
+      "Insider Name": "Warnock Jacob Aaron",
+      "Insider Name_link": "http://openinsider.com/insider/Warnock-Jacob-Aaron/2082309",
+      "Title": "Dir, 10%",
+      "Trade Type": "P - Purchase",
+      "Price": "$0.08",
+      "Qty": "+34,315,465",
+      "Owned": "143,641,569",
+      "ΔOwn": "+31%",
+      "Value": "+$2,745,237",
+      "sec_filing_data": {
+        "source_url": "http://www.sec.gov/Archives/edgar/data/1786318/000119312526197752/xslF345X03/ownership.xml",
+        "row_count": 1,
+        "table_rows": [
+          {
+            "3. Transaction Code (Instr. \n      8) | Code": "P",
+            "3. Transaction Code (Instr. \n      8) | V": "",
+            "6. Ownership Form: Direct (D) or Indirect (I) (Instr. \n      4)": "I",
+            "7. Nature of Indirect Beneficial Ownership (Instr. \n      4)": "See notes (1) (2)"
+          }
+        ],
+        "explanation_rows": {
+          "foot_notes": {
+            "1": "Includes (i) 9,792,659 Common Shares held of record by Elegante Energy LLC, (ii) 2,665,625 Common Shares held of record by EV Metals LLC, (iii) 746,250 Common Shares held of record by EV Metals II LLC, (iv) 735,000 Common Shares held of record by EV Metals III LLC, (v) 3,970,000 Common Shares held of record by EV Metals IV LLC, (vi) 18,640,667 Common Shares held of record by EV Metals VI LLC, (vii) 29,297,348 Common Shares held of record by EV Metals 7 LLC, (viii) 10,906,000 Common Shares held of record by EV Metals 8 LLC, (ix) 2,355,872 Common Shares held of record by JAW Puerto Rico Trust, (x) 3,248,504 Common Shares held of record by Perk Salar, LLC and (xi) 60,742,518 Common Shares held of record by EV Metals 9 LLC.",
+            "2": "EV Metals GP LLC is the Manager of each of EV Metals LLC, EV Metals II LLC, EV Metals III LLC, EV Metals IV LLC, EV Metals VI LLC, EV Metals 7 LLC, EV Metals 8 LLC, EV Metals 9 LLC and Perk Salar, LLC. Mr. Warnock is the Manager of EV Metals GP LLC and Elegante Energy LLC, and Mr. Warnock is the Investment Trustee of JAW Puerto Rico Trust. As a result, Mr. Warnock may be deemed to beneficially own the securities held by the foregoing entities. Each such entity and Mr. Warnock disclaims beneficial ownership of such securities except to the extent of his or its pecuniary interest therein, if any.",
+            "3": "Each Warrant represents the right to acquire one Common Share.",
+            "4": "Represents an exercise price of $0.148 Canadian dollars, converted to U.S. dollars using the Bank of Canada daily exchange rate of $1.00 to CAD$1.3678 as of April 28, 2026.",
+            "5": "The Warrants are immediately exercisable.",
+            "6": "Held of record by EV Metals 9 LLC. Mr. Warnock is the Manager of EV Metals GP LLC, which is the Manager of EV Metals 9 LLC. As a result, Mr. Warnock may be deemed to beneficially own the securities held by EV Metals 9 LLC. Mr. Warnock disclaims beneficial ownership of such securities except to the extent of his pecuniary interest therein, if any."
+          },
+          "Remarks": ""
+        }
+      }
+    },
+    {
+      "X": "",
+      "Filing Date": "2026-04-29 16:50:07",
+      "Trade Date": "2026-04-29",
+      "Ticker": "CXIIU",
+      "Ticker_link": "http://openinsider.com/CXIIU",
+      "Company Name": "Churchill Capital Corp Xii",
+      "Insider Name": "Klein Michael Stuart",
+      "Insider Name_link": "http://openinsider.com/insider/Klein-Michael-Stuart/1327392",
+      "Title": "See Remarks, 10%",
+      "Trade Type": "P - Purchase",
+      "Price": "$10.00",
+      "Qty": "+350,000",
+      "Owned": "350,000",
+      "ΔOwn": "New",
+      "Value": "+$3,500,000",
+      "sec_filing_data": {
+        "source_url": "http://www.sec.gov/Archives/edgar/data/2114227/000121390026049361/xslF345X03/ownership.xml",
+        "row_count": 1,
+        "table_rows": [
+          {
+            "3. Transaction Code (Instr. \n      8) | Code": "P",
+            "3. Transaction Code (Instr. \n      8) | V": "",
+            "6. Ownership Form: Direct (D) or Indirect (I) (Instr. \n      4)": "I",
+            "7. Nature of Indirect Beneficial Ownership (Instr. \n      4)": "See footnote (2)"
+          }
+        ],
+        "explanation_rows": {
+          "foot_notes": {
+            "1": "Represents shares underlying the private placement units (each unit consisting of one Class A ordinary share and one-tenth of one warrant, each whole warrant exercisable to purchase one Class A ordinary share) directly held by Churchill Sponsor XII LLC (the \"Sponsor\"), and which were acquired pursuant to a Private Placement Units Purchase Agreement by and between the Sponsor and Churchill Capital Corp XII.",
+            "2": "Michael Stuart Klein, the Chief Executive Officer, President and a director of the Issuer, is the controlling shareholder of M. Klein Associates, Inc., which is the managing member of the Sponsor and has voting and investment discretion with respect to the securities held by the Sponsor. As such, Mr. Klein may be deemed to possess beneficial ownership of the securities held directly by the Sponsor. Mr. Klein disclaims any beneficial ownership of the reported securities other than to the extent of any pecuniary interest he may have therein, directly or indirectly."
+          },
+          "Remarks": "Chief Executive Officer, President and Chairman of the Board of Directors"
+        }
+      }
+    },
+    {
+      "X": "M",
+      "Filing Date": "2026-04-24 18:34:43",
+      "Trade Date": "2026-04-22",
+      "Ticker": "TORO",
+      "Ticker_link": "http://openinsider.com/TORO",
+      "Company Name": "Toro Corp.",
+      "Insider Name": "Panagiotidis Petros Panagiotis",
+      "Insider Name_link": "http://openinsider.com/insider/Panagiotidis-Petros-Panagiotis/2118775",
+      "Title": "CEO",
+      "Trade Type": "P - Purchase",
+      "Price": "$6.15",
+      "Qty": "+2,315,971",
+      "Owned": "20,822,206",
+      "ΔOwn": "+13%",
+      "Value": "+$14,254,646",
+      "sec_filing_data": {
+        "source_url": "http://www.sec.gov/Archives/edgar/data/1941131/000114036126016783/xslF345X03/form4.xml",
+        "row_count": 4,
+        "table_rows": [
+          {
+            "3. Transaction Code (Instr. \n      8) | Code": "P",
+            "3. Transaction Code (Instr. \n      8) | V": "",
+            "6. Ownership Form: Direct (D) or Indirect (I) (Instr. \n      4)": "I",
+            "7. Nature of Indirect Beneficial Ownership (Instr. \n      4)": "By Pani Corp. (2)"
+          },
+          {
+            "3. Transaction Code (Instr. \n      8) | Code": "P",
+            "3. Transaction Code (Instr. \n      8) | V": "",
+            "6. Ownership Form: Direct (D) or Indirect (I) (Instr. \n      4)": "I",
+            "7. Nature of Indirect Beneficial Ownership (Instr. \n      4)": "By Pani Corp. (2)"
+          },
+          {
+            "3. Transaction Code (Instr. \n      8) | Code": "P",
+            "3. Transaction Code (Instr. \n      8) | V": "",
+            "6. Ownership Form: Direct (D) or Indirect (I) (Instr. \n      4)": "I",
+            "7. Nature of Indirect Beneficial Ownership (Instr. \n      4)": "By Pani Corp. (2)"
+          },
+          {
+            "3. Transaction Code (Instr. \n      8) | Code": "P",
+            "3. Transaction Code (Instr. \n      8) | V": "",
+            "6. Ownership Form: Direct (D) or Indirect (I) (Instr. \n      4)": "I",
+            "7. Nature of Indirect Beneficial Ownership (Instr. \n      4)": "By Pani Corp. (2)"
+          }
+        ],
+        "explanation_rows": {
+          "foot_notes": {
+            "1": "This transaction represents purchases executed in multiple open market purchases. The reported price is a weighted average price. These shares were purchased in multiple transactions at prices ranging from $4.725 to $5.60 per share, inclusive. The Reporting Person undertakes to provide to the issuer, any security holder of the issuer, or the staff of the Securities and Exchange Commission, upon written request, full information regarding the number of shares purchased at each separate price within the range set forth in this footnote.",
+            "2": "Shares reported as beneficially owned consist of common shares held indirectly through Pani Corp. (\"Pani\"), an entity controlled by the Reporting Person. The Reporting Person may be deemed to beneficially own the securities held by Pani by virtue of his control of such entity. The Reporting Person disclaims beneficial ownership of such securities except to the extent of his pecuniary interest therein, if any. This report shall not be deemed an admission that the Reporting Person is a beneficial owner for purposes of Section 16 of the Exchange Act or otherwise.",
+            "3": "This transaction represents purchases executed in multiple open market purchases. The reported price is a weighted average price. These shares were purchased in multiple transactions at prices ranging from $5.81 to $6.75 per share, inclusive. The Reporting Person undertakes to provide to the issuer, any security holder of the issuer, or the staff of the Securities and Exchange Commission, upon written request, full information regarding the number of shares purchased at each separate price within the range set forth in this footnote.",
+            "4": "This transaction represents purchases executed in multiple open market purchases. The reported price is a weighted average price. These shares were purchased in multiple transactions at prices ranging from $6.175 to $6.65 per share, inclusive. The Reporting Person undertakes to provide to the issuer, any security holder of the issuer, or the staff of the Securities and Exchange Commission, upon written request, full information regarding the number of shares purchased at each separate price within the range set forth in this footnote.",
+            "5": "This transaction represents purchases executed in multiple open market purchases. The reported price is a weighted average price. These shares were purchased in multiple transactions at prices ranging from $6.45 to $6.85 per share, inclusive. The Reporting Person undertakes to provide to the issuer, any security holder of the issuer, or the staff of the Securities and Exchange Commission, upon written request, full information regarding the number of shares purchased at each separate price within the range set forth in this footnote."
+          },
+          "Remarks": ""
+        }
+      }
+    },
+    {
+      "X": "A",
+      "Filing Date": "2026-04-22 16:57:24",
+      "Trade Date": "2026-04-13",
+      "Ticker": "NKE",
+      "Ticker_link": "http://openinsider.com/NKE",
+      "Company Name": "Nike, Inc.",
+      "Insider Name": "Hill Elliott",
+      "Insider Name_link": "http://openinsider.com/insider/Hill-Elliott/1371578",
+      "Title": "Pres, CEO",
+      "Trade Type": "P - Purchase",
+      "Price": "$42.27",
+      "Qty": "+23,660",
+      "Owned": "265,247",
+      "ΔOwn": "+10%",
+      "Value": "+$1,000,118",
+      "sec_filing_data": {
+        "source_url": "http://www.sec.gov/Archives/edgar/data/320187/000032018726000053/xslF345X03/form4a.xml",
+        "row_count": 1,
+        "table_rows": [
+          {
+            "3. Transaction Code (Instr. \n      8) | Code": "P",
+            "3. Transaction Code (Instr. \n      8) | V": "",
+            "6. Ownership Form: Direct (D) or Indirect (I) (Instr. \n      4)": "D",
+            "7. Nature of Indirect Beneficial Ownership (Instr. \n      4)": ""
+          }
+        ],
+        "explanation_rows": {
+          "foot_notes": {
+            "1": "The original Form 4 is being amended by this Form 4/A to report the weighted average price.",
+            "2": "The price reported in Column 4 is a weighted average price. These shares were sold in multiple transactions at prices ranging from $42.265 to $42.300, inclusive. The reporting person undertakes to provide NIKE, Inc., any security holder of NIKE, Inc., or the staff of the Securities and Exchange Commission, upon request, full information regarding the number of shares sold at each separate price within the range set forth in the footnote (2) to this Form 4."
+          },
+          "Remarks": ""
+        }
+      }
+    },
+    {
+      "X": "D",
+      "Filing Date": "2026-04-20 20:31:47",
+      "Trade Date": "2026-04-20",
+      "Ticker": "ALMR",
+      "Ticker_link": "http://openinsider.com/ALMR",
+      "Company Name": "Alamar Biosciences, Inc.",
+      "Insider Name": "Naclerio Nicholas",
+      "Insider Name_link": "http://openinsider.com/insider/Naclerio-Nicholas/1534166",
+      "Title": "Dir",
+      "Trade Type": "P - Purchase",
+      "Price": "$17.00",
+      "Qty": "+235,294",
+      "Owned": "512,762",
+      "ΔOwn": "+85%",
+      "Value": "+$3,999,998",
+      "sec_filing_data": {
+        "source_url": "http://www.sec.gov/Archives/edgar/data/2104204/000153416626000006/xslF345X03/form4-04212026_120442.xml",
+        "row_count": 1,
+        "table_rows": [
+          {
+            "3. Transaction Code (Instr. \n      8) | Code": "P",
+            "3. Transaction Code (Instr. \n      8) | V": "",
+            "6. Ownership Form: Direct (D) or Indirect (I) (Instr. \n      4)": "I",
+            "7. Nature of Indirect Beneficial Ownership (Instr. \n      4)": "See footnote (6)"
+          }
+        ],
+        "explanation_rows": {
+          "foot_notes": {
+            "1": "The Series A-3 Preferred Stock, Series A-4 Preferred Stock and Series C Preferred Stock are convertible into shares of Class B Common Stock on a 1:2.418 basis and have no expiration date. The Series A-3 Preferred Stock, Series A-4 Preferred Stock and Series C Preferred Stock automatically converted into shares of Class B Common Stock in connection with the closing of the initial public offering of the Issuer's Common Stock (the \"IPO\").",
+            "2": "The securities are held by Illumina Innovation Fund II, L.P. (\"IIF II\"). Illumina Innovation Fund II GP, L.L.C. (\"IIF II GP\") is the general partner of IIF II. The reporting person, a member of the Issuer's board of directors, is the sole managing member of IIF II GP and may be deemed to have voting, investment and dispositive power with respect to the securities held by IIF II. Each of IIF II GP and the reporting person disclaim beneficial ownership over the securities held by IIF II, except to the extent of their respective pecuniary\ninterests therein, if any.",
+            "3": "The Series B Preferred Stock is convertible into shares of Class B Common Stock on a 1:2.271 basis and has no expiration date. The Series B Preferred Stock automatically converted into shares of Class B Common Stock in connection with the closing of the IPO.",
+            "4": "Each share of Class B Common Stock was reclassified into one share of Common Stock immediately prior to the completion of the IPO.",
+            "5": "Reflects a convertible note that is convertible into shares of Common Stock of the Issuer. The convertible note has a maturity date of July 8, 2027. The principal amount of the convertible note was automatically converted into shares of Common Stock of the Issuer upon the closing of the Issuer's IPO at a conversion price equal to the initial public offering price of the Issuer's Common Stock multiplied by 0.85.",
+            "6": "The securities are held by Illumina Innovation Fund III, L.P. (\"IIF III\"). Illumina Innovation Fund III GP, L.L.C. (\"IIF II GP\") is the general partner of IIF III. The reporting person, a member of the Issuer's board of directors, is the sole managing member of IIF III GP and may be deemed to have voting, investment and dispositive power with respect to the securities held by IIF III. Each of IIF III GP and the reporting person disclaim beneficial ownership over the securities held by IIF III, except to the extent of their respective pecuniary\ninterests therein, if any.",
+            "7": "Represents the grant of restricted stock units (\"RSUs\"). The RSUs vest 1/3rd on each of April 20, 2027, April 20, 2028 and April 20, 2029, subject to the reporting person's continuous service as of each such vesting date.",
+            "8": "One-third of the shares subject to the grant will vest on April 16, 2027 and the remainder of the shares subject to the grant will vest in equal monthly installments thereafter through April 16, 2029, subject to the reporting person's continuous service through each such vesting date."
+          },
+          "Remarks": ""
+        }
+      }
+    },
+    {
+      "X": "D",
+      "Filing Date": "2026-04-20 18:00:25",
+      "Trade Date": "2026-04-20",
+      "Ticker": "KLRA",
+      "Ticker_link": "http://openinsider.com/KLRA",
+      "Company Name": "Kailera Therapeutics, Inc.",
+      "Insider Name": "Kaplan Andrew T.",
+      "Insider Name_link": "http://openinsider.com/insider/Kaplan-Andrew-T./1752059",
+      "Title": "Dir, 10%",
+      "Trade Type": "P - Purchase",
+      "Price": "$16.00",
+      "Qty": "+8,398,438",
+      "Owned": "26,255,581",
+      "ΔOwn": "+47%",
+      "Value": "+$134,375,008",
+      "sec_filing_data": {
+        "source_url": "http://www.sec.gov/Archives/edgar/data/2096997/000119312526164388/xslF345X03/ownership.xml",
+        "row_count": 1,
+        "table_rows": [
+          {
+            "3. Transaction Code (Instr. \n      8) | Code": "P",
+            "3. Transaction Code (Instr. \n      8) | V": "",
+            "6. Ownership Form: Direct (D) or Indirect (I) (Instr. \n      4)": "I",
+            "7. Nature of Indirect Beneficial Ownership (Instr. \n      4)": "See footnotes (3) (4)"
+          }
+        ],
+        "explanation_rows": {
+          "foot_notes": {
+            "1": "Each share of the Issuer's Series B Preferred Stock automatically converted into shares of the Issuer's Common Stock on a 1:1 basis upon the closing of the Issuer's initial public offering. These securities had no expiration date.",
+            "2": "The options vest and become exercisable as to 100% of the underlying shares on April 16, 2027, subject to Mr. Kaplan's continued service through each such vesting date.",
+            "3": "Represents securities held directly by BCPE Perseus Investor, LP (\"BCPE Perseus\").",
+            "4": "Mr. Kaplan is a Partner of Bain Capital Investors, LLC (\"BCI\"). BCI is the ultimate general partner of BCPE Perseus. As a result, Mr. Kaplan may be deemed to share voting and dispositive power with respect to the securities held by BCPE Perseus. Mr. Kaplan disclaims beneficial ownership of such securities except to the extent of his pecuniary interest therein."
+          },
+          "Remarks": ""
+        }
+      }
+    },
+    {
+      "X": "M",
+      "Filing Date": "2026-04-15 16:08:17",
+      "Trade Date": "2026-03-30",
+      "Ticker": "SVRE",
+      "Ticker_link": "http://openinsider.com/SVRE",
+      "Company Name": "Saverone 2014 Ltd.",
+      "Insider Name": "Visionwave Holdings, Inc.",
+      "Insider Name_link": "http://openinsider.com/insider/Visionwave-Holdings--Inc./2038439",
+      "Title": "Dir",
+      "Trade Type": "P - Purchase",
+      "Price": "$3.31",
+      "Qty": "+2,147,483,647",
+      "Owned": "2,147,483,647",
+      "ΔOwn": "+50%",
+      "Value": "+$2,147,483,647",
+      "sec_filing_data": {
+        "source_url": "http://www.sec.gov/Archives/edgar/data/1894693/000173112226000579/xslF345X03/ownership.xml",
+        "row_count": 4,
+        "table_rows": [
+          {
+            "3. Transaction Code (Instr. \n      8) | Code": "P",
+            "3. Transaction Code (Instr. \n      8) | V": "",
+            "6. Ownership Form: Direct (D) or Indirect (I) (Instr. \n      4)": "D",
+            "7. Nature of Indirect Beneficial Ownership (Instr. \n      4)": ""
+          },
+          {
+            "3. Transaction Code (Instr. \n      8) | Code": "P",
+            "3. Transaction Code (Instr. \n      8) | V": "",
+            "6. Ownership Form: Direct (D) or Indirect (I) (Instr. \n      4)": "D",
+            "7. Nature of Indirect Beneficial Ownership (Instr. \n      4)": ""
+          },
+          {
+            "3. Transaction Code (Instr. \n      8) | Code": "P",
+            "3. Transaction Code (Instr. \n      8) | V": "",
+            "6. Ownership Form: Direct (D) or Indirect (I) (Instr. \n      4)": "D",
+            "7. Nature of Indirect Beneficial Ownership (Instr. \n      4)": ""
+          },
+          {
+            "3. Transaction Code (Instr. \n      8) | Code": "P",
+            "3. Transaction Code (Instr. \n      8) | V": "",
+            "6. Ownership Form: Direct (D) or Indirect (I) (Instr. \n      4)": "D",
+            "7. Nature of Indirect Beneficial Ownership (Instr. \n      4)": ""
+          }
+        ],
+        "explanation_rows": {
+          "foot_notes": {
+            "1": "The price reported is the price per American Depositary Share (\"ADS\") acquired in an open-market transaction on The Nasdaq Stock Market LLC. Each ADS represents 43,200 ordinary shares of the Issuer pursuant to the ADS ratio effective February 25, 2026. The Reporting Person acquired 1,144 ADSs on March 30, 2026 at $3, 6,667 ADSs on April 2, 2026 at $2.93, 16,356 ADSs on April 2 at $3, 2026, and 57,907 ADSs on April 9, 2026 at $3.45, all per ADS, resulting in the underlying ordinary shares reported.",
+            "2": "The Reporting Person is deemed a director of the Issuer under Section 16(a) by deputization due to its designation and control over Douglas Davis, who serves on the Issuer's Board of Directors pursuant to rights granted under the Exchange Agreement dated January 26, 2026. Reflects beneficial ownership following the reported transactions. The Reporting Person has sole voting and dispositive power over these shares. No other equity securities or derivative securities of the Issuer are beneficially owned by the Reporting Person as of the date hereof, except as previously reported on Form filed April 2, 2026."
+          },
+          "Remarks": ""
+        }
+      }
+    },
+    {
+      "X": "",
+      "Filing Date": "2026-04-14 16:27:16",
+      "Trade Date": "2026-04-13",
+      "Ticker": "NKE",
+      "Ticker_link": "http://openinsider.com/NKE",
+      "Company Name": "Nike, Inc.",
+      "Insider Name": "Hill Elliott",
+      "Insider Name_link": "http://openinsider.com/insider/Hill-Elliott/1371578",
+      "Title": "Pres, CEO",
+      "Trade Type": "P - Purchase",
+      "Price": "$42.27",
+      "Qty": "+23,660",
+      "Owned": "265,247",
+      "ΔOwn": "+10%",
+      "Value": "+$1,000,000",
+      "sec_filing_data": {
+        "source_url": "http://www.sec.gov/Archives/edgar/data/320187/000032018726000051/xslF345X03/form4.xml",
+        "row_count": 1,
+        "table_rows": [
+          {
+            "3. Transaction Code (Instr. \n      8) | Code": "P",
+            "3. Transaction Code (Instr. \n      8) | V": "",
+            "6. Ownership Form: Direct (D) or Indirect (I) (Instr. \n      4)": "D",
+            "7. Nature of Indirect Beneficial Ownership (Instr. \n      4)": ""
+          }
+        ],
+        "explanation_rows": {
+          "foot_notes": {
+            "1": "Pursuant to Company policy, market transactions in Company stock by officers and directors are permitted only after the first full trading day after the release of quarterly earnings and ending on the fourteenth day of the third month of the following fiscal quarter, except pursuant to approved 10b5-1 trading plans."
+          },
+          "Remarks": ""
+        }
+      }
+    },
+    {
+      "X": "",
+      "Filing Date": "2026-04-14 16:25:45",
+      "Trade Date": "2026-04-10",
+      "Ticker": "NKE",
+      "Ticker_link": "http://openinsider.com/NKE",
+      "Company Name": "Nike, Inc.",
+      "Insider Name": "Cook Timothy D",
+      "Insider Name_link": "http://openinsider.com/insider/Cook-Timothy-D/1214156",
+      "Title": "Dir",
+      "Trade Type": "P - Purchase",
+      "Price": "$42.43",
+      "Qty": "+25,000",
+      "Owned": "130,480",
+      "ΔOwn": "+24%",
+      "Value": "+$1,060,750",
+      "sec_filing_data": {
+        "source_url": "http://www.sec.gov/Archives/edgar/data/320187/000032018726000049/xslF345X03/form4.xml",
+        "row_count": 1,
+        "table_rows": [
+          {
+            "3. Transaction Code (Instr. \n      8) | Code": "P",
+            "3. Transaction Code (Instr. \n      8) | V": "",
+            "6. Ownership Form: Direct (D) or Indirect (I) (Instr. \n      4)": "D",
+            "7. Nature of Indirect Beneficial Ownership (Instr. \n      4)": ""
+          }
+        ],
+        "explanation_rows": {
+          "foot_notes": {
+            "1": "Pursuant to Company policy, market transactions in Company stock by officers and directors are permitted only after the first full trading day after the release of quarterly earnings and ending on the fourteenth day of the third month of\nthe following fiscal quarter, except pursuant to approved 10b5-1 trading plans.",
+            "2": "The price reported in Column 4 is a weighted average price.  These shares were sold in multiple transactions at prices ranging from $42.42 to $42.44, inclusive.  The reporting person undertakes to provide NIKE, Inc., any security holder of NIKE, Inc., or the staff of the Securities and Exchange Commission, upon request, full information regarding the number of shares sold at each separate price within the ranges set forth in the footnote (2) to this Form 4."
+          },
+          "Remarks": ""
+        }
+      }
+    },
+    {
+      "X": "M",
+      "Filing Date": "2026-04-13 07:19:39",
+      "Trade Date": "2026-04-04",
+      "Ticker": "MESO",
+      "Ticker_link": "http://openinsider.com/MESO",
+      "Company Name": "Mesoblast Ltd",
+      "Insider Name": "George Gregory",
+      "Insider Name_link": "http://openinsider.com/insider/George-Gregory/1977041",
+      "Title": "Dir, 10%",
+      "Trade Type": "P - Purchase",
+      "Price": "$1.44",
+      "Qty": "+7,910,962",
+      "Owned": "33,910,962",
+      "ΔOwn": "+30%",
+      "Value": "+$11,396,977",
+      "sec_filing_data": {
+        "source_url": "http://www.sec.gov/Archives/edgar/data/1345099/000199937126008132/xslF345X03/georgeform4.xml",
+        "row_count": 15,
+        "table_rows": [
+          {
+            "3. Transaction Code (Instr. \n      8) | Code": "P",
+            "3. Transaction Code (Instr. \n      8) | V": "",
+            "6. Ownership Form: Direct (D) or Indirect (I) (Instr. \n      4)": "I",
+            "7. Nature of Indirect Beneficial Ownership (Instr. \n      4)": "Held by James George, who has granted power of attorney to Dr. George."
+          },
+          {
+            "3. Transaction Code (Instr. \n      8) | Code": "P",
+            "3. Transaction Code (Instr. \n      8) | V": "",
+            "6. Ownership Form: Direct (D) or Indirect (I) (Instr. \n      4)": "I",
+            "7. Nature of Indirect Beneficial Ownership (Instr. \n      4)": "As above."
+          },
+          {
+            "3. Transaction Code (Instr. \n      8) | Code": "P",
+            "3. Transaction Code (Instr. \n      8) | V": "",
+            "6. Ownership Form: Direct (D) or Indirect (I) (Instr. \n      4)": "I",
+            "7. Nature of Indirect Beneficial Ownership (Instr. \n      4)": "As above."
+          },
+          {
+            "3. Transaction Code (Instr. \n      8) | Code": "P",
+            "3. Transaction Code (Instr. \n      8) | V": "",
+            "6. Ownership Form: Direct (D) or Indirect (I) (Instr. \n      4)": "I",
+            "7. Nature of Indirect Beneficial Ownership (Instr. \n      4)": "As above."
+          },
+          {
+            "3. Transaction Code (Instr. \n      8) | Code": "P",
+            "3. Transaction Code (Instr. \n      8) | V": "",
+            "6. Ownership Form: Direct (D) or Indirect (I) (Instr. \n      4)": "I",
+            "7. Nature of Indirect Beneficial Ownership (Instr. \n      4)": "As above."
+          },
+          {
+            "3. Transaction Code (Instr. \n      8) | Code": "P",
+            "3. Transaction Code (Instr. \n      8) | V": "",
+            "6. Ownership Form: Direct (D) or Indirect (I) (Instr. \n      4)": "I",
+            "7. Nature of Indirect Beneficial Ownership (Instr. \n      4)": "As above."
+          },
+          {
+            "3. Transaction Code (Instr. \n      8) | Code": "P",
+            "3. Transaction Code (Instr. \n      8) | V": "",
+            "6. Ownership Form: Direct (D) or Indirect (I) (Instr. \n      4)": "I",
+            "7. Nature of Indirect Beneficial Ownership (Instr. \n      4)": "As above."
+          },
+          {
+            "3. Transaction Code (Instr. \n      8) | Code": "P",
+            "3. Transaction Code (Instr. \n      8) | V": "",
+            "6. Ownership Form: Direct (D) or Indirect (I) (Instr. \n      4)": "I",
+            "7. Nature of Indirect Beneficial Ownership (Instr. \n      4)": "As above."
+          },
+          {
+            "3. Transaction Code (Instr. \n      8) | Code": "P",
+            "3. Transaction Code (Instr. \n      8) | V": "",
+            "6. Ownership Form: Direct (D) or Indirect (I) (Instr. \n      4)": "I",
+            "7. Nature of Indirect Beneficial Ownership (Instr. \n      4)": "As above."
+          },
+          {
+            "3. Transaction Code (Instr. \n      8) | Code": "P",
+            "3. Transaction Code (Instr. \n      8) | V": "",
+            "6. Ownership Form: Direct (D) or Indirect (I) (Instr. \n      4)": "I",
+            "7. Nature of Indirect Beneficial Ownership (Instr. \n      4)": "As above."
+          },
+          {
+            "3. Transaction Code (Instr. \n      8) | Code": "P",
+            "3. Transaction Code (Instr. \n      8) | V": "",
+            "6. Ownership Form: Direct (D) or Indirect (I) (Instr. \n      4)": "I",
+            "7. Nature of Indirect Beneficial Ownership (Instr. \n      4)": "As above."
+          },
+          {
+            "3. Transaction Code (Instr. \n      8) | Code": "P",
+            "3. Transaction Code (Instr. \n      8) | V": "",
+            "6. Ownership Form: Direct (D) or Indirect (I) (Instr. \n      4)": "I",
+            "7. Nature of Indirect Beneficial Ownership (Instr. \n      4)": "As above."
+          },
+          {
+            "3. Transaction Code (Instr. \n      8) | Code": "P",
+            "3. Transaction Code (Instr. \n      8) | V": "",
+            "6. Ownership Form: Direct (D) or Indirect (I) (Instr. \n      4)": "I",
+            "7. Nature of Indirect Beneficial Ownership (Instr. \n      4)": "As above."
+          },
+          {
+            "3. Transaction Code (Instr. \n      8) | Code": "P",
+            "3. Transaction Code (Instr. \n      8) | V": "",
+            "6. Ownership Form: Direct (D) or Indirect (I) (Instr. \n      4)": "I",
+            "7. Nature of Indirect Beneficial Ownership (Instr. \n      4)": "As above."
+          },
+          {
+            "3. Transaction Code (Instr. \n      8) | Code": "P",
+            "3. Transaction Code (Instr. \n      8) | V": "",
+            "6. Ownership Form: Direct (D) or Indirect (I) (Instr. \n      4)": "I",
+            "7. Nature of Indirect Beneficial Ownership (Instr. \n      4)": "Held by Grant George, who has granted power of attorney to Dr. George."
+          }
+        ],
+        "explanation_rows": {
+          "foot_notes": {
+            "1": "Such Ordinary Shares are represented by American Depositary Shares. Each ADS represents a beneficial interest in 10 ordinary shares. Purchase prices of ADS have been adjusted to show price per underlying ordinary share."
+          },
+          "Remarks": "(2) Prices are indicated using \"A$\" for Australian Dollars and \"US$\" for US Dollars."
+        }
+      }
+    },
+    {
+      "X": "M",
+      "Filing Date": "2026-04-10 19:27:51",
+      "Trade Date": "2026-04-04",
+      "Ticker": "MESO",
+      "Ticker_link": "http://openinsider.com/MESO",
+      "Company Name": "Mesoblast Ltd",
+      "Insider Name": "George Gregory",
+      "Insider Name_link": "http://openinsider.com/insider/George-Gregory/1977041",
+      "Title": "Dir, 10%",
+      "Trade Type": "P - Purchase",
+      "Price": "$3.15",
+      "Qty": "+8,305,962",
+      "Owned": "33,910,962",
+      "ΔOwn": "+32%",
+      "Value": "+$26,135,093",
+      "sec_filing_data": {
+        "source_url": "http://www.sec.gov/Archives/edgar/data/1345099/000199937126008124/xslF345X03/georgeform4.xml",
+        "row_count": 15,
+        "table_rows": [
+          {
+            "3. Transaction Code (Instr. \n      8) | Code": "P",
+            "3. Transaction Code (Instr. \n      8) | V": "",
+            "6. Ownership Form: Direct (D) or Indirect (I) (Instr. \n      4)": "I",
+            "7. Nature of Indirect Beneficial Ownership (Instr. \n      4)": "Held by James George, who has granted power of attorney to Dr. George."
+          },
+          {
+            "3. Transaction Code (Instr. \n      8) | Code": "P",
+            "3. Transaction Code (Instr. \n      8) | V": "",
+            "6. Ownership Form: Direct (D) or Indirect (I) (Instr. \n      4)": "I",
+            "7. Nature of Indirect Beneficial Ownership (Instr. \n      4)": "As above."
+          },
+          {
+            "3. Transaction Code (Instr. \n      8) | Code": "P",
+            "3. Transaction Code (Instr. \n      8) | V": "",
+            "6. Ownership Form: Direct (D) or Indirect (I) (Instr. \n      4)": "I",
+            "7. Nature of Indirect Beneficial Ownership (Instr. \n      4)": "As above."
+          },
+          {
+            "3. Transaction Code (Instr. \n      8) | Code": "P",
+            "3. Transaction Code (Instr. \n      8) | V": "",
+            "6. Ownership Form: Direct (D) or Indirect (I) (Instr. \n      4)": "I",
+            "7. Nature of Indirect Beneficial Ownership (Instr. \n      4)": "As above."
+          },
+          {
+            "3. Transaction Code (Instr. \n      8) | Code": "P",
+            "3. Transaction Code (Instr. \n      8) | V": "",
+            "6. Ownership Form: Direct (D) or Indirect (I) (Instr. \n      4)": "I",
+            "7. Nature of Indirect Beneficial Ownership (Instr. \n      4)": "As above."
+          },
+          {
+            "3. Transaction Code (Instr. \n      8) | Code": "P",
+            "3. Transaction Code (Instr. \n      8) | V": "",
+            "6. Ownership Form: Direct (D) or Indirect (I) (Instr. \n      4)": "I",
+            "7. Nature of Indirect Beneficial Ownership (Instr. \n      4)": "As above."
+          },
+          {
+            "3. Transaction Code (Instr. \n      8) | Code": "P",
+            "3. Transaction Code (Instr. \n      8) | V": "",
+            "6. Ownership Form: Direct (D) or Indirect (I) (Instr. \n      4)": "I",
+            "7. Nature of Indirect Beneficial Ownership (Instr. \n      4)": "As above."
+          },
+          {
+            "3. Transaction Code (Instr. \n      8) | Code": "P",
+            "3. Transaction Code (Instr. \n      8) | V": "",
+            "6. Ownership Form: Direct (D) or Indirect (I) (Instr. \n      4)": "I",
+            "7. Nature of Indirect Beneficial Ownership (Instr. \n      4)": "As above."
+          },
+          {
+            "3. Transaction Code (Instr. \n      8) | Code": "P",
+            "3. Transaction Code (Instr. \n      8) | V": "",
+            "6. Ownership Form: Direct (D) or Indirect (I) (Instr. \n      4)": "I",
+            "7. Nature of Indirect Beneficial Ownership (Instr. \n      4)": "As above."
+          },
+          {
+            "3. Transaction Code (Instr. \n      8) | Code": "P",
+            "3. Transaction Code (Instr. \n      8) | V": "",
+            "6. Ownership Form: Direct (D) or Indirect (I) (Instr. \n      4)": "I",
+            "7. Nature of Indirect Beneficial Ownership (Instr. \n      4)": "As above."
+          },
+          {
+            "3. Transaction Code (Instr. \n      8) | Code": "P",
+            "3. Transaction Code (Instr. \n      8) | V": "",
+            "6. Ownership Form: Direct (D) or Indirect (I) (Instr. \n      4)": "I",
+            "7. Nature of Indirect Beneficial Ownership (Instr. \n      4)": "As above."
+          },
+          {
+            "3. Transaction Code (Instr. \n      8) | Code": "P",
+            "3. Transaction Code (Instr. \n      8) | V": "",
+            "6. Ownership Form: Direct (D) or Indirect (I) (Instr. \n      4)": "I",
+            "7. Nature of Indirect Beneficial Ownership (Instr. \n      4)": "As above."
+          },
+          {
+            "3. Transaction Code (Instr. \n      8) | Code": "P",
+            "3. Transaction Code (Instr. \n      8) | V": "",
+            "6. Ownership Form: Direct (D) or Indirect (I) (Instr. \n      4)": "I",
+            "7. Nature of Indirect Beneficial Ownership (Instr. \n      4)": "As above."
+          },
+          {
+            "3. Transaction Code (Instr. \n      8) | Code": "P",
+            "3. Transaction Code (Instr. \n      8) | V": "",
+            "6. Ownership Form: Direct (D) or Indirect (I) (Instr. \n      4)": "I",
+            "7. Nature of Indirect Beneficial Ownership (Instr. \n      4)": "As above."
+          },
+          {
+            "3. Transaction Code (Instr. \n      8) | Code": "P",
+            "3. Transaction Code (Instr. \n      8) | V": "",
+            "6. Ownership Form: Direct (D) or Indirect (I) (Instr. \n      4)": "I",
+            "7. Nature of Indirect Beneficial Ownership (Instr. \n      4)": "Held by Grant George, who has granted power of attorney to Dr. George."
+          }
+        ],
+        "explanation_rows": {
+          "foot_notes": {
+            "1": "Such Ordinary Shares are represented by American Depositary Shares. Each ADS represents a beneficial interest in 10 ordinary shares."
+          },
+          "Remarks": "Prices are indicated using \"A$\" for Australian Dollars and \"US$\" for US Dollars."
+        }
+      }
+    },
+    {
+      "X": "D",
+      "Filing Date": "2026-04-07 16:16:39",
+      "Trade Date": "2026-04-06",
+      "Ticker": "OSCR",
+      "Ticker_link": "http://openinsider.com/OSCR",
+      "Company Name": "Oscar Health, Inc.",
+      "Insider Name": "Bertolini Mark T",
+      "Insider Name_link": "http://openinsider.com/insider/Bertolini-Mark-T/1352552",
+      "Title": "CEO",
+      "Trade Type": "P - Purchase",
+      "Price": "$11.92",
+      "Qty": "+1,000,000",
+      "Owned": "10,196,876",
+      "ΔOwn": "+11%",
+      "Value": "+$11,920,000",
+      "sec_filing_data": {
+        "source_url": "http://www.sec.gov/Archives/edgar/data/1568651/000135255226000008/xslF345X03/wk-form4_1775592996.xml",
+        "row_count": 1,
+        "table_rows": [
+          {
+            "3. Transaction Code (Instr. \n      8) | Code": "P",
+            "3. Transaction Code (Instr. \n      8) | V": "",
+            "6. Ownership Form: Direct (D) or Indirect (I) (Instr. \n      4)": "D",
+            "7. Nature of Indirect Beneficial Ownership (Instr. \n      4)": ""
+          }
+        ],
+        "explanation_rows": {
+          "foot_notes": {
+            "1": "Represents performance stock units (PSUs) that vested based on achievement of specified price per share targets.",
+            "2": "Each PSU represents a contingent right to receive one share of Class A common stock.",
+            "3": "Includes shares to be issued in connection with the vesting of one or more restricted stock units.",
+            "4": "Represents shares withheld by the issuer to satisfy tax obligations with respect to the portion of PSUs settled on April 6, 2026. Settlement of the remaining PSUs and the restricted stock units that vested on April 3, 2026, and sales to cover the resulting tax obligations, will occur at a later date in accordance with a 10b5-1 instruction letter entered into by the reporting person on November 10, 2025, as amended and restated on March 24, 2026.",
+            "5": "Represents shares of Class A common stock purchased from the issuer by the reporting person in a private placement transaction."
+          },
+          "Remarks": ""
+        }
+      }
+    },
+    {
+      "X": "",
+      "Filing Date": "2026-04-06 14:44:40",
+      "Trade Date": "2026-04-02",
+      "Ticker": "HMH",
+      "Ticker_link": "http://openinsider.com/HMH",
+      "Company Name": "Hmh Holding Inc",
+      "Insider Name": "McGee Thomas W.",
+      "Insider Name_link": "http://openinsider.com/insider/McGee-Thomas-W./2035200",
+      "Title": "CFO",
+      "Trade Type": "P - Purchase",
+      "Price": "$20.00",
+      "Qty": "+50,000",
+      "Owned": "147,338",
+      "ΔOwn": "+51%",
+      "Value": "+$1,000,000",
+      "sec_filing_data": {
+        "source_url": "http://www.sec.gov/Archives/edgar/data/2021880/000119312526143524/xslF345X03/ownership.xml",
+        "row_count": 1,
+        "table_rows": [
+          {
+            "3. Transaction Code (Instr. \n      8) | Code": "P",
+            "3. Transaction Code (Instr. \n      8) | V": "",
+            "6. Ownership Form: Direct (D) or Indirect (I) (Instr. \n      4)": "D",
+            "7. Nature of Indirect Beneficial Ownership (Instr. \n      4)": ""
+          }
+        ],
+        "explanation_rows": {
+          "foot_notes": {
+            "1": "Represents restricted stock units granted to the reporting person under the HMH Holding Inc. 2026 Long-Term Incentive Plan on April 2, 2026. Each restricted stock unit represents a contingent right to receive one share of Class A common stock, par value $0.01 per share (\"Class A Common Stock\"), of HMH Holding Inc. (the \"Issuer\"). The restricted stock units include 83,757 restricted stock units that vested immediately upon grant, 3,018 restricted stock units that vest on September 1, 2026, 4,225 restricted stock units that vest in two equal annual installments on September 1, 2026 and September 1, 2027 and 6,338 restricted stock units that vest in three equal annual installments on September 1, 2026, September 1, 2027 and September 1, 2028.",
+            "2": "Represents shares of Class A Common Stock purchased by the reporting person through the directed share program conducted in connection with the Issuer's initial public offering."
+          },
+          "Remarks": ""
+        }
+      }
+    },
+    {
+      "X": "",
+      "Filing Date": "2026-04-03 17:06:28",
+      "Trade Date": "2026-04-02",
+      "Ticker": "ANVS",
+      "Ticker_link": "http://openinsider.com/ANVS",
+      "Company Name": "Annovis Bio, Inc.",
+      "Insider Name": "Hoffman Michael B",
+      "Insider Name_link": "http://openinsider.com/insider/Hoffman-Michael-B/1290208",
+      "Title": "Dir",
+      "Trade Type": "P - Purchase",
+      "Price": "$2.10",
+      "Qty": "+713,800",
+      "Owned": "3,511,896",
+      "ΔOwn": "+26%",
+      "Value": "+$1,498,980",
+      "sec_filing_data": {
+        "source_url": "http://www.sec.gov/Archives/edgar/data/1477845/000110465926039675/xslF345X03/tm2611081-1_4seq1.xml",
+        "row_count": 1,
+        "table_rows": [
+          {
+            "3. Transaction Code (Instr. \n      8) | Code": "P",
+            "3. Transaction Code (Instr. \n      8) | V": "",
+            "6. Ownership Form: Direct (D) or Indirect (I) (Instr. \n      4)": "D",
+            "7. Nature of Indirect Beneficial Ownership (Instr. \n      4)": ""
+          }
+        ],
+        "explanation_rows": {
+          "foot_notes": {
+            "1": "The shares are held in a family trust formed by the reporting person and the reporting person has voting and investment power over such shares."
+          },
+          "Remarks": ""
+        }
+      }
+    },
+    {
+      "X": "",
+      "Filing Date": "2026-04-02 14:02:41",
+      "Trade Date": "2026-04-02",
+      "Ticker": "SVC",
+      "Ticker_link": "http://openinsider.com/SVC",
+      "Company Name": "Service Properties Trust",
+      "Insider Name": "Portnoy Adam D.",
+      "Insider Name_link": "http://openinsider.com/insider/Portnoy-Adam-D./1273871",
+      "Title": "Dir",
+      "Trade Type": "P - Purchase",
+      "Price": "$1.20",
+      "Qty": "+41,666,666",
+      "Owned": "43,698,330",
+      "ΔOwn": ">999%",
+      "Value": "+$49,999,999",
+      "sec_filing_data": {
+        "source_url": "http://www.sec.gov/Archives/edgar/data/945394/000110465926039050/xslF345X03/tm2611033-2_4seq1.xml",
+        "row_count": 1,
+        "table_rows": [
+          {
+            "3. Transaction Code (Instr. \n      8) | Code": "P",
+            "3. Transaction Code (Instr. \n      8) | V": "",
+            "6. Ownership Form: Direct (D) or Indirect (I) (Instr. \n      4)": "I",
+            "7. Nature of Indirect Beneficial Ownership (Instr. \n      4)": "See Footnote (1)"
+          }
+        ],
+        "explanation_rows": {
+          "foot_notes": {
+            "1": "These shares are held by The RMR Group LLC (\"RMR LLC\"). RMR LLC is a direct majority owned subsidiary of The RMR Group Inc. (\"RMR Inc.\"), of which Mr. Portnoy is a managing director and controlling shareholder through ABP Trust. Mr. Portnoy is also a beneficial owner and a director of RMR LLC and RMR Inc.  Each of Mr. Portnoy, ABP Trust and RMR Inc. may be deemed to be a beneficial owner of these shares, but they each disclaim such beneficial ownership except to the extent of their pecuniary interest therein.",
+            "2": "These shares are held by ABP Trust; Mr. Portnoy, as the sole trustee, an officer and the controlling shareholder of ABP Trust, may be deemed to be a beneficial owner of these shares, but Mr. Portnoy disclaims such beneficial ownership except to the extent of his pecuniary interest therein."
+          },
+          "Remarks": ""
+        }
+      }
+    },
+    {
+      "X": "",
+      "Filing Date": "2026-04-01 16:30:16",
+      "Trade Date": "2026-03-31",
+      "Ticker": "CNTB",
+      "Ticker_link": "http://openinsider.com/CNTB",
+      "Company Name": "Connect Biopharma Holdings Ltd",
+      "Insider Name": "Huang James",
+      "Insider Name_link": "http://openinsider.com/insider/Huang-James/1573160",
+      "Title": "Dir",
+      "Trade Type": "P - Purchase",
+      "Price": "$3.45",
+      "Qty": "+1,160,000",
+      "Owned": "13,160,000",
+      "ΔOwn": "+10%",
+      "Value": "+$4,002,000",
+      "sec_filing_data": {
+        "source_url": "http://www.sec.gov/Archives/edgar/data/1835268/000119312526138012/xslF345X03/ownership.xml",
+        "row_count": 1,
+        "table_rows": [
+          {
+            "3. Transaction Code (Instr. \n      8) | Code": "P",
+            "3. Transaction Code (Instr. \n      8) | V": "",
+            "6. Ownership Form: Direct (D) or Indirect (I) (Instr. \n      4)": "I",
+            "7. Nature of Indirect Beneficial Ownership (Instr. \n      4)": "See Footnote (1)"
+          }
+        ],
+        "explanation_rows": {
+          "foot_notes": {
+            "1": "Panacea Venture Healthcare Fund II, L.P. is the record holder of the Ordinary Shares reported herein. James Huang is the sole owner of Panacea Innovation Limited, which is the sole owner of Panacea Venture Healthcare Fund II GP Company, Ltd., which is the general partner of Panacea Venture Healthcare Fund II, L.P. As a result, James Huang may be deemed to share beneficial ownership of the Ordinary Shares reported herein, but disclaims such beneficial ownership."
+          },
+          "Remarks": ""
+        }
+      }
+    },
+    {
+      "X": "",
+      "Filing Date": "2026-03-31 17:00:23",
+      "Trade Date": "2026-03-31",
+      "Ticker": "ZBIO",
+      "Ticker_link": "http://openinsider.com/ZBIO",
+      "Company Name": "Zenas Biopharma, Inc.",
+      "Insider Name": "Lu Hongbo",
+      "Insider Name_link": "http://openinsider.com/insider/Lu-Hongbo/1767584",
+      "Title": "Dir",
+      "Trade Type": "P - Purchase",
+      "Price": "$20.00",
+      "Qty": "+75,000",
+      "Owned": "422,968",
+      "ΔOwn": "+22%",
+      "Value": "+$1,500,000",
+      "sec_filing_data": {
+        "source_url": "http://www.sec.gov/Archives/edgar/data/1953926/000110465926037865/xslF345X03/tm2610681-1_4seq1.xml",
+        "row_count": 1,
+        "table_rows": [
+          {
+            "3. Transaction Code (Instr. \n      8) | Code": "P (1)",
+            "3. Transaction Code (Instr. \n      8) | V": "",
+            "6. Ownership Form: Direct (D) or Indirect (I) (Instr. \n      4)": "I (2) (3)",
+            "7. Nature of Indirect Beneficial Ownership (Instr. \n      4)": "See footnote (2) (3)"
+          }
+        ],
+        "explanation_rows": {
+          "foot_notes": {
+            "1": "Acquired in an underwritten public offering, pursuant to which Zenas BioPharma, Inc. sold shares of common stock at a purchase price of $20.00 per share.",
+            "2": "The reported securities are owned directly by NEXTBio Master Fund LP or NEXTBio Evergreen LLC and may be deemed to be indirectly beneficially owned by (i) NEXTBio Capital LLC, the general partner of NEXTBio Master Fund LP (with respect to such securities directly owned by NEXTBio Master Fund LP), (ii) NEXTBio Capital Evergreen GP LLC, the managing member of NEXTBio Evergreen LLC (with respect to such securities directly owned by NEXTBio Evergreen LLC), (iii) NEXTBio Capital Management LP, the investment manager to NEXTBio Master Fund LP and NEXTBio Evergreen LLC, and (iv) Hongbo Lu, a managing member of NEXTBio Capital LLC and NEXTBio Capital Evergreen GP LLC.",
+            "3": "The Reporting Person disclaims beneficial ownership of the reported securities except to the extent of their pecuniary interest therein, and this report shall not be deemed an admission that the Reporting Person is the beneficial owner of the securities for purposes of Section 16 of the Securities Exchange Act of 1934, as amended, or for any other purpose."
+          },
+          "Remarks": ""
+        }
+      }
+    },
+    {
+      "X": "",
+      "Filing Date": "2026-03-31 06:42:28",
+      "Trade Date": "2026-03-30",
+      "Ticker": "NAVN",
+      "Ticker_link": "http://openinsider.com/NAVN",
+      "Company Name": "Navan, Inc.",
+      "Insider Name": "Williams Anre D",
+      "Insider Name_link": "http://openinsider.com/insider/Williams-Anre-D/1303170",
+      "Title": "Dir",
+      "Trade Type": "P - Purchase",
+      "Price": "$12.00",
+      "Qty": "+100,000",
+      "Owned": "215,024",
+      "ΔOwn": "+87%",
+      "Value": "+$1,200,000",
+      "sec_filing_data": {
+        "source_url": "http://www.sec.gov/Archives/edgar/data/1639723/000130317026000003/xslF345X03/form4-03312026_100324.xml",
+        "row_count": 1,
+        "table_rows": [
+          {
+            "3. Transaction Code (Instr. \n      8) | Code": "P",
+            "3. Transaction Code (Instr. \n      8) | V": "",
+            "6. Ownership Form: Direct (D) or Indirect (I) (Instr. \n      4)": "D",
+            "7. Nature of Indirect Beneficial Ownership (Instr. \n      4)": ""
+          }
+        ],
+        "explanation_rows": {
+          "foot_notes": {
+            "1": "Includes 15,024 restricted stock units, each of which represents a contingent right to receive one share of Issuer's Class A Common Stock upon vesting."
+          },
+          "Remarks": ""
+        }
+      }
+    },
+    {
+      "X": "M",
+      "Filing Date": "2026-03-30 20:30:55",
+      "Trade Date": "2026-03-26",
+      "Ticker": "WVE",
+      "Ticker_link": "http://openinsider.com/WVE",
+      "Company Name": "Wave Life Sciences Ltd.",
+      "Insider Name": "Ra Capital Management, L.P.",
+      "Insider Name_link": "http://openinsider.com/insider/Ra-Capital-Management--L.P./1346824",
+      "Title": "Dir, 10%",
+      "Trade Type": "P - Purchase",
+      "Price": "$6.23",
+      "Qty": "+8,772,496",
+      "Owned": "27,004,320",
+      "ΔOwn": "+48%",
+      "Value": "+$54,624,378",
+      "sec_filing_data": {
+        "source_url": "http://www.sec.gov/Archives/edgar/data/1631574/000123191926000297/xslF345X03/form4-03312026_120347.xml",
+        "row_count": 4,
+        "table_rows": [
+          {
+            "3. Transaction Code (Instr. \n      8) | Code": "P",
+            "3. Transaction Code (Instr. \n      8) | V": "",
+            "6. Ownership Form: Direct (D) or Indirect (I) (Instr. \n      4)": "I",
+            "7. Nature of Indirect Beneficial Ownership (Instr. \n      4)": "See footnotes (2) (3)"
+          },
+          {
+            "3. Transaction Code (Instr. \n      8) | Code": "P",
+            "3. Transaction Code (Instr. \n      8) | V": "",
+            "6. Ownership Form: Direct (D) or Indirect (I) (Instr. \n      4)": "I",
+            "7. Nature of Indirect Beneficial Ownership (Instr. \n      4)": "See footnotes (2) (3)"
+          },
+          {
+            "3. Transaction Code (Instr. \n      8) | Code": "P",
+            "3. Transaction Code (Instr. \n      8) | V": "",
+            "6. Ownership Form: Direct (D) or Indirect (I) (Instr. \n      4)": "I",
+            "7. Nature of Indirect Beneficial Ownership (Instr. \n      4)": "See footnotes (2) (3)"
+          },
+          {
+            "3. Transaction Code (Instr. \n      8) | Code": "P",
+            "3. Transaction Code (Instr. \n      8) | V": "",
+            "6. Ownership Form: Direct (D) or Indirect (I) (Instr. \n      4)": "I",
+            "7. Nature of Indirect Beneficial Ownership (Instr. \n      4)": "See footnotes (2) (3)"
+          }
+        ],
+        "explanation_rows": {
+          "foot_notes": {
+            "1": "The price reported in Column 4 is a weighted average price. These shares were purchased in multiple transactions at prices ranging from $5.365 to $6.36 inclusive. The Reporting Persons undertake to provide to the Issuer, any security holder of the Issuer, or the staff of the Securities and Exchange Commission, upon request, full information regarding the number of shares purchased at each separate price within the range set forth in this footnote.",
+            "2": "RA Capital Management, L.P. (the \"Adviser\") is the investment manager for RA Capital Healthcare Fund, L.P. (the \"Fund\"). The general partner of the Adviser is RA Capital Management GP, LLC (the \"Adviser GP\"), of which Dr. Peter Kolchinsky and Mr. Rajeev Shah are the managing members. Each of the Adviser, the Adviser GP, the Fund, Dr. Kolchinsky and Mr. Shah disclaims beneficial ownership of any of the reported securities, except to the extent of its or his respective pecuniary interest therein.",
+            "3": "Held directly by the Fund.",
+            "4": "The price reported in Column 4 is a weighted average price. These shares were purchased in multiple transactions at prices ranging from $6.365 to $6.40 inclusive. The Reporting Persons undertake to provide to the Issuer, any security holder of the Issuer, or the staff of the Securities and Exchange Commission, upon request, full information regarding the number of shares purchased at each separate price within the range set forth in this footnote.",
+            "5": "The price reported in Column 4 is a weighted average price. These shares were purchased in multiple transactions at prices ranging from $6.09 to $6.74 inclusive. The Reporting Persons undertake to provide to the Issuer, any security holder of the Issuer, or the staff of the Securities and Exchange Commission, upon request, full information regarding the number of shares purchased at each separate price within the range set forth in this footnote.",
+            "6": "The price reported in Column 4 is a weighted average price. These shares were purchased in multiple transactions at prices ranging from $6.305 to $6.665 inclusive. The Reporting Persons undertake to provide to the Issuer, any security holder of the Issuer, or the staff of the Securities and Exchange Commission, upon request, full information regarding the number of shares purchased at each separate price within the range set forth in this footnote.",
+            "7": "Represents previously reported restricted stock unit awards (\"RSUs\") granted to Dr. Kolchinsky and shares received by Dr. Kolchinsky upon settlement of RSUs.",
+            "8": "Dr. Kolchinsky is a Managing Partner of the Adviser who serves on the Issuer's board of directors. Under Dr. Kolchinsky's arrangement with the Adviser, Dr. Kolchinsky holds the RSUs and shares for the benefit of the Fund. Dr. Kolchinsky is obligated to turn over to the Adviser any net cash or shares received upon settlement of the RSUs, which will offset advisory fees owed by the Fund to the Adviser."
+          },
+          "Remarks": "Dr. Peter Kolchinsky, a Managing Partner of the Adviser, serves on the Issuer's board of directors."
+        }
+      }
+    },
+    {
+      "X": "D",
+      "Filing Date": "2026-03-27 14:34:37",
+      "Trade Date": "2026-03-25",
+      "Ticker": "IAUX",
+      "Ticker_link": "http://openinsider.com/IAUX",
+      "Company Name": "I-80 Gold Corp.",
+      "Insider Name": "Young Richard Scott",
+      "Insider Name_link": "http://openinsider.com/insider/Young-Richard-Scott/2049504",
+      "Title": "Pres, CEO",
+      "Trade Type": "P - Purchase",
+      "Price": "$1.40",
+      "Qty": "+1,000,000",
+      "Owned": "5,337,000",
+      "ΔOwn": "+23%",
+      "Value": "+$1,400,000",
+      "sec_filing_data": {
+        "source_url": "http://www.sec.gov/Archives/edgar/data/1853962/000091228226000512/xslF345X03/form4.xml",
+        "row_count": 1,
+        "table_rows": [
+          {
+            "3. Transaction Code (Instr. \n      8) | Code": "P",
+            "3. Transaction Code (Instr. \n      8) | V": "",
+            "6. Ownership Form: Direct (D) or Indirect (I) (Instr. \n      4)": "D",
+            "7. Nature of Indirect Beneficial Ownership (Instr. \n      4)": ""
+          }
+        ],
+        "explanation_rows": {
+          "foot_notes": {
+            "1": "Canadian purchase price of $1.9328 converted into U.S. dollars using an exchange rate of C$1.3801=US$1.00",
+            "2": "The reporting person disclaims beneficial ownership of these securities except to the extent of his pecuniary interest therein, and the inclusion of these shares in this report shall not be deemed an admission of beneficial ownership of all of the reported shares for purposes of Section 16 or for any other purpose.",
+            "3": "Each Restricted Share Unit (\"RSU\") represents a contingent right to receive one share of the Issuer's common stock. RSUs will vest in full on March 1, 2029.  Vested RSUs settle in cash or shares at the discretion of the Issuer as soon as administratively feasible following the vesting date."
+          },
+          "Remarks": ""
+        }
+      }
+    },
+    {
+      "X": "",
+      "Filing Date": "2026-03-27 09:33:05",
+      "Trade Date": "2026-03-26",
+      "Ticker": "PICS",
+      "Ticker_link": "http://openinsider.com/PICS",
+      "Company Name": "Pics N.V.",
+      "Insider Name": "Chedid Simoes Eduardo",
+      "Insider Name_link": "http://openinsider.com/insider/Chedid-Simoes-Eduardo/2120855",
+      "Title": "CEO",
+      "Trade Type": "P - Purchase",
+      "Price": "$11.52",
+      "Qty": "+87,505",
+      "Owned": "87,505",
+      "ΔOwn": "New",
+      "Value": "+$1,008,058",
+      "sec_filing_data": {
+        "source_url": "http://www.sec.gov/Archives/edgar/data/1841644/000121390026035225/xslF345X03/ownership.xml",
+        "row_count": 1,
+        "table_rows": [
+          {
+            "3. Transaction Code (Instr. \n      8) | Code": "P",
+            "3. Transaction Code (Instr. \n      8) | V": "",
+            "6. Ownership Form: Direct (D) or Indirect (I) (Instr. \n      4)": "D",
+            "7. Nature of Indirect Beneficial Ownership (Instr. \n      4)": ""
+          }
+        ],
+        "explanation_rows": {
+          "foot_notes": {
+            "1": "The price reported in Column 4 is a weighted average price. These securities were purchased in multiple transactions at prices ranging from $11.44 to $11.60, inclusive. The reporting person undertakes to provide to the issuer, any security holder of the issuer, or the staff of the U.S. Securities and Exchange Commission, upon request, full information regarding the number of shares purchased at each separate price within the range set forth in this footnote."
+          },
+          "Remarks": "Due to the issuer's status as a foreign private issuer pursuant to Rule 3a12-3(b) under the Securities Exchange Act of 1934 (the \"Act\"), the reporting person's transactions in the issuer's equity securities are exempt from Sections 16(b) and 16(c) of the Act."
+        }
+      }
+    },
+    {
+      "X": "",
+      "Filing Date": "2026-03-26 08:29:13",
+      "Trade Date": "2026-03-24",
+      "Ticker": "BORR",
+      "Ticker_link": "http://openinsider.com/BORR",
+      "Company Name": "Borr Drilling Ltd",
+      "Insider Name": "Currie Jeffrey",
+      "Insider Name_link": "http://openinsider.com/insider/Currie-Jeffrey/2117662",
+      "Title": "Dir",
+      "Trade Type": "P - Purchase",
+      "Price": "$5.31",
+      "Qty": "+250,000",
+      "Owned": "354,423",
+      "ΔOwn": "+239%",
+      "Value": "+$1,327,500",
+      "sec_filing_data": {
+        "source_url": "http://www.sec.gov/Archives/edgar/data/1715497/000162828026021241/xslF345X03/wk-form4_1774528150.xml",
+        "row_count": 1,
+        "table_rows": [
+          {
+            "3. Transaction Code (Instr. \n      8) | Code": "P",
+            "3. Transaction Code (Instr. \n      8) | V": "",
+            "6. Ownership Form: Direct (D) or Indirect (I) (Instr. \n      4)": "D",
+            "7. Nature of Indirect Beneficial Ownership (Instr. \n      4)": ""
+          }
+        ],
+        "explanation_rows": {
+          "foot_notes": {
+            "1": "Includes 54,545 restricted stock units (RSUs) that vest in full on September 30, 2026 conditional upon continuing to serve as a Director of the Issuer at the date of vesting. Each RSU represents a contingent right to receive one common share."
+          },
+          "Remarks": ""
+        }
+      }
+    },
+    {
+      "X": "",
+      "Filing Date": "2026-03-25 17:29:09",
+      "Trade Date": "2026-03-23",
+      "Ticker": "FRPH",
+      "Ticker_link": "http://openinsider.com/FRPH",
+      "Company Name": "Frp Holdings, Inc.",
+      "Insider Name": "Baker John D II",
+      "Insider Name_link": "http://openinsider.com/insider/Baker-John-D-II/1190089",
+      "Title": "Dir, 10%",
+      "Trade Type": "P - Purchase",
+      "Price": "$20.90",
+      "Qty": "+478,468",
+      "Owned": "3,335,861",
+      "ΔOwn": "+17%",
+      "Value": "+$9,999,981",
+      "sec_filing_data": {
+        "source_url": "http://www.sec.gov/Archives/edgar/data/844059/000119008926000007/xslF345X03/primary_doc.xml",
+        "row_count": 1,
+        "table_rows": [
+          {
+            "3. Transaction Code (Instr. \n      8) | Code": "P",
+            "3. Transaction Code (Instr. \n      8) | V": "",
+            "6. Ownership Form: Direct (D) or Indirect (I) (Instr. \n      4)": "I",
+            "7. Nature of Indirect Beneficial Ownership (Instr. \n      4)": "See footnote (1)"
+          }
+        ],
+        "explanation_rows": {
+          "foot_notes": {
+            "1": "Shares are held by the Trust FBO John D. Baker II U/A Cynthia L. Baker Trust dated 4/30/1965, for which the Reporting Person serves as co-trustee, and of which the Reporting Person is the sole income beneficiary. The Reporting Person disclaims beneficial ownership of such shares, except to the extent of his pecuniary interest therein."
+          },
+          "Remarks": ""
+        }
+      }
+    },
+    {
+      "X": "",
+      "Filing Date": "2026-03-24 17:13:49",
+      "Trade Date": "2026-03-23",
+      "Ticker": "JAN",
+      "Ticker_link": "http://openinsider.com/JAN",
+      "Company Name": "Janus Living, Inc.",
+      "Insider Name": "Arabia John V",
+      "Insider Name_link": "http://openinsider.com/insider/Arabia-John-V/1516575",
+      "Title": "Dir",
+      "Trade Type": "P - Purchase",
+      "Price": "$20.00",
+      "Qty": "+60,000",
+      "Owned": "67,500",
+      "ΔOwn": "+800%",
+      "Value": "+$1,200,000",
+      "sec_filing_data": {
+        "source_url": "http://www.sec.gov/Archives/edgar/data/2100805/000110465926033940/xslF345X03/tm269649-6_4seq1.xml",
+        "row_count": 1,
+        "table_rows": [
+          {
+            "3. Transaction Code (Instr. \n      8) | Code": "P (3)",
+            "3. Transaction Code (Instr. \n      8) | V": "",
+            "6. Ownership Form: Direct (D) or Indirect (I) (Instr. \n      4)": "D",
+            "7. Nature of Indirect Beneficial Ownership (Instr. \n      4)": ""
+          }
+        ],
+        "explanation_rows": {
+          "foot_notes": {
+            "1": "Represents the grant of vested shares in connection with the Issuer's initial public offering of Class A-1 Common Stock (\"IPO\").",
+            "2": "Represents the grant of restricted stock units (\"RSU's\") as annual equity compensation for service as a director of the Issuer.  The RSUs convert on a one-for-one basis into shares of Class A-1 Common Stock upon vesting, and vest in full on the earliest of the first anniversary of the grant date, the date of the Company's annual meeting of stockholders following the grant date, or the termination of the director's service due to death or disability.",
+            "3": "Represents shares purchased from the underwriters in the IPO."
+          },
+          "Remarks": ""
+        }
+      }
+    },
+    {
+      "X": "D",
+      "Filing Date": "2026-03-24 17:13:17",
+      "Trade Date": "2026-03-23",
+      "Ticker": "JAN",
+      "Ticker_link": "http://openinsider.com/JAN",
+      "Company Name": "Janus Living, Inc.",
+      "Insider Name": "Brinker Scott M",
+      "Insider Name_link": "http://openinsider.com/insider/Brinker-Scott-M/1540329",
+      "Title": "Pres, CEO",
+      "Trade Type": "P - Purchase",
+      "Price": "$20.00",
+      "Qty": "+100,000",
+      "Owned": "100,000",
+      "ΔOwn": "New",
+      "Value": "+$2,000,000",
+      "sec_filing_data": {
+        "source_url": "http://www.sec.gov/Archives/edgar/data/2100805/000110465926033939/xslF345X03/tm269649-7_4seq1.xml",
+        "row_count": 1,
+        "table_rows": [
+          {
+            "3. Transaction Code (Instr. \n      8) | Code": "P (1)",
+            "3. Transaction Code (Instr. \n      8) | V": "",
+            "6. Ownership Form: Direct (D) or Indirect (I) (Instr. \n      4)": "D",
+            "7. Nature of Indirect Beneficial Ownership (Instr. \n      4)": ""
+          }
+        ],
+        "explanation_rows": {
+          "foot_notes": {
+            "1": "Represents shares purchased from the underwriters in the Issuer's initial public offering of Class A-1 Common Stock (\"IPO\").",
+            "2": "Represents a class of common units of membership interest in Janus Living OP, LLC, (\"Janus OP\"), the operating subsidiary of the Issuer, designated as LTIP Units (\"LTIP Units\") intended to qualify as profits interests for U.S. federal income tax purposes. LTIP Units do not have an expiration date. Upon achieving equivalent capital account balance per unit and any applicable vesting conditions, the LTIP Units are convertible at the election of the holder into common units of membership interest in Janus OP (the \"OP Units\"). The OP Units are redeemable, at the election of the holder, for cash equal to the fair market value of one share of the Issuer's Class A-1 Common Stock or, at the option of Janus OP, convertible to shares of the Issuer's Class A-1 Common Stock on a one-for-one basis, and have no expiration date.",
+            "3": "Represents fully vested LTIP Units granted in connection with the IPO."
+          },
+          "Remarks": ""
+        }
+      }
+    },
+    {
+      "X": "",
+      "Filing Date": "2026-03-24 10:50:00",
+      "Trade Date": "2026-03-23",
+      "Ticker": "PICS",
+      "Ticker_link": "http://openinsider.com/PICS",
+      "Company Name": "Pics N.V.",
+      "Insider Name": "Pruett William Rodney",
+      "Insider Name_link": "http://openinsider.com/insider/Pruett-William-Rodney/2111657",
+      "Title": "Dir",
+      "Trade Type": "P - Purchase",
+      "Price": "$11.80",
+      "Qty": "+100,000",
+      "Owned": "100,000",
+      "ΔOwn": "New",
+      "Value": "+$1,180,000",
+      "sec_filing_data": {
+        "source_url": "http://www.sec.gov/Archives/edgar/data/1841644/000121390026033308/xslF345X03/ownership.xml",
+        "row_count": 1,
+        "table_rows": [
+          {
+            "3. Transaction Code (Instr. \n      8) | Code": "P",
+            "3. Transaction Code (Instr. \n      8) | V": "",
+            "6. Ownership Form: Direct (D) or Indirect (I) (Instr. \n      4)": "D",
+            "7. Nature of Indirect Beneficial Ownership (Instr. \n      4)": ""
+          }
+        ],
+        "explanation_rows": {
+          "foot_notes": {
+            "1": "The price reported in Column 4 is a weighted average price. These securities were purchased in multiple transactions at prices ranging from $10.99 to $12.00, inclusive. The reporting person undertakes to provide to the issuer, any security holder of the issuer, or the staff of the U.S. Securities and Exchange Commission, upon request, full information regarding the number of shares purchased at each separate price within the range set forth in this footnote."
+          },
+          "Remarks": "Due to the issuer's status as a foreign private issuer pursuant to Rule 3a12-3(b) under the Securities Exchange Act of 1934 (the \"Act\"), the reporting person's transactions in the issuer's equity securities are exempt from Sections 16(b) and 16(c) of the Act."
+        }
+      }
+    }
+  ]
+}
