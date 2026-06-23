@@ -1,0 +1,8 @@
+{
+  "ticker": "ALL",
+  "fetch_date": "2026-06-23T13:26:17.641509",
+  "source_url": "http://openinsider.com/screener?s=&o=&pl=&ph=&ll=&lh=&fd=60&fdr=&td=60&tdr=&fdlyl=&fdlyh=&daysago=&xp=1&vl=1000&vh=&ocl=10&och=&sic1=-1&sicl=100&sich=9999&isceo=1&iscoo=1&iscfo=1&isdirector=1&grp=0&nfl=&nfh=&nil=3&nih=&nol=&noh=&v2l=&v2h=&oc2l=&oc2h=&sortcol=0&cnt=100&page=1",
+  "finviz_url": null,
+  "total_tickers": 0,
+  "tickers": {}
+}
