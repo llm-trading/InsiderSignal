@@ -1,0 +1,37 @@
+2026-07-02 12:32:50 [INFO] root - Detailed logs: /home/runner/work/InsiderSignal/InsiderSignal/logs/pipeline_20260702_123250.log
+2026-07-02 12:32:50 [INFO] sec_filing_cache - SEC filing cache opened: /home/runner/work/InsiderSignal/InsiderSignal/cache/sec_filings.db
+2026-07-02 12:32:50 [INFO] pipeline - Starting pipeline for ALL tickers
+2026-07-02 12:32:50 [INFO] fetcher - Fetching URL (attempt 1/3)
+2026-07-02 12:33:35 [INFO] fetcher - Received 21305 bytes
+2026-07-02 12:33:35 [WARNING] parser - No 'tinytable' found in HTML
+2026-07-02 12:33:35 [INFO] pipeline - Enriching 0 transactions with SEC filing data
+2026-07-02 12:33:35 [INFO] filter - Filter complete — kept 0/0 transactions (dropped 0: none)
+2026-07-02 12:33:35 [INFO] cleaner - Cleaned 0 transactions - removed unnecessary fields
+2026-07-02 12:33:35 [INFO] grouper - Grouped 0 transactions into 0 tickers (rolling window: 14 days)
+2026-07-02 12:33:35 [INFO] pipeline - Enriching 0 tickers with 8-K/6-K filing data
+2026-07-02 12:33:35 [INFO] pipeline - Starting context enrichment
+2026-07-02 12:33:35 [INFO] enrichments.enrichment_registry - Starting enrichment: 7 steps × 0 tickers
+2026-07-02 12:33:35 [INFO] enrichments.enrichment_registry - [Step 1/7] EarningsEnricher
+2026-07-02 12:33:35 [INFO] enrichments.enrichment_registry - [Step 2/7] PriceEnricher
+2026-07-02 12:33:35 [INFO] enrichments.enrichment_registry - [Step 3/7] SectorEnricher
+2026-07-02 12:33:35 [INFO] enrichments.enrichment_registry - [Step 4/7] InsiderHistoryEnricher
+2026-07-02 12:33:35 [INFO] enrichments.enrichment_registry - [Step 5/7] InsiderPriceEnricher
+2026-07-02 12:33:35 [INFO] enrichments.enrichment_registry - [Step 6/7] PositionSizingEnricher
+2026-07-02 12:33:35 [INFO] enrichments.enrichment_registry - [Step 7/7] InsiderBehaviorEnricher
+2026-07-02 12:33:35 [INFO] enrichments.enrichment_registry - ✓ All enrichments complete
+2026-07-02 12:33:35 [INFO] pipeline - Context enrichment complete
+2026-07-02 12:33:35 [INFO] pipeline - Starting signal generation
+2026-07-02 12:33:35 [INFO] signal_generator - Starting signal generation...
+2026-07-02 12:33:35 [INFO] signal_generator - ✓ Signal generation complete
+2026-07-02 12:33:35 [INFO] pipeline - Signal generation complete
+2026-07-02 12:33:35 [INFO] pipeline - Pipeline complete — 0 transactions
+2026-07-02 12:33:35 [INFO] pipeline - Flat JSON saved to /home/runner/work/InsiderSignal/InsiderSignal/output/ALL_insider_trades_20260702_123335.json
+2026-07-02 12:33:35 [INFO] pipeline - Grouped JSON saved to /home/runner/work/InsiderSignal/InsiderSignal/output/ALL_insider_trades_grouped_20260702_123335.json
+2026-07-02 12:33:35 [INFO] __main__ - Done — 0 transactions for ALL | flat: /home/runner/work/InsiderSignal/InsiderSignal/output/ALL_insider_trades_20260702_123335.json | grouped: /home/runner/work/InsiderSignal/InsiderSignal/output/ALL_insider_trades_grouped_20260702_123335.json
+2026-07-02 12:33:35 [INFO] __main__ - Generating HTML reports...
+2026-07-02 12:33:35 [INFO] generate_html_report - Generating HTML report from /home/runner/work/InsiderSignal/InsiderSignal/output/ALL_insider_trades_grouped_20260702_123335.json
+2026-07-02 12:33:35 [INFO] generate_html_report - HTML report saved to /home/runner/work/InsiderSignal/InsiderSignal/reports/report_20260702_123335.html
+2026-07-02 12:33:35 [INFO] __main__ - Report generated: /home/runner/work/InsiderSignal/InsiderSignal/reports/report_20260702_123335.html
+2026-07-02 12:33:35 [INFO] generate_index - Updating master index.html
+2026-07-02 12:33:35 [INFO] generate_index - Index updated: /home/runner/work/InsiderSignal/InsiderSignal/index.html (88 reports)
+2026-07-02 12:33:35 [INFO] __main__ - Index updated: /home/runner/work/InsiderSignal/InsiderSignal/index.html
